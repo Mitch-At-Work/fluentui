@@ -14,11 +14,28 @@ import type { SetStateAction } from 'react';
 import { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
+// @public
+export const IVirtualizerScrollViewDynamic: React_2.FC<VirtualizerScrollViewDynamicProps>;
+
+// @public (undocumented)
+export const renderIVirtualizerScrollViewDynamic_unstable: (state: VirtualizerScrollViewDynamicState) => JSX.Element;
+
 // @public (undocumented)
 export const renderVirtualizer_unstable: (state: VirtualizerState) => JSX.Element;
 
 // @public (undocumented)
 export const renderVirtualizerScrollView_unstable: (state: VirtualizerScrollViewState) => JSX.Element;
+
+// @public (undocumented)
+export const renderVirtualizerScrollViewDynamic_unstable: (props: VirtualizerScrollViewDynamicProps, context: VirtualizerContextProps) => JSX.Element;
+
+// @public
+export const useDynamicVirtualizerMeasure: (virtualizerProps: VirtualizerMeasureDynamicProps) => {
+    virtualizerLength: number;
+    bufferItems: number;
+    bufferSize: number;
+    scrollRef: (instance: HTMLElement | HTMLDivElement | null) => void;
+};
 
 // @public
 export const useIntersectionObserver: (callback: IntersectionObserverCallback, options?: IntersectionObserverInit | undefined) => {
@@ -39,7 +56,16 @@ export const useStaticVirtualizerMeasure: (virtualizerProps: VirtualizerMeasureP
 export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerState;
 
 // @public (undocumented)
+export const useVirtualizerContext: () => VirtualizerContextProps;
+
+// @public (undocumented)
 export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewProps): VirtualizerScrollViewState;
+
+// @public (undocumented)
+export function useVirtualizerScrollViewDynamic_unstable(props: VirtualizerScrollViewDynamicProps): VirtualizerScrollViewDynamicState;
+
+// @public
+export const useVirtualizerScrollViewDynamicStyles_unstable: (state: VirtualizerScrollViewDynamicState) => VirtualizerScrollViewDynamicState;
 
 // @public
 export const useVirtualizerScrollViewStyles_unstable: (state: VirtualizerScrollViewState) => VirtualizerScrollViewState;
@@ -57,6 +83,15 @@ export type VirtualizerChildRenderFunction = (index: number) => React_2.ReactNod
 export const virtualizerClassNames: SlotClassNames<VirtualizerSlots>;
 
 // @public (undocumented)
+export const VirtualizerContext: React_2.Context<VirtualizerContextProps>;
+
+// @public (undocumented)
+export type VirtualizerContextProps = {
+    contextIndex: number;
+    setContextIndex: (index: number) => void;
+};
+
+// @public (undocumented)
 export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & VirtualizerConfigProps;
 
 // @public
@@ -64,6 +99,26 @@ export const VirtualizerScrollView: React_2.FC<VirtualizerScrollViewProps>;
 
 // @public (undocumented)
 export const virtualizerScrollViewClassNames: SlotClassNames<VirtualizerScrollViewSlots>;
+
+// @public (undocumented)
+export const VirtualizerScrollViewDynamic: React_2.FC<VirtualizerScrollViewDynamicProps>;
+
+// @public (undocumented)
+export const virtualizerScrollViewDynamicClassNames: SlotClassNames<VirtualizerScrollViewDynamicSlots>;
+
+// @public (undocumented)
+export type VirtualizerScrollViewDynamicProps = ComponentProps<Partial<VirtualizerScrollViewDynamicSlots>> & Partial<Omit<VirtualizerConfigProps, 'itemSize' | 'numItems' | 'getItemSize' | 'children'>> & {
+    itemSize: number;
+    getItemSize: (index: number) => number;
+    numItems: number;
+    children: VirtualizerChildRenderFunction;
+};
+
+// @public (undocumented)
+export type VirtualizerScrollViewDynamicSlots = VirtualizerScrollViewSlots;
+
+// @public (undocumented)
+export type VirtualizerScrollViewDynamicState = ComponentState<VirtualizerScrollViewDynamicSlots> & VirtualizerConfigState;
 
 // @public (undocumented)
 export type VirtualizerScrollViewProps = ComponentProps<Partial<VirtualizerScrollViewSlots>> & Partial<Omit<VirtualizerConfigProps, 'itemSize' | 'numItems' | 'getItemSize' | 'children'>> & {

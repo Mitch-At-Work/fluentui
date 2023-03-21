@@ -121,11 +121,21 @@ export {
   useVirtualizerStyles_unstable,
   useIntersectionObserver,
   useStaticVirtualizerMeasure,
+  useDynamicVirtualizerMeasure,
+  VirtualizerContext,
+  useVirtualizerContext,
   VirtualizerScrollView,
   virtualizerScrollViewClassNames,
   useVirtualizerScrollView_unstable,
   renderVirtualizerScrollView_unstable,
   useVirtualizerScrollViewStyles_unstable,
+  VirtualizerScrollViewDynamic,
+  IVirtualizerScrollViewDynamic,
+  virtualizerScrollViewDynamicClassNames,
+  useVirtualizerScrollViewDynamic_unstable,
+  renderVirtualizerScrollViewDynamic_unstable,
+  renderIVirtualizerScrollViewDynamic_unstable,
+  useVirtualizerScrollViewDynamicStyles_unstable,
 } from '@fluentui/react-virtualizer';
 export type {
   VirtualizerProps,
@@ -135,6 +145,10 @@ export type {
   VirtualizerScrollViewProps,
   VirtualizerScrollViewState,
   VirtualizerScrollViewSlots,
+  VirtualizerContextProps,
+  VirtualizerScrollViewDynamicProps,
+  VirtualizerScrollViewDynamicState,
+  VirtualizerScrollViewDynamicSlots,
 } from '@fluentui/react-virtualizer';
 
 export {

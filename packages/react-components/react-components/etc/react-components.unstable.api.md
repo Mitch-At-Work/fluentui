@@ -38,6 +38,7 @@ import { InfoLabelState } from '@fluentui/react-infobutton';
 import { InputField_unstable as InputField } from '@fluentui/react-input';
 import { inputFieldClassNames } from '@fluentui/react-input';
 import { InputFieldProps_unstable as InputFieldProps } from '@fluentui/react-input';
+import { IVirtualizerScrollViewDynamic } from '@fluentui/react-virtualizer';
 import { NestedTreeItem } from '@fluentui/react-tree';
 import { ProgressField_unstable as ProgressField } from '@fluentui/react-progress';
 import { progressFieldClassNames } from '@fluentui/react-progress';
@@ -49,6 +50,7 @@ import { renderAlert_unstable } from '@fluentui/react-alert';
 import { renderField_unstable } from '@fluentui/react-field';
 import { renderInfoButton_unstable } from '@fluentui/react-infobutton';
 import { renderInfoLabel_unstable } from '@fluentui/react-infobutton';
+import { renderIVirtualizerScrollViewDynamic_unstable } from '@fluentui/react-virtualizer';
 import { renderSkeleton_unstable } from '@fluentui/react-skeleton';
 import { renderSkeletonItem_unstable } from '@fluentui/react-skeleton';
 import { renderTree_unstable } from '@fluentui/react-tree';
@@ -57,6 +59,7 @@ import { renderTreeItemLayout_unstable } from '@fluentui/react-tree';
 import { renderTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
 import { renderVirtualizer_unstable } from '@fluentui/react-virtualizer';
 import { renderVirtualizerScrollView_unstable } from '@fluentui/react-virtualizer';
+import { renderVirtualizerScrollViewDynamic_unstable } from '@fluentui/react-virtualizer';
 import { SelectField_unstable as SelectField } from '@fluentui/react-select';
 import { selectFieldClassNames } from '@fluentui/react-select';
 import { SelectFieldProps_unstable as SelectFieldProps } from '@fluentui/react-select';
@@ -115,6 +118,7 @@ import { TreeSlots } from '@fluentui/react-tree';
 import { TreeState } from '@fluentui/react-tree';
 import { useAlert_unstable } from '@fluentui/react-alert';
 import { useAlertStyles_unstable } from '@fluentui/react-alert';
+import { useDynamicVirtualizerMeasure } from '@fluentui/react-virtualizer';
 import { useField_unstable } from '@fluentui/react-field';
 import { useFieldStyles_unstable } from '@fluentui/react-field';
 import { useFlatTree_unstable } from '@fluentui/react-tree';
@@ -140,15 +144,25 @@ import { useTreeItemPersonaLayoutStyles_unstable } from '@fluentui/react-tree';
 import { useTreeItemStyles_unstable } from '@fluentui/react-tree';
 import { useTreeStyles_unstable } from '@fluentui/react-tree';
 import { useVirtualizer_unstable } from '@fluentui/react-virtualizer';
+import { useVirtualizerContext } from '@fluentui/react-virtualizer';
 import { useVirtualizerScrollView_unstable } from '@fluentui/react-virtualizer';
+import { useVirtualizerScrollViewDynamic_unstable } from '@fluentui/react-virtualizer';
+import { useVirtualizerScrollViewDynamicStyles_unstable } from '@fluentui/react-virtualizer';
 import { useVirtualizerScrollViewStyles_unstable } from '@fluentui/react-virtualizer';
 import { useVirtualizerStyles_unstable } from '@fluentui/react-virtualizer';
 import { Virtualizer } from '@fluentui/react-virtualizer';
 import { VirtualizerChildRenderFunction } from '@fluentui/react-virtualizer';
 import { virtualizerClassNames } from '@fluentui/react-virtualizer';
+import { VirtualizerContext } from '@fluentui/react-virtualizer';
+import { VirtualizerContextProps } from '@fluentui/react-virtualizer';
 import { VirtualizerProps } from '@fluentui/react-virtualizer';
 import { VirtualizerScrollView } from '@fluentui/react-virtualizer';
 import { virtualizerScrollViewClassNames } from '@fluentui/react-virtualizer';
+import { VirtualizerScrollViewDynamic } from '@fluentui/react-virtualizer';
+import { virtualizerScrollViewDynamicClassNames } from '@fluentui/react-virtualizer';
+import { VirtualizerScrollViewDynamicProps } from '@fluentui/react-virtualizer';
+import { VirtualizerScrollViewDynamicSlots } from '@fluentui/react-virtualizer';
+import { VirtualizerScrollViewDynamicState } from '@fluentui/react-virtualizer';
 import { VirtualizerScrollViewProps } from '@fluentui/react-virtualizer';
 import { VirtualizerScrollViewSlots } from '@fluentui/react-virtualizer';
 import { VirtualizerScrollViewState } from '@fluentui/react-virtualizer';
@@ -223,6 +237,8 @@ export { inputFieldClassNames }
 
 export { InputFieldProps }
 
+export { IVirtualizerScrollViewDynamic }
+
 export { NestedTreeItem }
 
 export { ProgressField }
@@ -245,6 +261,8 @@ export { renderInfoButton_unstable }
 
 export { renderInfoLabel_unstable }
 
+export { renderIVirtualizerScrollViewDynamic_unstable }
+
 export { renderSkeleton_unstable }
 
 export { renderSkeletonItem_unstable }
@@ -260,6 +278,8 @@ export { renderTreeItemPersonaLayout_unstable }
 export { renderVirtualizer_unstable }
 
 export { renderVirtualizerScrollView_unstable }
+
+export { renderVirtualizerScrollViewDynamic_unstable }
 
 export { SelectField }
 
@@ -377,6 +397,8 @@ export { useAlert_unstable }
 
 export { useAlertStyles_unstable }
 
+export { useDynamicVirtualizerMeasure }
+
 export { useField_unstable }
 
 export { useFieldStyles_unstable }
@@ -427,7 +449,13 @@ export { useTreeStyles_unstable }
 
 export { useVirtualizer_unstable }
 
+export { useVirtualizerContext }
+
 export { useVirtualizerScrollView_unstable }
+
+export { useVirtualizerScrollViewDynamic_unstable }
+
+export { useVirtualizerScrollViewDynamicStyles_unstable }
 
 export { useVirtualizerScrollViewStyles_unstable }
 
@@ -439,11 +467,25 @@ export { VirtualizerChildRenderFunction }
 
 export { virtualizerClassNames }
 
+export { VirtualizerContext }
+
+export { VirtualizerContextProps }
+
 export { VirtualizerProps }
 
 export { VirtualizerScrollView }
 
 export { virtualizerScrollViewClassNames }
+
+export { VirtualizerScrollViewDynamic }
+
+export { virtualizerScrollViewDynamicClassNames }
+
+export { VirtualizerScrollViewDynamicProps }
+
+export { VirtualizerScrollViewDynamicSlots }
+
+export { VirtualizerScrollViewDynamicState }
 
 export { VirtualizerScrollViewProps }
 

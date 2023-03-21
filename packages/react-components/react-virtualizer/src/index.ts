@@ -11,7 +11,12 @@ export type {
   VirtualizerSlots,
   VirtualizerChildRenderFunction,
 } from './Virtualizer';
-export { useIntersectionObserver, useStaticVirtualizerMeasure } from './Hooks';
+
+export { useIntersectionObserver, useStaticVirtualizerMeasure, useDynamicVirtualizerMeasure } from './Hooks';
+
+export { VirtualizerContext, useVirtualizerContext } from './Utilities';
+
+export type { VirtualizerContextProps } from './Utilities';
 
 export {
   VirtualizerScrollView,
@@ -26,3 +31,19 @@ export type {
   VirtualizerScrollViewState,
   VirtualizerScrollViewSlots,
 } from './VirtualizerScrollView';
+
+export {
+  VirtualizerScrollViewDynamic,
+  IVirtualizerScrollViewDynamic,
+  virtualizerScrollViewDynamicClassNames,
+  useVirtualizerScrollViewDynamic_unstable,
+  renderVirtualizerScrollViewDynamic_unstable,
+  renderIVirtualizerScrollViewDynamic_unstable,
+  useVirtualizerScrollViewDynamicStyles_unstable,
+} from './VirtualizerScrollViewDynamic';
+
+export type {
+  VirtualizerScrollViewDynamicProps,
+  VirtualizerScrollViewDynamicState,
+  VirtualizerScrollViewDynamicSlots,
+} from './VirtualizerScrollViewDynamic';

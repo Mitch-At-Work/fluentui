@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
 import { VirtualizerSlots, VirtualizerState } from './Virtualizer.types';
+import { ReactNode } from 'react';
 
 export const renderVirtualizer_unstable = (state: VirtualizerState) => {
   const { slots, slotProps } = getSlots<VirtualizerSlots>(state);
@@ -18,5 +19,13 @@ export const renderVirtualizer_unstable = (state: VirtualizerState) => {
         <slots.after {...slotProps.after} />
       </slots.afterContainer>
     </React.Fragment>
+  );
+};
+
+export const renderVirtualizerChildPlaceholder = (child: ReactNode, index: number) => {
+  return (
+    <React.Suspense key={`fui-virtualizer-placeholder-${index}`} fallback={null}>
+      {child}
+    </React.Suspense>
   );
 };
