@@ -2,12 +2,11 @@ import * as React from 'react';
 import { VirtualizerScrollViewDynamic } from '@fluentui/react-components/unstable';
 import { makeStyles } from '@fluentui/react-components';
 import { ThemeProvider } from '@fluentui/react';
-import { array } from 'yargs';
 import { useEffect } from '@storybook/addons';
 
 const useStyles = makeStyles({
   root: {
-    maxHeight: '100vh',
+    maxHeight: '60vh',
   },
   child: {
     lineHeight: '42px',
@@ -20,22 +19,34 @@ export const Default = () => {
   const styles = useStyles();
   const childLength = 1000;
   const minHeight = 42;
-  const arraySize = new Array<number>(childLength).fill(minHeight);
+  // Array size ref stores a list of random num for div sizing and callbacks
+  const arraySize = React.useRef<number[]>(new Array<number>(childLength).fill(minHeight));
+  // totalSize flag drives our callback update
+  const [totalSize, setTotalSize] = React.useState<number>(minHeight * childLength);
 
   useEffect(() => {
+    let _totalSize = 0;
     for (let i = 0; i < childLength; i++) {
-      arraySize[i] = Math.random() * 250 + minHeight;
+      arraySize.current[i] = Math.random() * 250 + minHeight;
+      _totalSize += arraySize.current[i];
     }
-  }, [arraySize]);
+    setTotalSize(_totalSize);
+  }, []);
+
+  const getItemSizeCallback = React.useCallback(
+    (index: number) => {
+      return arraySize.current[index];
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [arraySize, totalSize],
+  );
 
   return (
     <ThemeProvider className={styles.root} applyTo="body">
       <VirtualizerScrollViewDynamic
         numItems={childLength}
         itemSize={100}
-        getItemSize={index => {
-          return arraySize[index];
-        }}
+        getItemSize={getItemSizeCallback}
         container={{ role: 'list', style: { maxHeight: '100vh' } }}
       >
         {(index: number) => {
@@ -47,8 +58,8 @@ export const Default = () => {
               aria-setsize={childLength}
               key={`test-virtualizer-child-${index}`}
               className={styles.child}
-              style={{ minHeight: arraySize[index], backgroundColor }}
-            >{`Node-${index} - size: ${arraySize[index]}`}</div>
+              style={{ minHeight: arraySize.current[index], backgroundColor }}
+            >{`Node-${index} - size: ${arraySize.current[index]}`}</div>
           );
         }}
       </VirtualizerScrollViewDynamic>

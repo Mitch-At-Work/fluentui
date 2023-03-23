@@ -68,7 +68,6 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
     for (let index = 0; index < numItems; index++) {
       childSizes.current[index] = getItemSize(index);
-
       if (index === 0) {
         childProgressiveSizes.current[index] = childSizes.current[index];
       } else {
@@ -394,6 +393,14 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [renderChild, updateChildRows]);
+
+  useEffect(() => {
+    // Ensure we repopulate if getItemSize callback changes
+    populateSizeArrays();
+
+    // We only run this effect on getItemSize change (recalc dynamic sizes)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [getItemSize]);
 
   // Ensure we have run through and updated the whole size list array at least once.
   initializeSizeArray();
