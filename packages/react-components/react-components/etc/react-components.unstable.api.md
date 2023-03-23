@@ -153,8 +153,8 @@ import { useVirtualizerStyles_unstable } from '@fluentui/react-virtualizer';
 import { Virtualizer } from '@fluentui/react-virtualizer';
 import { VirtualizerChildRenderFunction } from '@fluentui/react-virtualizer';
 import { virtualizerClassNames } from '@fluentui/react-virtualizer';
-import { VirtualizerContext } from '@fluentui/react-virtualizer';
 import { VirtualizerContextProps } from '@fluentui/react-virtualizer';
+import { VirtualizerContextProvider } from '@fluentui/react-virtualizer';
 import { VirtualizerProps } from '@fluentui/react-virtualizer';
 import { VirtualizerScrollView } from '@fluentui/react-virtualizer';
 import { virtualizerScrollViewClassNames } from '@fluentui/react-virtualizer';
@@ -467,9 +467,9 @@ export { VirtualizerChildRenderFunction }
 
 export { virtualizerClassNames }
 
-export { VirtualizerContext }
-
 export { VirtualizerContextProps }
+
+export { VirtualizerContextProvider }
 
 export { VirtualizerProps }
 

@@ -83,13 +83,13 @@ export type VirtualizerChildRenderFunction = (index: number) => React_2.ReactNod
 export const virtualizerClassNames: SlotClassNames<VirtualizerSlots>;
 
 // @public (undocumented)
-export const VirtualizerContext: React_2.Context<VirtualizerContextProps>;
-
-// @public (undocumented)
 export type VirtualizerContextProps = {
     contextIndex: number;
     setContextIndex: (index: number) => void;
 };
+
+// @public (undocumented)
+export const VirtualizerContextProvider: React_2.Provider<VirtualizerContextProps>;
 
 // @public (undocumented)
 export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & VirtualizerConfigProps;

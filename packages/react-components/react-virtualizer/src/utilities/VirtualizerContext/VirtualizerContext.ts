@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { VirtualizerContextProps } from './types';
 
-export const VirtualizerContext = React.createContext<VirtualizerContextProps | undefined>(
+const VirtualizerContext = React.createContext<VirtualizerContextProps | undefined>(
   undefined,
 ) as React.Context<VirtualizerContextProps>;
 
