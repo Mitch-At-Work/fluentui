@@ -22,7 +22,6 @@ const useStyles = makeStyles({
   },
   vertical: {
     flexDirection: 'column',
-    overflowAnchor: 'none',
     overflowY: 'auto',
   },
   horizontal: {
