@@ -5,6 +5,8 @@ export const VirtualizerContext = React.createContext<VirtualizerContextProps | 
   undefined,
 ) as React.Context<VirtualizerContextProps>;
 
+export const VirtualizerContextProvider = VirtualizerContext.Provider;
+
 export const useVirtualizerContext = () => {
   return React.useContext(VirtualizerContext);
 };

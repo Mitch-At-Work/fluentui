@@ -1,5 +1,9 @@
 import * as React from 'react';
-import { Virtualizer, useDynamicVirtualizerMeasure, VirtualizerContext } from '@fluentui/react-components/unstable';
+import {
+  Virtualizer,
+  useDynamicVirtualizerMeasure,
+  VirtualizerContextProvider,
+} from '@fluentui/react-components/unstable';
 import { makeStyles } from '@fluentui/react-components';
 
 const smallSize = 100;
@@ -61,7 +65,7 @@ export const Dynamic = () => {
   });
 
   return (
-    <VirtualizerContext.Provider value={{ contextIndex: currentIndex, setContextIndex: setCurrentIndex }}>
+    <VirtualizerContextProvider value={{ contextIndex: currentIndex, setContextIndex: setCurrentIndex }}>
       <div aria-label="Dynamic Virtualizer Example" className={styles.container} role={'list'} ref={scrollRef}>
         <Virtualizer
           getItemSize={index => getSizeForIndex(index)}
@@ -86,6 +90,6 @@ export const Dynamic = () => {
           }}
         </Virtualizer>
       </div>
-    </VirtualizerContext.Provider>
+    </VirtualizerContextProvider>
   );
 };

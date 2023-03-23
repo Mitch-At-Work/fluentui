@@ -122,7 +122,7 @@ export {
   useIntersectionObserver,
   useStaticVirtualizerMeasure,
   useDynamicVirtualizerMeasure,
-  VirtualizerContext,
+  VirtualizerContextProvider,
   useVirtualizerContext,
   VirtualizerScrollView,
   virtualizerScrollViewClassNames,

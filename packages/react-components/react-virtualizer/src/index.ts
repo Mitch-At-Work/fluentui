@@ -14,7 +14,7 @@ export type {
 
 export { useIntersectionObserver, useStaticVirtualizerMeasure, useDynamicVirtualizerMeasure } from './Hooks';
 
-export { VirtualizerContext, useVirtualizerContext } from './Utilities';
+export { VirtualizerContextProvider, useVirtualizerContext } from './Utilities';
 
 export type { VirtualizerContextProps } from './Utilities';
 
