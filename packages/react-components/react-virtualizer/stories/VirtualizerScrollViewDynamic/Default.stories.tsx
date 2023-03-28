@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { VirtualizerScrollViewDynamic } from '@fluentui/react-components/unstable';
 import { makeStyles } from '@fluentui/react-components';
-import { useEffect } from '@storybook/addons';
+import { useEffect } from 'react';
 
 const useStyles = makeStyles({
   child: {
