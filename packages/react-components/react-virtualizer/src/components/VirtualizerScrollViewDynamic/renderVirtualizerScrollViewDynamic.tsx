@@ -6,9 +6,9 @@ import {
   VirtualizerScrollViewDynamicState,
 } from './VirtualizerScrollViewDynamic.types';
 import { VirtualizerContextProvider, VirtualizerContextProps } from '../../Utilities';
-import { IVirtualizerScrollViewDynamic } from './VirtualizerScrollViewDynamic';
+import { ContextlessVirtualizerScrollViewDynamic } from './VirtualizerScrollViewDynamic';
 
-export const renderIVirtualizerScrollViewDynamic_unstable = (state: VirtualizerScrollViewDynamicState) => {
+export const renderContextlessVirtualizerScrollViewDynamic_unstable = (state: VirtualizerScrollViewDynamicState) => {
   const { slots, slotProps } = getSlots<VirtualizerScrollViewDynamicSlots>(state);
 
   return (
@@ -33,7 +33,7 @@ export const renderVirtualizerScrollViewDynamic_unstable = (
 ) => {
   return (
     <VirtualizerContextProvider value={context}>
-      <IVirtualizerScrollViewDynamic {...props} />
+      <ContextlessVirtualizerScrollViewDynamic {...props} />
     </VirtualizerContextProvider>
   );
 };

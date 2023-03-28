@@ -1,13 +1,9 @@
 import * as React from 'react';
 import { VirtualizerScrollViewDynamic } from '@fluentui/react-components/unstable';
 import { makeStyles } from '@fluentui/react-components';
-import { ThemeProvider } from '@fluentui/react';
 import { useEffect } from '@storybook/addons';
 
 const useStyles = makeStyles({
-  root: {
-    maxHeight: '60vh',
-  },
   child: {
     lineHeight: '42px',
     width: '100%',
@@ -42,27 +38,25 @@ export const Default = () => {
   );
 
   return (
-    <ThemeProvider className={styles.root} applyTo="body">
-      <VirtualizerScrollViewDynamic
-        numItems={childLength}
-        itemSize={100}
-        getItemSize={getItemSizeCallback}
-        container={{ role: 'list', style: { maxHeight: '100vh' } }}
-      >
-        {(index: number) => {
-          const backgroundColor = index % 2 ? '#FFFFFF' : '#ABABAB';
-          return (
-            <div
-              role={'listitem'}
-              aria-posinset={index}
-              aria-setsize={childLength}
-              key={`test-virtualizer-child-${index}`}
-              className={styles.child}
-              style={{ minHeight: arraySize.current[index], backgroundColor }}
-            >{`Node-${index} - size: ${arraySize.current[index]}`}</div>
-          );
-        }}
-      </VirtualizerScrollViewDynamic>
-    </ThemeProvider>
+    <VirtualizerScrollViewDynamic
+      numItems={childLength}
+      itemSize={100}
+      getItemSize={getItemSizeCallback}
+      container={{ role: 'list', style: { maxHeight: '100vh' } }}
+    >
+      {(index: number) => {
+        const backgroundColor = index % 2 ? '#FFFFFF' : '#ABABAB';
+        return (
+          <div
+            role={'listitem'}
+            aria-posinset={index}
+            aria-setsize={childLength}
+            key={`test-virtualizer-child-${index}`}
+            className={styles.child}
+            style={{ minHeight: arraySize.current[index], backgroundColor }}
+          >{`Node-${index} - size: ${arraySize.current[index]}`}</div>
+        );
+      }}
+    </VirtualizerScrollViewDynamic>
   );
 };

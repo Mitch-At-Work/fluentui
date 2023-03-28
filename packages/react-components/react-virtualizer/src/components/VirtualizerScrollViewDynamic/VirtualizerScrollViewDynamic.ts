@@ -1,7 +1,7 @@
 import { VirtualizerScrollViewDynamicProps } from './VirtualizerScrollViewDynamic.types';
 import { useVirtualizerScrollViewDynamic_unstable } from './useVirtualizerScrollViewDynamic';
 import {
-  renderIVirtualizerScrollViewDynamic_unstable,
+  renderContextlessVirtualizerScrollViewDynamic_unstable,
   renderVirtualizerScrollViewDynamic_unstable,
 } from './renderVirtualizerScrollViewDynamic';
 import { useVirtualizerScrollViewDynamicStyles_unstable } from './useVirtualizerScrollViewDynamicStyles';
@@ -12,7 +12,7 @@ import { useVirtualizerContextState, VirtualizerContextProps } from '../../Utili
  * Virtualizer ScrollView
  */
 
-export const IVirtualizerScrollViewDynamic: React.FC<VirtualizerScrollViewDynamicProps> = (
+export const ContextlessVirtualizerScrollViewDynamic: React.FC<VirtualizerScrollViewDynamicProps> = (
   props: VirtualizerScrollViewDynamicProps,
   context: React.Context<VirtualizerContextProps>,
 ) => {
@@ -20,10 +20,10 @@ export const IVirtualizerScrollViewDynamic: React.FC<VirtualizerScrollViewDynami
 
   useVirtualizerScrollViewDynamicStyles_unstable(state);
 
-  return renderIVirtualizerScrollViewDynamic_unstable(state);
+  return renderContextlessVirtualizerScrollViewDynamic_unstable(state);
 };
 
-IVirtualizerScrollViewDynamic.displayName = 'IVirtualizerScrollViewDynamic';
+ContextlessVirtualizerScrollViewDynamic.displayName = 'ContextlessVirtualizerScrollViewDynamic';
 
 export const VirtualizerScrollViewDynamic: React.FC<VirtualizerScrollViewDynamicProps> = (
   props: VirtualizerScrollViewDynamicProps,

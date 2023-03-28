@@ -34,11 +34,11 @@ export type {
 
 export {
   VirtualizerScrollViewDynamic,
-  IVirtualizerScrollViewDynamic,
+  ContextlessVirtualizerScrollViewDynamic,
   virtualizerScrollViewDynamicClassNames,
   useVirtualizerScrollViewDynamic_unstable,
   renderVirtualizerScrollViewDynamic_unstable,
-  renderIVirtualizerScrollViewDynamic_unstable,
+  renderContextlessVirtualizerScrollViewDynamic_unstable,
   useVirtualizerScrollViewDynamicStyles_unstable,
 } from './VirtualizerScrollViewDynamic';
 

@@ -15,6 +15,7 @@ import { CheckboxFieldProps_unstable as CheckboxFieldProps } from '@fluentui/rea
 import { ComboboxField_unstable as ComboboxField } from '@fluentui/react-combobox';
 import { comboboxFieldClassNames } from '@fluentui/react-combobox';
 import { ComboboxFieldProps_unstable as ComboboxFieldProps } from '@fluentui/react-combobox';
+import { ContextlessVirtualizerScrollViewDynamic } from '@fluentui/react-virtualizer';
 import { Field } from '@fluentui/react-field';
 import { fieldClassNames } from '@fluentui/react-field';
 import { FieldProps } from '@fluentui/react-field';
@@ -38,7 +39,6 @@ import { InfoLabelState } from '@fluentui/react-infobutton';
 import { InputField_unstable as InputField } from '@fluentui/react-input';
 import { inputFieldClassNames } from '@fluentui/react-input';
 import { InputFieldProps_unstable as InputFieldProps } from '@fluentui/react-input';
-import { IVirtualizerScrollViewDynamic } from '@fluentui/react-virtualizer';
 import { NestedTreeItem } from '@fluentui/react-tree';
 import { ProgressField_unstable as ProgressField } from '@fluentui/react-progress';
 import { progressFieldClassNames } from '@fluentui/react-progress';
@@ -47,10 +47,10 @@ import { RadioGroupField_unstable as RadioGroupField } from '@fluentui/react-rad
 import { radioGroupFieldClassNames } from '@fluentui/react-radio';
 import { RadioGroupFieldProps_unstable as RadioGroupFieldProps } from '@fluentui/react-radio';
 import { renderAlert_unstable } from '@fluentui/react-alert';
+import { renderContextlessVirtualizerScrollViewDynamic_unstable } from '@fluentui/react-virtualizer';
 import { renderField_unstable } from '@fluentui/react-field';
 import { renderInfoButton_unstable } from '@fluentui/react-infobutton';
 import { renderInfoLabel_unstable } from '@fluentui/react-infobutton';
-import { renderIVirtualizerScrollViewDynamic_unstable } from '@fluentui/react-virtualizer';
 import { renderSkeleton_unstable } from '@fluentui/react-skeleton';
 import { renderSkeletonItem_unstable } from '@fluentui/react-skeleton';
 import { renderTree_unstable } from '@fluentui/react-tree';
@@ -191,6 +191,8 @@ export { comboboxFieldClassNames }
 
 export { ComboboxFieldProps }
 
+export { ContextlessVirtualizerScrollViewDynamic }
+
 export { Field }
 
 export { fieldClassNames }
@@ -237,8 +239,6 @@ export { inputFieldClassNames }
 
 export { InputFieldProps }
 
-export { IVirtualizerScrollViewDynamic }
-
 export { NestedTreeItem }
 
 export { ProgressField }
@@ -255,13 +255,13 @@ export { RadioGroupFieldProps }
 
 export { renderAlert_unstable }
 
+export { renderContextlessVirtualizerScrollViewDynamic_unstable }
+
 export { renderField_unstable }
 
 export { renderInfoButton_unstable }
 
 export { renderInfoLabel_unstable }
-
-export { renderIVirtualizerScrollViewDynamic_unstable }
 
 export { renderSkeleton_unstable }
 

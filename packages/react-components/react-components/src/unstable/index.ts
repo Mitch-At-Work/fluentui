@@ -130,11 +130,11 @@ export {
   renderVirtualizerScrollView_unstable,
   useVirtualizerScrollViewStyles_unstable,
   VirtualizerScrollViewDynamic,
-  IVirtualizerScrollViewDynamic,
+  ContextlessVirtualizerScrollViewDynamic,
   virtualizerScrollViewDynamicClassNames,
   useVirtualizerScrollViewDynamic_unstable,
   renderVirtualizerScrollViewDynamic_unstable,
-  renderIVirtualizerScrollViewDynamic_unstable,
+  renderContextlessVirtualizerScrollViewDynamic_unstable,
   useVirtualizerScrollViewDynamicStyles_unstable,
 } from '@fluentui/react-virtualizer';
 export type {

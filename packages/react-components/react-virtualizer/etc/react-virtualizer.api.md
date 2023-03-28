@@ -15,10 +15,10 @@ import { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const IVirtualizerScrollViewDynamic: React_2.FC<VirtualizerScrollViewDynamicProps>;
+export const ContextlessVirtualizerScrollViewDynamic: React_2.FC<VirtualizerScrollViewDynamicProps>;
 
 // @public (undocumented)
-export const renderIVirtualizerScrollViewDynamic_unstable: (state: VirtualizerScrollViewDynamicState) => JSX.Element;
+export const renderContextlessVirtualizerScrollViewDynamic_unstable: (state: VirtualizerScrollViewDynamicState) => JSX.Element;
 
 // @public (undocumented)
 export const renderVirtualizer_unstable: (state: VirtualizerState) => JSX.Element;
