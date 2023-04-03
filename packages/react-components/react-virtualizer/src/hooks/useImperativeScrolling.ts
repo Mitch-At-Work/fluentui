@@ -50,7 +50,7 @@ export const _scrollToItemStatic = (params: ScrollToItemStatic) => {
 };
 
 export const _scrollToItemDynamic = (params: ScrollToItemDynamic) => {
-  const { currentIndex, indexRef, itemSizes, scrollView, axis = 'vertical', reversed = false } = params;
+  const { indexRef, itemSizes, scrollView, axis = 'vertical', reversed = false } = params;
   if (!itemSizes.current) {
     return;
   }
@@ -75,24 +75,24 @@ export const _scrollToItemDynamic = (params: ScrollToItemDynamic) => {
     if (reversed) {
       scrollView.current?.scrollTo({
         left: totalSize - itemDepth,
-        behavior: 'auto',
+        behavior: 'smooth',
       });
     } else {
       scrollView.current?.scrollTo({
         left: itemDepth,
-        behavior: 'auto',
+        behavior: 'smooth',
       });
     }
   } else {
     if (reversed) {
       scrollView.current?.scrollTo({
         top: totalSize - itemDepth,
-        behavior: 'auto',
+        behavior: 'smooth',
       });
     } else {
       scrollView.current?.scrollTo({
         top: itemDepth,
-        behavior: 'auto',
+        behavior: 'smooth',
       });
     }
   }

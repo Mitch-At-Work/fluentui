@@ -33,7 +33,6 @@ export function useVirtualizerScrollViewDynamic_unstable(
         scrollCallbackIndex.current = index;
         _scrollToItemDynamic({
           indexRef: scrollCallbackIndex,
-          currentIndex: contextIndex,
           itemSizes: currentChildSizes ?? sizingArray,
           scrollView: iScrollRef,
           axis,
