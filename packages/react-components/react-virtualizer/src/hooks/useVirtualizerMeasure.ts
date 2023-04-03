@@ -166,7 +166,7 @@ export const useDynamicVirtualizerMeasure = (
      */
     const bufferSize = Math.max(Math.floor((length / 8) * defaultItemSize), 1);
 
-    const totalLength = length + bufferItems * 2 + 2;
+    const totalLength = length + bufferItems * 2 + 3;
 
     setState({
       virtualizerLength: totalLength,
@@ -213,7 +213,7 @@ export const useDynamicVirtualizerMeasure = (
       const newLength = i - currentIndex;
 
       const bufferItems = Math.max(Math.floor(newLength / 4), 2);
-      const totalNewLength = newLength + bufferItems * 2 + 3;
+      const totalNewLength = newLength + bufferItems * 2 + 4;
       const compareLengths = totalNewLength < virtualizerLength;
 
       if (recheckTotal > containerSize && compareLengths && !couldBeSmaller) {
