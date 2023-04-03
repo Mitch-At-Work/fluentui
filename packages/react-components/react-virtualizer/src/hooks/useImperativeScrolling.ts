@@ -21,7 +21,6 @@ export const _scrollToItemStatic = (params: ScrollToItemStatic) => {
     return;
   }
 
-  // We store the index in a ref for scrollView to handle once it is detected.
   if (axis === 'horizontal') {
     if (reversed) {
       scrollView.current?.scrollTo({
@@ -70,7 +69,6 @@ export const _scrollToItemDynamic = (params: ScrollToItemDynamic) => {
     totalSize += itemSizes.current[i];
   }
 
-  // We store the index in a ref for scrollView to handle once it is detected.
   if (axis === 'horizontal') {
     if (reversed) {
       scrollView.current?.scrollTo({
