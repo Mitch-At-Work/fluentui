@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { resolveShorthand } from '@fluentui/react-utilities';
+import { resolveShorthand, useMergedRefs } from '@fluentui/react-utilities';
 import { useVirtualizer_unstable } from '../Virtualizer/useVirtualizer';
 import {
   VirtualizerScrollViewDynamicProps,
@@ -17,21 +17,10 @@ export function useVirtualizerScrollViewDynamic_unstable(
     direction: props.axis ?? 'vertical',
     getItemSize: props.getItemSize,
     currentIndex: contextIndex,
-    numItems: 0,
+    numItems: props.numItems,
   });
 
-  const iScrollRef = React.useRef<HTMLElement | null>(null);
-
-  const setScrollRef = React.useCallback(
-    (element: HTMLDivElement) => {
-      if (iScrollRef.current === element) {
-        return;
-      }
-      scrollRef(element);
-      iScrollRef.current = element;
-    },
-    [scrollRef],
-  );
+  const iScrollRef = useMergedRefs(React.useRef<HTMLDivElement>(null), scrollRef) as React.RefObject<HTMLDivElement>;
 
   const virtualizerState = useVirtualizer_unstable({
     ...props,
@@ -50,7 +39,7 @@ export function useVirtualizerScrollViewDynamic_unstable(
     container: resolveShorthand(props.container, {
       required: true,
       defaultProps: {
-        ref: setScrollRef,
+        ref: iScrollRef,
       },
     }),
   };
