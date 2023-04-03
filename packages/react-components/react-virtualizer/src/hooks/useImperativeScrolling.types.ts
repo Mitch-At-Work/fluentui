@@ -21,4 +21,5 @@ export type ScrollToItemDynamic = {
   scrollView: RefObject<HTMLDivElement>;
   axis?: 'horizontal' | 'vertical';
   reversed?: boolean;
+  currentChildSizes: MutableRefObject<number[]>;
 };

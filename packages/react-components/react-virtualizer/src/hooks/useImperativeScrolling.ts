@@ -51,18 +51,12 @@ export const _scrollToItemStatic = (params: ScrollToItemStatic) => {
 
 export const _scrollToItemDynamic = (params: ScrollToItemDynamic) => {
   const { currentIndex, indexRef, itemSizes, scrollView, axis = 'vertical', reversed = false } = params;
-
   if (!itemSizes.current) {
     return;
   }
-  console.log('Current index:', currentIndex);
 
   if (indexRef.current === null || itemSizes.current === null || itemSizes.current.length < indexRef.current) {
     // null check - abort
-    console.log('ABORTING');
-    console.log('indexRef.current:', indexRef.current);
-    console.log('itemSizes.current:', itemSizes.current);
-    console.log('itemSizes.current.length:', itemSizes.current.length);
     return;
   }
 

@@ -114,20 +114,12 @@ export const useDynamicVirtualizerMeasure = (
 
   const sizeTracker = React.useRef<number[]>(new Array(numItems).fill(defaultItemSize));
 
-  console.log('sizeTracker.current:', sizeTracker.current);
-  console.log('numItems:', numItems);
-  console.log('sizeTracker.current.length:', sizeTracker.current.length);
   if (sizeTracker.current.length !== numItems) {
-    console.log('Size tracker issue?');
     // numItems changed, morph array - keep previously explored values.
     const newItems = numItems - sizeTracker.current.length;
     if (newItems > 0) {
-      console.log('Size tracker issue - 2?');
       sizeTracker.current = [...sizeTracker.current, ...Array(newItems).fill(defaultItemSize)];
     } else if (numItems > 0) {
-      console.log('Size tracker issue - 3?');
-      console.log('numItems:', numItems);
-      console.log('newItems:', newItems);
       sizeTracker.current.splice(numItems, newItems * -1);
     }
   }
@@ -164,7 +156,6 @@ export const useDynamicVirtualizerMeasure = (
       indexSizer += iItemSize;
       length++;
     }
-    console.log('sizeTracker.current:', sizeTracker.current);
 
     /*
      * Number of items to append at each end, i.e. 'preload' each side before entering view.

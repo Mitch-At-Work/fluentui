@@ -75,6 +75,11 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
         childProgressiveSizes.current[index] = childProgressiveSizes.current[index - 1] + childSizes.current[index];
       }
     }
+
+    if (virtualizerContext.currentChildSizes) {
+      // We keep an up to date context reference for external hooks
+      virtualizerContext.currentChildSizes.current = childSizes.current;
+    }
   };
 
   const batchUpdateNewIndex = (index: number) => {

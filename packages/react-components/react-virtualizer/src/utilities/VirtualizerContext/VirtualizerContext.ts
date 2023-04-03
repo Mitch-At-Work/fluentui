@@ -13,5 +13,6 @@ export const useVirtualizerContext = () => {
 
 export const useVirtualizerContextState = (): VirtualizerContextProps => {
   const [contextIndex, setContextIndex] = React.useState<number>(0);
-  return { contextIndex, setContextIndex };
+  const currentChildSizes = React.useRef<number[]>([]);
+  return { contextIndex, setContextIndex, currentChildSizes };
 };

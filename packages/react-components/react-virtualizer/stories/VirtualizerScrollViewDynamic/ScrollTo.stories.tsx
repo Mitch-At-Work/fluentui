@@ -44,9 +44,8 @@ export const ScrollTo = () => {
 
   const scrollToRandomIndex = () => {
     const randomIndex = Math.floor(Math.random() * childLength);
-    console.log('Scrolling to random index - 1: ', randomIndex);
     if (scrollCallbacks.scrollToItem.current) {
-      console.log('Scrolling to random index - 2: ', randomIndex);
+      console.log('Scrolling to random index: ', randomIndex);
       scrollCallbacks.scrollToItem.current(randomIndex);
     }
   };

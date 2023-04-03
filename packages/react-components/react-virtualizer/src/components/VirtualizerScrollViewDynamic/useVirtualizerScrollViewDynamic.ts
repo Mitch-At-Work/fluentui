@@ -8,11 +8,12 @@ import {
 import { useDynamicVirtualizerMeasure } from '../../Hooks';
 import { useVirtualizerContext } from '../../Utilities';
 import { _scrollToItemDynamic } from '../../hooks/useImperativeScrolling';
+import { FlaggedIndexCallback } from '../Virtualizer/Virtualizer.types';
 
 export function useVirtualizerScrollViewDynamic_unstable(
   props: VirtualizerScrollViewDynamicProps,
 ): VirtualizerScrollViewDynamicState {
-  const { contextIndex } = useVirtualizerContext();
+  const { contextIndex, currentChildSizes } = useVirtualizerContext();
   const { virtualizerLength, bufferItems, bufferSize, scrollRef, sizingArray } = useDynamicVirtualizerMeasure({
     defaultItemSize: props.itemSize,
     direction: props.axis ?? 'vertical',
@@ -21,24 +22,19 @@ export function useVirtualizerScrollViewDynamic_unstable(
     numItems: props.numItems,
   });
 
-  console.log('Sizing array:', sizingArray);
-
   const iScrollRef = useMergedRefs(React.useRef<HTMLDivElement>(null), scrollRef) as React.RefObject<HTMLDivElement>;
 
   const scrollCallbackIndex = React.useRef<number | null>(null);
 
   React.useEffect(() => {
-    console.log('Setting value');
     const { axis = 'vertical', reversed } = props;
     if (props.scrollCallbacks) {
-      console.log('Setting value - 2');
       props.scrollCallbacks.scrollToItem.current = (index: number) => {
-        console.log('Calling value');
         scrollCallbackIndex.current = index;
         _scrollToItemDynamic({
           indexRef: scrollCallbackIndex,
           currentIndex: contextIndex,
-          itemSizes: sizingArray,
+          itemSizes: currentChildSizes ?? sizingArray,
           scrollView: iScrollRef,
           axis,
           reversed,
@@ -54,6 +50,12 @@ export function useVirtualizerScrollViewDynamic_unstable(
     bufferItems,
     bufferSize,
     scrollViewRef: iScrollRef,
+    flagIndex: props.scrollCallbacks
+      ? ({
+          flaggedIndex: scrollCallbackIndex,
+          onRenderedFlaggedIndex: props.scrollCallbacks.didScrollToItem.current,
+        } as FlaggedIndexCallback)
+      : undefined,
   });
 
   return {
