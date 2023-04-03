@@ -49,7 +49,7 @@ export const _scrollToItemStatic = (params: ScrollToItemStatic) => {
 };
 
 export const _scrollToItemDynamic = (params: ScrollToItemDynamic) => {
-  const { indexRef, itemSizes, scrollView, axis = 'vertical', reversed = false } = params;
+  const { indexRef, itemSizes, totalSize, scrollView, axis = 'vertical', reversed = false } = params;
   if (!itemSizes.current) {
     return;
   }
@@ -60,13 +60,10 @@ export const _scrollToItemDynamic = (params: ScrollToItemDynamic) => {
   }
 
   let itemDepth = 0;
-  let totalSize = 0;
-  const trackTill = reversed ? itemSizes.current.length : indexRef.current;
-  for (let i = 0; i < trackTill; i++) {
+  for (let i = 0; i < indexRef.current; i++) {
     if (i < indexRef.current) {
       itemDepth += itemSizes.current[i];
     }
-    totalSize += itemSizes.current[i];
   }
 
   if (axis === 'horizontal') {

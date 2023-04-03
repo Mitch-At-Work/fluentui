@@ -17,6 +17,7 @@ export type ScrollToItemStatic = {
 export type ScrollToItemDynamic = {
   indexRef: MutableRefObject<number | null>;
   itemSizes: RefObject<number[]>;
+  totalSize: number;
   scrollView: RefObject<HTMLDivElement>;
   axis?: 'horizontal' | 'vertical';
   reversed?: boolean;

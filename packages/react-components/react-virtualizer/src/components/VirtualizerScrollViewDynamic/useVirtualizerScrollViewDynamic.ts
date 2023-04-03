@@ -13,7 +13,7 @@ import { FlaggedIndexCallback } from '../Virtualizer/Virtualizer.types';
 export function useVirtualizerScrollViewDynamic_unstable(
   props: VirtualizerScrollViewDynamicProps,
 ): VirtualizerScrollViewDynamicState {
-  const { contextIndex, currentChildSizes } = useVirtualizerContext();
+  const { contextIndex, currentChildSizes, totalSize } = useVirtualizerContext();
   const { virtualizerLength, bufferItems, bufferSize, scrollRef, sizingArray } = useDynamicVirtualizerMeasure({
     defaultItemSize: props.itemSize,
     direction: props.axis ?? 'vertical',
@@ -34,6 +34,7 @@ export function useVirtualizerScrollViewDynamic_unstable(
         _scrollToItemDynamic({
           indexRef: scrollCallbackIndex,
           itemSizes: currentChildSizes ?? sizingArray,
+          totalSize,
           scrollView: iScrollRef,
           axis,
           reversed,

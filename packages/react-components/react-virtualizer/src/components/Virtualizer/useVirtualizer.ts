@@ -244,9 +244,17 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
   const calculateTotalSize = () => {
     if (!getItemSize) {
-      return itemSize * numItems;
+      const size = itemSize * numItems;
+      if (virtualizerContext?.totalSize) {
+        virtualizerContext.totalSize.current = size;
+      }
+      return size;
     }
 
+    // Ensure context has access to totalSize for any reverse calculations
+    if (virtualizerContext?.totalSize) {
+      virtualizerContext.totalSize.current = childProgressiveSizes.current[numItems - 1];
+    }
     // Time for custom size calcs
     return childProgressiveSizes.current[numItems - 1];
   };
