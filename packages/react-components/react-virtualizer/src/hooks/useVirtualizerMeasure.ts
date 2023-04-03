@@ -197,6 +197,33 @@ export const useDynamicVirtualizerMeasure = (
     [resizeObserver],
   );
 
+  if (container.current) {
+    const containerSize =
+      direction === 'vertical'
+        ? container.current?.getBoundingClientRect().height
+        : container.current?.getBoundingClientRect().width;
+
+    let couldBeSmaller = false;
+    let recheckTotal = 0;
+    for (let i = currentIndex; i < currentIndex + virtualizerLength; i++) {
+      const newItemSize = getItemSize(currentIndex + i);
+      sizeTracker.current[currentIndex + i] = newItemSize;
+      recheckTotal += newItemSize;
+
+      const newLength = i - currentIndex;
+      const bufferItems = Math.max(Math.floor(newLength / 4), 2);
+      const checkLength = newLength + bufferItems * 2 + 1;
+      if (recheckTotal > containerSize && checkLength < virtualizerLength - 1) {
+        couldBeSmaller = true;
+      }
+    }
+
+    // Check if the render has caused us to need a re-calc of virtualizer length
+    if (recheckTotal < containerSize || couldBeSmaller) {
+      handleResize();
+    }
+  }
+
   return {
     virtualizerLength,
     bufferItems: virtualizerBufferItems,
