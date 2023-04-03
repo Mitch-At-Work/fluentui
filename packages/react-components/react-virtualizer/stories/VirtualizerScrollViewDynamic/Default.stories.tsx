@@ -23,7 +23,12 @@ export const Default = () => {
   useEffect(() => {
     let _totalSize = 0;
     for (let i = 0; i < childLength; i++) {
-      arraySize.current[i] = Math.random() * 250 + minHeight;
+      if (i < 100) {
+        // arraySize.current[i] = Math.random() * 150 + minHeight;
+        arraySize.current[i] = minHeight;
+      } else {
+        arraySize.current[i] = 420;
+      }
       _totalSize += arraySize.current[i];
     }
     setTotalSize(_totalSize);
@@ -40,7 +45,7 @@ export const Default = () => {
   return (
     <VirtualizerScrollViewDynamic
       numItems={childLength}
-      itemSize={100}
+      itemSize={minHeight}
       getItemSize={getItemSizeCallback}
       container={{ role: 'list', style: { maxHeight: '100vh' } }}
     >
