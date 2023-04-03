@@ -21,6 +21,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     scrollViewRef,
     axis = 'vertical',
     reversed = false,
+    flagIndex,
   } = props;
 
   /* The context is optional, it's useful for injecting additional index logic, or performing uniform state updates*/
@@ -401,6 +402,17 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     // We only run this effect on getItemSize change (recalc dynamic sizes)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getItemSize]);
+
+  useEffect(() => {
+    if (!flagIndex || flagIndex.flaggedIndex.current === null) {
+      return;
+    }
+    const checkIndex = flagIndex.flaggedIndex.current;
+    if (actualIndex <= checkIndex && actualIndex + virtualizerLength >= checkIndex) {
+      flagIndex.flaggedIndex.current = null;
+      flagIndex?.onRenderedFlaggedIndex(checkIndex);
+    }
+  }, [actualIndex, flagIndex, virtualizerLength, virtualizerStartIndex]);
 
   // Ensure we have run through and updated the whole size list array at least once.
   initializeSizeArray();

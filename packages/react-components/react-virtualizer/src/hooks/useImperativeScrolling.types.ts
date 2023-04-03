@@ -6,11 +6,10 @@ export type VirtualizerScrollCallbacks = {
 };
 
 export type ScrollToItemStatic = {
-  index: number;
+  indexRef: MutableRefObject<number | null>;
   itemSize: number;
   totalItems: number;
   scrollView: RefObject<HTMLDivElement>;
   axis?: 'horizontal' | 'vertical';
   reversed?: boolean;
-  indexToNotify: MutableRefObject<number>;
 };

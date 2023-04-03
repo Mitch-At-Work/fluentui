@@ -14,32 +14,35 @@ export const useImperativeScrolling = (): VirtualizerScrollCallbacks => {
 };
 
 export const _scrollToItemStatic = (params: ScrollToItemStatic) => {
-  const { index, itemSize, totalItems, scrollView, axis = 'vertical', reversed = false, indexToNotify } = params;
+  const { indexRef, itemSize, totalItems, scrollView, axis = 'vertical', reversed = false } = params;
+
+  if (indexRef.current === null) {
+    // null check - abort
+    return;
+  }
 
   // We store the index in a ref for scrollView to handle once it is detected.
-  indexToNotify.current = index;
-
   if (axis === 'horizontal') {
     if (reversed) {
       scrollView.current?.scrollTo({
-        left: totalItems * itemSize - itemSize * index,
+        left: totalItems * itemSize - itemSize * indexRef.current,
         behavior: 'smooth',
       });
     } else {
       scrollView.current?.scrollTo({
-        left: itemSize * index,
+        left: itemSize * indexRef.current,
         behavior: 'smooth',
       });
     }
   } else {
     if (reversed) {
       scrollView.current?.scrollTo({
-        top: totalItems * itemSize - itemSize * index,
+        top: totalItems * itemSize - itemSize * indexRef.current,
         behavior: 'smooth',
       });
     } else {
       scrollView.current?.scrollTo({
-        top: itemSize * index,
+        top: itemSize * indexRef.current,
         behavior: 'smooth',
       });
     }
