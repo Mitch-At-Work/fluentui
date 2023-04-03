@@ -108,17 +108,26 @@ export const useDynamicVirtualizerMeasure = (
   bufferItems: number;
   bufferSize: number;
   scrollRef: (instance: HTMLElement | HTMLDivElement | null) => void;
+  sizingArray: React.RefObject<number[]>;
 } => {
   const { defaultItemSize, direction = 'vertical', numItems, getItemSize, currentIndex } = virtualizerProps;
 
   const sizeTracker = React.useRef<number[]>(new Array(numItems).fill(defaultItemSize));
 
+  console.log('sizeTracker.current:', sizeTracker.current);
+  console.log('numItems:', numItems);
+  console.log('sizeTracker.current.length:', sizeTracker.current.length);
   if (sizeTracker.current.length !== numItems) {
+    console.log('Size tracker issue?');
     // numItems changed, morph array - keep previously explored values.
     const newItems = numItems - sizeTracker.current.length;
     if (newItems > 0) {
+      console.log('Size tracker issue - 2?');
       sizeTracker.current = [...sizeTracker.current, ...Array(newItems).fill(defaultItemSize)];
-    } else {
+    } else if (numItems > 0) {
+      console.log('Size tracker issue - 3?');
+      console.log('numItems:', numItems);
+      console.log('newItems:', newItems);
       sizeTracker.current.splice(numItems, newItems * -1);
     }
   }
@@ -155,6 +164,7 @@ export const useDynamicVirtualizerMeasure = (
       indexSizer += iItemSize;
       length++;
     }
+    console.log('sizeTracker.current:', sizeTracker.current);
 
     /*
      * Number of items to append at each end, i.e. 'preload' each side before entering view.
@@ -232,5 +242,6 @@ export const useDynamicVirtualizerMeasure = (
     bufferItems: virtualizerBufferItems,
     bufferSize: virtualizerBufferSize,
     scrollRef,
+    sizingArray: sizeTracker,
   };
 };
