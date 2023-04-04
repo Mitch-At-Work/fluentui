@@ -76,9 +76,14 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
       }
     }
 
+    /*
+     * We keep an up to date context reference for external hooks or user injected changes
+     */
     if (virtualizerContext.currentChildSizes) {
-      // We keep an up to date context reference for external hooks
       virtualizerContext.currentChildSizes.current = childSizes.current;
+    }
+    if (virtualizerContext.progressiveChildSizes) {
+      virtualizerContext.progressiveChildSizes.current = childProgressiveSizes.current;
     }
   };
 

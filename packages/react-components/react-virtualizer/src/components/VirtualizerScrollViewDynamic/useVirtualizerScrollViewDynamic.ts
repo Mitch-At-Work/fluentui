@@ -23,7 +23,6 @@ export function useVirtualizerScrollViewDynamic_unstable(
   });
 
   const iScrollRef = useMergedRefs(React.useRef<HTMLDivElement>(null), scrollRef) as React.RefObject<HTMLDivElement>;
-
   const scrollCallbackIndex = React.useRef<number | null>(null);
 
   React.useEffect(() => {
@@ -34,7 +33,7 @@ export function useVirtualizerScrollViewDynamic_unstable(
         _scrollToItemDynamic({
           indexRef: scrollCallbackIndex,
           itemSizes: currentChildSizes ?? sizingArray,
-          totalSize,
+          totalSize: totalSize?.current ?? 0,
           scrollView: iScrollRef,
           axis,
           reversed,
