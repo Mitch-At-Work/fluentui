@@ -3,6 +3,7 @@ import descriptionMd from './VirtualizerScrollViewDynamicDescription.md';
 
 export { Default } from './Default.stories';
 export { ScrollTo } from './ScrollTo.stories';
+export { ScrollLoading } from './ScrollLoading.stories';
 
 export default {
   title: 'Preview Components/VirtualizerScrollViewDynamic',

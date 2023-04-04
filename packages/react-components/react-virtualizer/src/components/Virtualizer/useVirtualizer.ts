@@ -82,6 +82,35 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     }
   };
 
+  const [isScrolling, setIsScrolling] = useState<boolean>(false);
+  const scrollTimer = useRef<ReturnType<typeof setTimeout> | null>();
+  const scrollCounter = useRef<number>(0);
+
+  const initializeScrollingTimer = () => {
+    /*
+     * This can be considered the 'velocity' required to start scroll
+     *  - Maybe we should let users pass these in.
+     */
+    const INIT_SCROLL_FLAG_REQ = 10;
+    const INIT_SCROLL_FLAG_DELAY = 100;
+
+    scrollCounter.current++;
+    if (scrollCounter.current >= INIT_SCROLL_FLAG_REQ) {
+      setIsScrolling(true);
+    }
+    if (scrollTimer.current) {
+      clearTimeout(scrollTimer.current);
+    }
+    scrollTimer.current = setTimeout(() => {
+      setIsScrolling(false);
+      scrollCounter.current = 0;
+    }, INIT_SCROLL_FLAG_DELAY);
+  };
+
+  useEffect(() => {
+    initializeScrollingTimer();
+  }, [actualIndex]);
+
   const batchUpdateNewIndex = (index: number) => {
     // Local updates
     updateChildRows(index);
@@ -306,10 +335,14 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
       const end = Math.min(_actualIndex + virtualizerLength, numItems);
 
       for (let i = _actualIndex; i < end; i++) {
-        childArray.current[i - _actualIndex] = renderVirtualizerChildPlaceholder(renderChild(i), i);
+        childArray.current[i - _actualIndex] = renderVirtualizerChildPlaceholder(
+          renderChild(i, isScrolling),
+          i,
+          isScrolling,
+        );
       }
     },
-    [numItems, renderChild, virtualizerLength],
+    [numItems, renderChild, virtualizerLength, isScrolling],
   );
 
   const setBeforeRef = useCallback(

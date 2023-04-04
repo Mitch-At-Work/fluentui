@@ -61,7 +61,7 @@ export type VirtualizerState = ComponentState<VirtualizerSlots> & VirtualizerCon
 
 // Virtualizer render function to procedurally generate children elements as rows or columns via index.
 // Q: Use generic typing and passing through object data or a simple index system?
-export type VirtualizerChildRenderFunction = (index: number) => React.ReactNode;
+export type VirtualizerChildRenderFunction = (index: number, isScrolling?: boolean) => React.ReactNode;
 
 export type VirtualizerConfigProps = {
   /**
