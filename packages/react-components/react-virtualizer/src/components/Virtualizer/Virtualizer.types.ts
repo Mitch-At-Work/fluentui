@@ -61,7 +61,7 @@ export type VirtualizerState = ComponentState<VirtualizerSlots> & VirtualizerCon
 
 // Virtualizer render function to procedurally generate children elements as rows or columns via index.
 // Q: Use generic typing and passing through object data or a simple index system?
-export type VirtualizerChildRenderFunction = (index: number) => React.ReactNode;
+export type VirtualizerChildRenderFunction = (index: number, isScrolling?: boolean) => React.ReactNode;
 
 export type VirtualizerConfigProps = {
   /**
@@ -133,6 +133,28 @@ export type VirtualizerConfigProps = {
    * @param index - the index of the requested size's child
    */
   getItemSize?: (index: number) => number;
+
+  /**
+   * Callback for notifying when a flagged index has been rendered
+   */
+  onRenderedFlaggedIndex?: (index: number) => number;
+
+  /*
+   * Callback object to notify when a flagged index has been rendered
+   */
+  flagIndex?: FlaggedIndexCallback;
+};
+
+export type FlaggedIndexCallback = {
+  /**
+   * Callback for notifying when a flagged index has been rendered
+   */
+  onRenderedFlaggedIndex: (index: number) => number;
+
+  /*
+   * Callback for notifying when a flagged index has been rendered
+   */
+  flaggedIndex: React.MutableRefObject<number | null>;
 };
 
 export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & VirtualizerConfigProps;

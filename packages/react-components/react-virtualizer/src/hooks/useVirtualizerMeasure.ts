@@ -108,6 +108,7 @@ export const useDynamicVirtualizerMeasure = (
   bufferItems: number;
   bufferSize: number;
   scrollRef: (instance: HTMLElement | HTMLDivElement | null) => void;
+  sizingArray: React.RefObject<number[]>;
 } => {
   const { defaultItemSize, direction = 'vertical', numItems, getItemSize, currentIndex } = virtualizerProps;
 
@@ -118,7 +119,7 @@ export const useDynamicVirtualizerMeasure = (
     const newItems = numItems - sizeTracker.current.length;
     if (newItems > 0) {
       sizeTracker.current = [...sizeTracker.current, ...Array(newItems).fill(defaultItemSize)];
-    } else {
+    } else if (numItems > 0) {
       sizeTracker.current.splice(numItems, newItems * -1);
     }
   }
@@ -232,5 +233,6 @@ export const useDynamicVirtualizerMeasure = (
     bufferItems: virtualizerBufferItems,
     bufferSize: virtualizerBufferSize,
     scrollRef,
+    sizingArray: sizeTracker,
   };
 };

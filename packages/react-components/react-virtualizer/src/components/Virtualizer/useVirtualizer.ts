@@ -21,6 +21,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     scrollViewRef,
     axis = 'vertical',
     reversed = false,
+    flagIndex,
   } = props;
 
   /* The context is optional, it's useful for injecting additional index logic, or performing uniform state updates*/
@@ -74,7 +75,46 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
         childProgressiveSizes.current[index] = childProgressiveSizes.current[index - 1] + childSizes.current[index];
       }
     }
+
+    /*
+     * We keep an up to date context reference for external hooks or user injected changes
+     */
+    if (virtualizerContext.currentChildSizes) {
+      virtualizerContext.currentChildSizes.current = childSizes.current;
+    }
+    if (virtualizerContext.progressiveChildSizes) {
+      virtualizerContext.progressiveChildSizes.current = childProgressiveSizes.current;
+    }
   };
+
+  const [isScrolling, setIsScrolling] = useState<boolean>(false);
+  const scrollTimer = useRef<ReturnType<typeof setTimeout> | null>();
+  const scrollCounter = useRef<number>(0);
+
+  const initializeScrollingTimer = () => {
+    /*
+     * This can be considered the 'velocity' required to start scroll
+     *  - Maybe we should let users pass these in.
+     */
+    const INIT_SCROLL_FLAG_REQ = 10;
+    const INIT_SCROLL_FLAG_DELAY = 100;
+
+    scrollCounter.current++;
+    if (scrollCounter.current >= INIT_SCROLL_FLAG_REQ) {
+      setIsScrolling(true);
+    }
+    if (scrollTimer.current) {
+      clearTimeout(scrollTimer.current);
+    }
+    scrollTimer.current = setTimeout(() => {
+      setIsScrolling(false);
+      scrollCounter.current = 0;
+    }, INIT_SCROLL_FLAG_DELAY);
+  };
+
+  useEffect(() => {
+    initializeScrollingTimer();
+  }, [actualIndex]);
 
   const batchUpdateNewIndex = (index: number) => {
     // Local updates
@@ -238,9 +278,17 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
   const calculateTotalSize = () => {
     if (!getItemSize) {
-      return itemSize * numItems;
+      const size = itemSize * numItems;
+      if (virtualizerContext?.totalSize) {
+        virtualizerContext.totalSize.current = size;
+      }
+      return size;
     }
 
+    // Ensure context has access to totalSize for any reverse calculations
+    if (virtualizerContext?.totalSize) {
+      virtualizerContext.totalSize.current = childProgressiveSizes.current[numItems - 1];
+    }
     // Time for custom size calcs
     return childProgressiveSizes.current[numItems - 1];
   };
@@ -292,10 +340,14 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
       const end = Math.min(_actualIndex + virtualizerLength, numItems);
 
       for (let i = _actualIndex; i < end; i++) {
-        childArray.current[i - _actualIndex] = renderVirtualizerChildPlaceholder(renderChild(i), i);
+        childArray.current[i - _actualIndex] = renderVirtualizerChildPlaceholder(
+          renderChild(i, isScrolling),
+          i,
+          isScrolling,
+        );
       }
     },
-    [numItems, renderChild, virtualizerLength],
+    [numItems, renderChild, virtualizerLength, isScrolling],
   );
 
   const setBeforeRef = useCallback(
@@ -401,6 +453,17 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     // We only run this effect on getItemSize change (recalc dynamic sizes)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getItemSize]);
+
+  useEffect(() => {
+    if (!flagIndex || flagIndex.flaggedIndex.current === null) {
+      return;
+    }
+    const checkIndex = flagIndex.flaggedIndex.current;
+    if (actualIndex <= checkIndex && actualIndex + virtualizerLength >= checkIndex) {
+      flagIndex.flaggedIndex.current = null;
+      flagIndex?.onRenderedFlaggedIndex(checkIndex);
+    }
+  }, [actualIndex, flagIndex, virtualizerLength]);
 
   // Ensure we have run through and updated the whole size list array at least once.
   initializeSizeArray();

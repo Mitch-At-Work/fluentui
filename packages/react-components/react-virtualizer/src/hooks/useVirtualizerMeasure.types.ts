@@ -1,3 +1,5 @@
+import { MutableRefObject } from 'react';
+
 export type VirtualizerMeasureProps = {
   defaultItemSize: number;
   direction?: 'vertical' | 'horizontal';

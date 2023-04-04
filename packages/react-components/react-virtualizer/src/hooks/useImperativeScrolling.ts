@@ -1,0 +1,94 @@
+import { ScrollToItemDynamic, ScrollToItemStatic, VirtualizerScrollCallbacks } from './useImperativeScrolling.types';
+import { useRef } from 'react';
+
+export const useImperativeScrolling = (): VirtualizerScrollCallbacks => {
+  // The virtualizer scroll container will override this function for the user to call
+  const scrollToItem = useRef<(index: number) => void>();
+  // The user will override this function for the virtualizer scroll container to call
+  const didScrollToItem = useRef<(index: number) => void>();
+
+  return {
+    scrollToItem,
+    didScrollToItem,
+  };
+};
+
+export const _scrollToItemStatic = (params: ScrollToItemStatic) => {
+  const { indexRef, itemSize, totalItems, scrollView, axis = 'vertical', reversed = false } = params;
+
+  if (indexRef.current === null) {
+    // null check - abort
+    return;
+  }
+
+  if (axis === 'horizontal') {
+    if (reversed) {
+      scrollView.current?.scrollTo({
+        left: totalItems * itemSize - itemSize * indexRef.current,
+        behavior: 'auto',
+      });
+    } else {
+      scrollView.current?.scrollTo({
+        left: itemSize * indexRef.current,
+        behavior: 'auto',
+      });
+    }
+  } else {
+    if (reversed) {
+      scrollView.current?.scrollTo({
+        top: totalItems * itemSize - itemSize * indexRef.current,
+        behavior: 'auto',
+      });
+    } else {
+      scrollView.current?.scrollTo({
+        top: itemSize * indexRef.current,
+        behavior: 'auto',
+      });
+    }
+  }
+};
+
+export const _scrollToItemDynamic = (params: ScrollToItemDynamic) => {
+  const { indexRef, itemSizes, totalSize, scrollView, axis = 'vertical', reversed = false } = params;
+  if (!itemSizes.current) {
+    return;
+  }
+
+  if (indexRef.current === null || itemSizes.current === null || itemSizes.current.length < indexRef.current) {
+    // null check - abort
+    return;
+  }
+
+  let itemDepth = 0;
+  for (let i = 0; i < indexRef.current; i++) {
+    if (i < indexRef.current) {
+      itemDepth += itemSizes.current[i];
+    }
+  }
+
+  if (axis === 'horizontal') {
+    if (reversed) {
+      scrollView.current?.scrollTo({
+        left: totalSize - itemDepth,
+        behavior: 'smooth',
+      });
+    } else {
+      scrollView.current?.scrollTo({
+        left: itemDepth,
+        behavior: 'smooth',
+      });
+    }
+  } else {
+    if (reversed) {
+      scrollView.current?.scrollTo({
+        top: totalSize - itemDepth,
+        behavior: 'smooth',
+      });
+    } else {
+      scrollView.current?.scrollTo({
+        top: itemDepth,
+        behavior: 'smooth',
+      });
+    }
+  }
+};

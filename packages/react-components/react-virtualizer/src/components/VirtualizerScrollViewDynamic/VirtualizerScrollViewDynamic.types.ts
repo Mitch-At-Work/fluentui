@@ -6,6 +6,7 @@ import {
 } from '../Virtualizer/Virtualizer.types';
 
 import { VirtualizerScrollViewSlots } from '../VirtualizerScrollView/VirtualizerScrollView.types';
+import { VirtualizerScrollCallbacks } from '../../hooks/useImperativeScrolling.types';
 
 export type VirtualizerScrollViewDynamicSlots = VirtualizerScrollViewSlots;
 
@@ -32,6 +33,11 @@ export type VirtualizerScrollViewDynamicProps = ComponentProps<Partial<Virtualiz
      * Will act as a row or column indexer depending on Virtualizer settings.
      */
     children: VirtualizerChildRenderFunction;
+
+    /**
+     * Optional imperative scrolling functions from our useImperativeScrolling hook.
+     */
+    scrollCallbacks?: VirtualizerScrollCallbacks;
   };
 
 export type VirtualizerScrollViewDynamicState = ComponentState<VirtualizerScrollViewDynamicSlots> &

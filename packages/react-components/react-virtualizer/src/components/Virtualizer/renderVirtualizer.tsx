@@ -22,7 +22,7 @@ export const renderVirtualizer_unstable = (state: VirtualizerState) => {
   );
 };
 
-export const renderVirtualizerChildPlaceholder = (child: ReactNode, index: number) => {
+export const renderVirtualizerChildPlaceholder = (child: ReactNode, index: number, isScrolling?: boolean) => {
   return (
     <React.Suspense key={`fui-virtualizer-placeholder-${index}`} fallback={null}>
       {child}

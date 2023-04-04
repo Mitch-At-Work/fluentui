@@ -7,12 +7,14 @@ import {
 } from './VirtualizerScrollViewDynamic.types';
 import { useDynamicVirtualizerMeasure } from '../../Hooks';
 import { useVirtualizerContext } from '../../Utilities';
+import { _scrollToItemDynamic } from '../../hooks/useImperativeScrolling';
+import { FlaggedIndexCallback } from '../Virtualizer/Virtualizer.types';
 
 export function useVirtualizerScrollViewDynamic_unstable(
   props: VirtualizerScrollViewDynamicProps,
 ): VirtualizerScrollViewDynamicState {
-  const { contextIndex } = useVirtualizerContext();
-  const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useDynamicVirtualizerMeasure({
+  const { contextIndex, currentChildSizes, totalSize } = useVirtualizerContext();
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef, sizingArray } = useDynamicVirtualizerMeasure({
     defaultItemSize: props.itemSize,
     direction: props.axis ?? 'vertical',
     getItemSize: props.getItemSize,
@@ -21,6 +23,25 @@ export function useVirtualizerScrollViewDynamic_unstable(
   });
 
   const iScrollRef = useMergedRefs(React.useRef<HTMLDivElement>(null), scrollRef) as React.RefObject<HTMLDivElement>;
+  const scrollCallbackIndex = React.useRef<number | null>(null);
+
+  React.useEffect(() => {
+    const { axis = 'vertical', reversed } = props;
+    if (props.scrollCallbacks) {
+      props.scrollCallbacks.scrollToItem.current = (index: number) => {
+        scrollCallbackIndex.current = index;
+        _scrollToItemDynamic({
+          indexRef: scrollCallbackIndex,
+          itemSizes: currentChildSizes ?? sizingArray,
+          totalSize: totalSize?.current ?? 0,
+          scrollView: iScrollRef,
+          axis,
+          reversed,
+        });
+      };
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [iScrollRef, props.scrollCallbacks]);
 
   const virtualizerState = useVirtualizer_unstable({
     ...props,
@@ -28,6 +49,12 @@ export function useVirtualizerScrollViewDynamic_unstable(
     bufferItems,
     bufferSize,
     scrollViewRef: iScrollRef,
+    flagIndex: props.scrollCallbacks
+      ? ({
+          flaggedIndex: scrollCallbackIndex,
+          onRenderedFlaggedIndex: props.scrollCallbacks.didScrollToItem.current,
+        } as FlaggedIndexCallback)
+      : undefined,
   });
 
   return {
