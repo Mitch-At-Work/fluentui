@@ -425,7 +425,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
       flagIndex.flaggedIndex.current = null;
       flagIndex?.onRenderedFlaggedIndex(checkIndex);
     }
-  }, [actualIndex, flagIndex, virtualizerLength, virtualizerStartIndex]);
+  }, [actualIndex, flagIndex, virtualizerLength]);
 
   // Ensure we have run through and updated the whole size list array at least once.
   initializeSizeArray();
