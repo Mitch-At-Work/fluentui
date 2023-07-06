@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useStaticVirtualizerMeasure, Virtualizer } from '@fluentui/react-components/unstable';
-import { makeStyles } from '@fluentui/react-components';
+import { Button, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
@@ -45,8 +45,11 @@ export const Reversed = () => {
               aria-posinset={index}
               aria-setsize={childLength}
               key={`test-virtualizer-child-${index}`}
+              id={`test-virtualizer-child-${index}`}
               className={styles.child}
-            >{`Node-${index}`}</span>
+            >
+              <Button>{`Node-${index}`}</Button>
+            </span>
           );
         }}
       </Virtualizer>

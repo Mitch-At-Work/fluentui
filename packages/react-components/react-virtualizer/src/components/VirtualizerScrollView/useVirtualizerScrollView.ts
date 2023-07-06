@@ -56,6 +56,19 @@ export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewPr
     imperativeVirtualizerRef,
   });
 
+  const ariaOwnsArray: Array<string> = [];
+  for (let i = 0; i < virtualizerLength; i++) {
+    const child = virtualizerState.virtualizedChildren[i];
+
+    if (React.isValidElement(child) && child?.key) {
+      ariaOwnsArray.push(child?.key);
+    }
+  }
+
+  console.log('Got child array: ', ariaOwnsArray);
+  const ariaOwnsString = reversed ? ariaOwnsArray.reverse().join(' ') : ariaOwnsArray.join(' ');
+  console.log('Got child array string: ', ariaOwnsString);
+
   return {
     ...virtualizerState,
     components: {
@@ -66,6 +79,7 @@ export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewPr
       required: true,
       defaultProps: {
         ref: scrollViewRef as React.RefObject<HTMLDivElement>,
+        'aria-owns': ariaOwnsString,
       },
     }),
   };

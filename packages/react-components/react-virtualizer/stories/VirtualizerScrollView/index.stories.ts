@@ -3,6 +3,7 @@ import descriptionMd from './VirtualizerScrollViewDescription.md';
 
 export { Default } from './Default.stories';
 export { ScrollTo } from './ScrollTo.stories';
+export { Reversed } from './Reversed.stories';
 
 export default {
   title: 'Preview Components/VirtualizerScrollView',
