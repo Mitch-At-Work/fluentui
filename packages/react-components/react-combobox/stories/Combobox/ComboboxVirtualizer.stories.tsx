@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Combobox, Option, makeStyles, useId } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
 
-import { Virtualizer, useStaticVirtualizerMeasure } from '@fluentui/react-components/unstable';
+import type { ScrollToInterface } from '@fluentui/react-components/unstable';
+import { VirtualizerScrollView } from '@fluentui/react-components/unstable';
 
 const useStyles = makeStyles({
   listbox: {
@@ -10,6 +11,7 @@ const useStyles = makeStyles({
   },
   option: {
     height: '32px',
+    minHeight: '32px',
   },
 });
 
@@ -18,28 +20,35 @@ export const ComboboxVirtualizer = (props: Partial<ComboboxProps>) => {
 
   const itemHeight = 32; //This should match the height of each item in the listbox
   const numberOfItems = 10000;
+  const scrollRef = React.useRef<ScrollToInterface>(null);
 
-  const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useStaticVirtualizerMeasure({
-    defaultItemSize: itemHeight,
-    direction: 'vertical',
-  });
-
+  const currentIndex = React.useRef(0);
   const styles = useStyles();
+
+  const jumpTo = React.useCallback(() => {
+    if (currentIndex.current >= 0) {
+      setTimeout(() => {
+        scrollRef.current?.scrollTo(currentIndex.current, 'instant', (index: number) => {
+          console.log(`Reached index: ${index}`);
+        });
+      }, 1);
+    }
+  }, [scrollRef]);
 
   return (
     <div>
       <div>
         <label htmlFor={`${comboId}`}>Medium</label>
         <Combobox
+          onOpenChange={jumpTo}
           id={`${comboId}`}
           placeholder="Select a number"
-          listbox={{ ref: scrollRef, className: styles.listbox }}
+          listbox={{ className: styles.listbox }}
         >
-          <Virtualizer
+          <VirtualizerScrollView
+            container={{ role: 'list' }}
+            imperativeRef={scrollRef}
             numItems={numberOfItems}
-            virtualizerLength={virtualizerLength}
-            bufferItems={bufferItems}
-            bufferSize={bufferSize}
             itemSize={itemHeight}
           >
             {index => {
@@ -49,10 +58,13 @@ export const ComboboxVirtualizer = (props: Partial<ComboboxProps>) => {
                   aria-posinset={index}
                   aria-setsize={numberOfItems}
                   key={`item-${index}`}
+                  onClick={() => {
+                    currentIndex.current = index;
+                  }}
                 >{`Item ${index + 1}`}</Option>
               );
             }}
-          </Virtualizer>
+          </VirtualizerScrollView>
         </Combobox>
       </div>
     </div>
