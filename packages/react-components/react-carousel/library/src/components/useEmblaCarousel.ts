@@ -1,4 +1,4 @@
-import { EventHandler, useControllableState } from '@fluentui/react-utilities';
+import { EventHandler, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import EmblaCarousel, { EmblaPluginType, type EmblaCarouselType, type EmblaOptionsType } from 'embla-carousel';
 import * as React from 'react';
 
@@ -51,6 +51,9 @@ export function useEmblaCarousel(
     initialState: 0,
   });
 
+  const onDragEvent = useEventCallback((event: TouchEvent | MouseEvent, index: number) => {
+    onDragIndexChange?.(event, { event, type: 'drag', index });
+  });
   const dragEventRef = React.useRef<MouseEvent | TouchEvent | undefined>(undefined);
   const watchDragEvent = React.useCallback(
     (_emblaApi: EmblaCarouselType, event: MouseEvent | TouchEvent) => {
@@ -141,7 +144,7 @@ export function useEmblaCarousel(
       const actualIndex = emblaApi.current?.internalEngine().slideRegistry[newIndex][0] ?? 0;
 
       if (dragEventRef.current) {
-        onDragIndexChange?.(dragEventRef.current, { event: dragEventRef.current, type: 'drag', index: newIndex });
+        onDragEvent(dragEventRef.current, newIndex);
         dragEventRef.current = undefined;
       }
       // We set the active or first index of group on-screen as the selected tabster index
@@ -208,7 +211,7 @@ export function useEmblaCarousel(
         }
       },
     };
-  }, [getPlugins, setActiveIndex]);
+  }, [getPlugins, onDragEvent, setActiveIndex]);
 
   const carouselApi = React.useMemo(
     () => ({
