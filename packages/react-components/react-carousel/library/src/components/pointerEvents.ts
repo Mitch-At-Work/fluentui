@@ -1,4 +1,5 @@
-import { CreatePluginType, EmblaCarouselType, OptionsHandlerType } from 'embla-carousel';
+import type { CreatePluginType, EmblaCarouselType, OptionsHandlerType } from 'embla-carousel';
+import { carouselClassNames } from '../Carousel';
 
 export type PointerEventPluginOptions = {
   onSelectViaDrag: (event: PointerEvent | MouseEvent, index: number) => void;
@@ -10,29 +11,25 @@ export function pointerEventPlugin(options: PointerEventPluginOptions): PointerE
   let emblaApi: EmblaCarouselType;
   let pointerEvent: PointerEvent | MouseEvent | undefined;
 
-  function reinitializeListeners() {
-    const sliderRoot = emblaApi.containerNode();
-    sliderRoot.removeEventListener('mousedown', documentDownListener);
-    sliderRoot.removeEventListener('pointerdown', documentDownListener);
-    sliderRoot.addEventListener('mousedown', documentDownListener);
-    sliderRoot.addEventListener('pointerdown', documentDownListener);
-  }
-
   function documentDownListener(event: PointerEvent | MouseEvent) {
-    const sliderRoot = emblaApi.containerNode();
+    const targetDocument = emblaApi.containerNode().ownerDocument;
 
-    console.log('Doc down');
-    pointerEvent = event;
-    sliderRoot.removeEventListener('mousedown', documentDownListener);
-    sliderRoot.removeEventListener('pointerdown', documentDownListener);
+    if (event.target) {
+      const targetNode = event.target as Element;
+      if (targetNode.classList.contains(carouselClassNames.root) || emblaApi.containerNode().contains(targetNode)) {
+        pointerEvent = event;
+      }
+    }
+
+    targetDocument.removeEventListener('mousedown', documentDownListener);
+    targetDocument.removeEventListener('pointerdown', documentDownListener);
   }
 
   function pointerUpListener() {
-    const sliderRoot = emblaApi.containerNode();
+    const targetDocument = emblaApi.containerNode().ownerDocument;
 
-    console.log('Doc up');
-    sliderRoot.addEventListener('mousedown', documentDownListener);
-    sliderRoot.addEventListener('pointerdown', documentDownListener);
+    targetDocument.addEventListener('mousedown', documentDownListener);
+    targetDocument.addEventListener('pointerdown', documentDownListener);
   }
 
   function selectListener() {
@@ -48,17 +45,16 @@ export function pointerEventPlugin(options: PointerEventPluginOptions): PointerE
     emblaApi = emblaApiInstance;
 
     emblaApi.on('pointerUp', pointerUpListener);
-    emblaApi.on('pointerDown', documentDownListener);
     emblaApi.on('select', selectListener);
-    emblaApi.on('init', reinitializeListeners);
-    emblaApi.on('reInit', reinitializeListeners);
+
+    const targetDocument = emblaApi.containerNode().ownerDocument;
+    targetDocument.addEventListener('mousedown', documentDownListener);
+    targetDocument.addEventListener('pointerdown', documentDownListener);
   }
 
   function destroy(): void {
     emblaApi.off('pointerUp', pointerUpListener);
     emblaApi.off('select', selectListener);
-    emblaApi.off('init', reinitializeListeners);
-    emblaApi.off('reInit', reinitializeListeners);
   }
 
   return {
