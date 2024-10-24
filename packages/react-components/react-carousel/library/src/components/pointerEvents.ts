@@ -32,29 +32,40 @@ export function pointerEventPlugin(options: PointerEventPluginOptions): PointerE
     targetDocument.addEventListener('pointerdown', documentDownListener);
   }
 
+  function clearPointerEvent() {
+    pointerEvent = undefined;
+  }
+
   function selectListener() {
     if (pointerEvent) {
       const newIndex = emblaApi.selectedScrollSnap() ?? 0;
 
       options.onSelectViaDrag(pointerEvent, newIndex);
-      pointerEvent = undefined;
+      clearPointerEvent();
     }
   }
 
   function init(emblaApiInstance: EmblaCarouselType, optionsHandler: OptionsHandlerType): void {
     emblaApi = emblaApiInstance;
 
-    emblaApi.on('pointerUp', pointerUpListener);
-    emblaApi.on('select', selectListener);
-
+    // Initialize the listener for first mouse/pointerDown event
     const targetDocument = emblaApi.containerNode().ownerDocument;
     targetDocument.addEventListener('mousedown', documentDownListener);
     targetDocument.addEventListener('pointerdown', documentDownListener);
+
+    emblaApi.on('pointerUp', pointerUpListener);
+    emblaApi.on('select', selectListener);
+    // Settle is used to clear pointer in cases where active index does not change
+    emblaApi.on('settle', clearPointerEvent);
   }
 
   function destroy(): void {
+    const targetDocument = emblaApi.containerNode().ownerDocument;
+    targetDocument.removeEventListener('mousedown', documentDownListener);
+    targetDocument.removeEventListener('pointerdown', documentDownListener);
     emblaApi.off('pointerUp', pointerUpListener);
     emblaApi.off('select', selectListener);
+    emblaApi.off('settle', clearPointerEvent);
   }
 
   return {
