@@ -1,10 +1,9 @@
 import {
   generatePrimitiveTokens,
-  generatePropertyTokens,
+  generateGenericTokens,
   generateGroupTokens,
-  generateComponentTokens,
   appState,
-  properties
+  generics
 } from "./generateTokens.js";
 
 /**
@@ -14,15 +13,13 @@ function main() {
   let primitiveTokens = appState.showPrimitives
     ? generatePrimitiveTokens()
     : [];
-  let propertyTokens = generatePropertyTokens();
+  let genericTokens = generateGenericTokens();
   let groupTokens = generateGroupTokens();
-  let componentTokens = generateComponentTokens();
 
   const results = [
     ...primitiveTokens,
-    ...propertyTokens,
+    ...genericTokens,
     ...groupTokens,
-    ...componentTokens
   ];
 
   let resultHTML = `
@@ -42,7 +39,7 @@ function main() {
 
   for (const token of tokens) {
     resultHTML += `
-      <tr style="color: ${properties[token.property]?.color || "red"}">
+      <tr style="color: ${generics[token.property]?.color || "red"}">
         <td>${token.name}</td>
         <td><small>${token.fallback ?? ""}</small></td>
         <td>${token.type}</td>
