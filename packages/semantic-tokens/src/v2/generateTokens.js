@@ -1,7 +1,8 @@
-let joiner = '.';
+import { groups } from './definitions/groups.js';
+import { generics, variantProperties, coreProperties, scaleProperties } from './definitions/generics.js';
+import { primitives } from './definitions/primitives.js';
 
-const primitiveStyles = ['loud', 'tint', 'subtle', 'transparent'];
-const states = ['rest', 'hover', 'pressed'];
+const joiner = '.';
 
 // hardcoded for now
 export const appState = {
@@ -10,19 +11,7 @@ export const appState = {
   showPrimitives: true,
 };
 
-// Each group of components will have these properties at default
-// These properties have NO states and NO variants
-const coreProperties = ['fontfamily'];
-
-// Each variant of a component will have these properties at default
-// States will be appended here, i.e. rest, hover, pressed, disabled
-const variantProperties = ['background', 'foreground', 'stroke'];
-
-// Scales affect different properties than variants
-// These properties will be appended to the scale, i.e. small, base, large
-const scaleProperties = ['fontsize', 'lineheight', 'padding', 'gap', 'corner', 'size', 'strokewidth'];
-
-// These help us map the property to a type, and eventual value classiification
+// These help us map the property to a type, and eventual value classification
 const propertyTypes = {
   background: 'color',
   foreground: 'color',
@@ -31,68 +20,6 @@ const propertyTypes = {
   lineheight: 'dimension',
   padding: 'dimension',
   gap: 'dimension',
-};
-
-const primitives = {
-  brand: {
-    styles: primitiveStyles,
-    states: [...states, 'selected'],
-    type: 'color',
-  },
-  neutral: {
-    styles: primitiveStyles,
-    states: [...states, 'selected'],
-    type: 'color',
-  },
-  status: {
-    styles: primitiveStyles,
-    states: [...states, 'selected'],
-    type: 'color',
-  },
-};
-
-// Properties are generic tokens
-export const generics = {
-  background: {
-    type: 'color',
-    variants: ['brand', 'neutral', 'status'],
-    states: [...states, 'disabled'],
-    styles: primitiveStyles,
-    color: 'DarkBlue',
-  },
-  corner: {
-    type: 'dimension',
-    variants: ['default', 'circular', 'rounded', 'zero'],
-    states: [''],
-    styles: [''],
-    color: 'MidnightBlue',
-  },
-  'focus.stroke': {
-    type: 'color',
-    variants: ['outer', 'inner'],
-    states: [''],
-    styles: [''],
-    color: 'DarkBlue',
-  },
-  'focus.strokewidth': {
-    type: 'dimension',
-    variants: ['outer', 'inner'],
-    states: [''],
-    styles: [''],
-    color: 'DarkBlue',
-  },
-};
-
-const groups = {
-  button: {
-    coreProperties,
-    variants: ['secondary', 'primary', 'outline', 'subtle', 'transparent'],
-    variantProperties,
-    scales: ['small', 'base', 'large'],
-    scaleProperties,
-    states: [...states, 'rest.selected', 'hover.selected', 'pressed.selected', 'disabled'],
-    components: ['button'],
-  },
 };
 
 export function generatePrimitiveTokens() {

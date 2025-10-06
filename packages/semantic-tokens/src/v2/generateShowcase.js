@@ -1,26 +1,14 @@
-import {
-  generatePrimitiveTokens,
-  generateGenericTokens,
-  generateGroupTokens,
-  appState,
-  generics
-} from "./generateTokens.js";
-
+import { generatePrimitiveTokens, generateGenericTokens, generateGroupTokens, appState } from './generateTokens.js';
+import { generics } from './definitions/generics.js';
 /**
  * Main function to generate and render list
  */
 function main() {
-  let primitiveTokens = appState.showPrimitives
-    ? generatePrimitiveTokens()
-    : [];
+  let primitiveTokens = appState.showPrimitives ? generatePrimitiveTokens() : [];
   let genericTokens = generateGenericTokens();
   let groupTokens = generateGroupTokens();
 
-  const results = [
-    ...primitiveTokens,
-    ...genericTokens,
-    ...groupTokens,
-  ];
+  const results = [...primitiveTokens, ...genericTokens, ...groupTokens];
 
   let resultHTML = `
     <table>
@@ -35,13 +23,13 @@ function main() {
     <tbody>
   `;
 
-  const tokens = results.sort((a, b) => a.name.localeCompare(b.name)).filter(t => t.name.includes(filter.value))
+  const tokens = results.sort((a, b) => a.name.localeCompare(b.name)).filter(t => t.name.includes(filter.value));
 
   for (const token of tokens) {
     resultHTML += `
-      <tr style="color: ${generics[token.property]?.color || "red"}">
+      <tr style="color: ${generics[token.property]?.color || 'red'}">
         <td>${token.name}</td>
-        <td><small>${token.fallback ?? ""}</small></td>
+        <td><small>${token.fallback ?? ''}</small></td>
         <td>${token.type}</td>
       </tr>`;
   }
@@ -50,19 +38,17 @@ function main() {
     </tbody>
   </table>`;
 
-  const target = document.body.querySelector("table-goes-here");
+  const target = document.body.querySelector('table-goes-here');
   target.replaceChildren();
-  target.insertAdjacentHTML("beforeend", resultHTML);
+  target.insertAdjacentHTML('beforeend', resultHTML);
 
-  document.querySelector("#caption").textContent = `
-  ${tokens.length} Total Tokens / ${
-    tokens.filter((t) => !t.fallback).length
-  } Required Tokens`;
+  document.querySelector('#caption').textContent = `
+  ${tokens.length} Total Tokens / ${tokens.filter(t => !t.fallback).length} Required Tokens`;
 }
 
 // Update state when checkboxes change
-document.querySelectorAll('input').forEach((input) =>
-  input.addEventListener("change", (e) => {
+document.querySelectorAll('input').forEach(input =>
+  input.addEventListener('change', e => {
     // Todo, enable this later
     // appState.propertyFirst = !!switcher.checked;
 
@@ -75,9 +61,9 @@ document.querySelectorAll('input').forEach((input) =>
     //   showPrimitives: !!showPrimitives.checked,
     //   groupCollectionName: !!switcher.checked ? "ctrlGroup" : "group"
     // });
-    console.log("Running main");
+    console.log('Running main');
     main();
-  })
+  }),
 );
 
 main();
