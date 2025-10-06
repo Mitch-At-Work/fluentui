@@ -6,7 +6,7 @@ export const groups = {
     coreProperties: [...coreProperties],
     variants: ['secondary', 'primary', 'outline', 'subtle', 'transparent'],
     variantStateProperties: [...variantProperties],
-    variantProperties: ['shadow', 'divider'],
+    variantProperties: ['shadow'],
     scales: ['small', 'default', 'large'],
     scaleProperties: [...scaleProperties, 'fontweight', 'fontweight.selected', 'strokewidth.selected'],
     states: [...states, 'rest.selected', 'hover.selected', 'pressed.selected', 'disabled'],
@@ -15,6 +15,10 @@ export const groups = {
       icon: {
         scales: ['small', 'default', 'large'],
         scaleProperties: ['size'],
+      },
+      divider: {
+        variants: ['secondary', 'primary', 'outline', 'subtle', 'transparent'],
+        variantProperties: ['color'],
       },
     },
   },

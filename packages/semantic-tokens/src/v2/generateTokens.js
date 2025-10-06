@@ -1,5 +1,5 @@
 import { groups } from './definitions/groups.js';
-import { generics, variantProperties, coreProperties, scaleProperties } from './definitions/generics.js';
+import { generics } from './definitions/generics.js';
 import { primitives } from './definitions/primitives.js';
 
 const joiner = '.';
@@ -20,6 +20,10 @@ const propertyTypes = {
   lineheight: 'dimension',
   padding: 'dimension',
   gap: 'dimension',
+  shadow: 'shadow',
+  corner: 'dimension',
+  size: 'dimension',
+  divider: 'color',
 };
 
 export function generatePrimitiveTokens() {
@@ -39,13 +43,6 @@ export function generatePrimitiveTokens() {
     }
   }
   return result;
-}
-
-// Todo: Control tokens (Follows same schema as groups but for exception cases)
-export function getGenericToken(property, variant, state) {
-  if (generics[property] && generics[property].variants.includes(variant)) {
-    let tokenParts = [`#${property}`, variant, state];
-  }
 }
 
 export function generateGenericTokens() {
@@ -71,76 +68,56 @@ export function generateGenericTokens() {
   return result;
 }
 
-export function generateGroupTokens(group) {
-  for (const property of group.coreProperties) {
-      let tokenParts = [];
-      let type = propertyTypes[property] || 'dimension';
+export function generateComponentGroupTokens(groupName, group) {
+  let result = [];
+  const groupCoreGroupProperties = group.coreProperties || [];
+  for (const property of groupCoreGroupProperties) {
+    let tokenParts = [];
+    let type = propertyTypes[property] || 'dimension';
 
-      if (appState.propertyFirst) {
-        // Property first
-        tokenParts = [property, appState.groupCollectionName, group];
-      } else {
-        // Group-first
-        tokenParts = [appState.groupCollectionName, group, property];
-      }
-
-      const groupToken = {
-        name: tokenParts.filter(Boolean).join(joiner),
-        type,
-        property: property,
-      };
-
-      if (!result.find(r => r.name === groupToken.name)) {
-        result.push(groupToken);
-      }
+    if (appState.propertyFirst) {
+      // Property first
+      tokenParts = [property, appState.groupCollectionName, groupName];
+    } else {
+      // Group-first
+      tokenParts = [appState.groupCollectionName, groupName, property];
     }
 
-    // For each group, generate property tokens for each variant and scale
-    for (const property of group.variantStateProperties) {
-      for (let variant of group.variants) {
-        for (let state of group.states) {
-          let tokenParts = [];
-          let type = propertyTypes[property] || 'dimension';
+    const groupToken = {
+      name: tokenParts.filter(Boolean).join(joiner),
+      type,
+      property: property,
+      group: groupName,
+    };
 
-          if (appState.propertyFirst) {
-            // Property first
-            tokenParts = [property, appState.groupCollectionName, variant, group, state];
-          } else {
-            // Group-first
-            tokenParts = [appState.groupCollectionName, group, variant, property, state];
-          }
-
-          const groupToken = {
-            name: tokenParts.filter(Boolean).join(joiner),
-            type,
-            property: property,
-          };
-
-          if (!result.find(r => r.name === groupToken.name)) {
-            result.push(groupToken);
-          }
-        }
-      }
+    if (!result.find(r => r.name === groupToken.name)) {
+      result.push(groupToken);
     }
+  }
 
-    // Add variant properties that don't have states
-    for (const property of group.variantProperties) {
-      for (let variant of group.variants) {
+  // For each group, generate property tokens for each variant and scale
+  const groupVariantStateProperties = group.variantStateProperties || [];
+  for (const property of groupVariantStateProperties) {
+    const groupVariants = group.variants || [];
+    for (let variant of groupVariants) {
+      const groupStates = group.states || ['rest'];
+      for (let state of groupStates) {
         let tokenParts = [];
         let type = propertyTypes[property] || 'dimension';
 
         if (appState.propertyFirst) {
           // Property first
-          tokenParts = [property, appState.groupCollectionName, variant, group];
+          tokenParts = [property, appState.groupCollectionName, variant, groupName, state];
         } else {
           // Group-first
-          tokenParts = [appState.groupCollectionName, group, variant, property];
+          tokenParts = [appState.groupCollectionName, groupName, variant, property, state];
         }
 
         const groupToken = {
           name: tokenParts.filter(Boolean).join(joiner),
           type,
           property: property,
+          group: groupName,
         };
 
         if (!result.find(r => r.name === groupToken.name)) {
@@ -148,35 +125,68 @@ export function generateGroupTokens(group) {
         }
       }
     }
+  }
 
-    // Add tokens for scale properties
-    const groupScales = group.scales || ['base'];
-    for (const scale of groupScales) {
-      for (const property of scaleProperties) {
-        let tokenParts = [];
-        let type = propertyTypes[property] || 'dimension';
+  // Add variant properties that don't have states
+  const groupVariantProperties = group.variantProperties || [];
+  for (const property of groupVariantProperties) {
+    const groupVariants = group.variants || [];
+    for (let variant of groupVariants) {
+      let tokenParts = [];
+      let type = propertyTypes[property] || 'dimension';
 
-        if (appState.propertyFirst) {
-          // Property first
-          tokenParts = [property, appState.groupCollectionName, group, scale];
-        } else {
-          // Group-first
-          tokenParts = [appState.groupCollectionName, group, scale, property];
-        }
+      if (appState.propertyFirst) {
+        // Property first
+        tokenParts = [property, appState.groupCollectionName, variant, groupName];
+      } else {
+        // Group-first
+        tokenParts = [appState.groupCollectionName, groupName, variant, property];
+      }
 
-        const groupScaleToken = {
-          name: tokenParts.filter(Boolean).join(joiner),
-          type,
-          property,
-          group,
-          scale,
-        };
+      const groupToken = {
+        name: tokenParts.filter(Boolean).join(joiner),
+        type,
+        property: property,
+        group: groupName,
+      };
 
-        if (!result.find(r => r.name === groupScaleToken.name)) {
-          result.push(groupScaleToken);
-        }
+      if (!result.find(r => r.name === groupToken.name)) {
+        result.push(groupToken);
       }
     }
+  }
+
+  // Add tokens for scale properties
+  const groupScales = group.scales || ['default'];
+  for (const scale of groupScales) {
+    const groupScaleProperties = group.scaleProperties || [];
+    for (const property of groupScaleProperties) {
+      let tokenParts = [];
+      let type = propertyTypes[property] || 'dimension';
+
+      if (appState.propertyFirst) {
+        // Property first
+        tokenParts = [property, appState.groupCollectionName, groupName, scale];
+      } else {
+        // Group-first
+        tokenParts = [appState.groupCollectionName, groupName, scale, property];
+      }
+
+      const groupScaleToken = {
+        name: tokenParts.filter(Boolean).join(joiner),
+        type,
+        property,
+        group: groupName,
+        scale,
+      };
+
+      if (!result.find(r => r.name === groupScaleToken.name)) {
+        result.push(groupScaleToken);
+      }
+    }
+  }
+
+  return result;
 }
 
 export function generateGroupTokens(property) {
@@ -184,144 +194,15 @@ export function generateGroupTokens(property) {
 
   // For each group, generate core property tokens
   for (const group of Object.keys(groups)) {
-    for (const property of groups[group].coreProperties) {
-      let tokenParts = [];
-      let type = propertyTypes[property] || 'dimension';
+    const groupTokens = generateComponentGroupTokens(group, groups[group]);
+    result = result.concat(groupTokens);
 
-      if (appState.propertyFirst) {
-        // Property first
-        tokenParts = [property, appState.groupCollectionName, group];
-      } else {
-        // Group-first
-        tokenParts = [appState.groupCollectionName, group, property];
-      }
-
-      const groupToken = {
-        name: tokenParts.filter(Boolean).join(joiner),
-        type,
-        property: property,
-      };
-
-      if (!result.find(r => r.name === groupToken.name)) {
-        result.push(groupToken);
-      }
-    }
-
-    // For each group, generate property tokens for each variant and scale
-    for (const property of groups[group].variantStateProperties) {
-      for (let variant of groups[group].variants) {
-        for (let state of groups[group].states) {
-          let tokenParts = [];
-          let type = propertyTypes[property] || 'dimension';
-
-          if (appState.propertyFirst) {
-            // Property first
-            tokenParts = [property, appState.groupCollectionName, variant, group, state];
-          } else {
-            // Group-first
-            tokenParts = [appState.groupCollectionName, group, variant, property, state];
-          }
-
-          const groupToken = {
-            name: tokenParts.filter(Boolean).join(joiner),
-            type,
-            property: property,
-          };
-
-          if (!result.find(r => r.name === groupToken.name)) {
-            result.push(groupToken);
-          }
-        }
-      }
-    }
-
-    // Add variant properties that don't have states
-    for (const property of groups[group].variantProperties) {
-      for (let variant of groups[group].variants) {
-        let tokenParts = [];
-        let type = propertyTypes[property] || 'dimension';
-
-        if (appState.propertyFirst) {
-          // Property first
-          tokenParts = [property, appState.groupCollectionName, variant, group];
-        } else {
-          // Group-first
-          tokenParts = [appState.groupCollectionName, group, variant, property];
-        }
-
-        const groupToken = {
-          name: tokenParts.filter(Boolean).join(joiner),
-          type,
-          property: property,
-        };
-
-        if (!result.find(r => r.name === groupToken.name)) {
-          result.push(groupToken);
-        }
-      }
-    }
-
-    // Add tokens for scale properties
-    const groupScales = groups[group].scales || ['base'];
-    for (const scale of groupScales) {
-      for (const property of scaleProperties) {
-        let tokenParts = [];
-        let type = propertyTypes[property] || 'dimension';
-
-        if (appState.propertyFirst) {
-          // Property first
-          tokenParts = [property, appState.groupCollectionName, group, scale];
-        } else {
-          // Group-first
-          tokenParts = [appState.groupCollectionName, group, scale, property];
-        }
-
-        const groupScaleToken = {
-          name: tokenParts.filter(Boolean).join(joiner),
-          type,
-          property,
-          group,
-          scale,
-        };
-
-        if (!result.find(r => r.name === groupScaleToken.name)) {
-          result.push(groupScaleToken);
-        }
-      }
-    }
-
-
-    // Add tokens for scale properties
+    // Handle any parts of the group (generated in a similar way to groups)
     const groupParts = groups[group].parts;
-    for (const part of groupParts) {
-      const
-      for (const property of scaleProperties) {
-        let tokenParts = [];
-        let type = propertyTypes[property] || 'dimension';
-
-        if (appState.propertyFirst) {
-          // Property first
-          tokenParts = [property, appState.groupCollectionName, group, scale];
-        } else {
-          // Group-first
-          tokenParts = [appState.groupCollectionName, group, scale, property];
-        }
-
-        const groupScaleToken = {
-          name: tokenParts.filter(Boolean).join(joiner),
-          type,
-          property,
-          group,
-          scale,
-        };
-
-        if (!result.find(r => r.name === groupScaleToken.name)) {
-          result.push(groupScaleToken);
-        }
-      }
+    for (const part of Object.keys(groupParts)) {
+      const partTokens = generateComponentGroupTokens(`${group}.${part}`, groupParts[part]);
+      result = result.concat(partTokens);
     }
-
-
   }
 
   return result;
