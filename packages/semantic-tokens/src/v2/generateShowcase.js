@@ -1,5 +1,11 @@
 import { generatePrimitiveTokens, generateGenericTokens, generateGroupTokens, appState } from './generateTokens.js';
-import { generics } from './definitions/generics.js';
+
+const colorTypes = {
+  color: 'red',
+  dimension: 'blue',
+  shadow: 'purple',
+  string: 'green',
+};
 /**
  * Main function to generate and render list
  */
@@ -27,7 +33,7 @@ function main() {
 
   for (const token of tokens) {
     resultHTML += `
-      <tr style="color: ${generics[token.property]?.color || 'red'}">
+      <tr style="color: ${colorTypes[token.type] || 'black'}">
         <td>${token.name}</td>
         <td><small>${token.fallback ?? ''}</small></td>
         <td>${token.type}</td>
@@ -43,7 +49,11 @@ function main() {
   target.insertAdjacentHTML('beforeend', resultHTML);
 
   document.querySelector('#caption').textContent = `
-  ${tokens.length} Total Tokens / ${tokens.filter(t => !t.fallback).length} Required Tokens`;
+  ${tokens.length} Total Tokens`;
+
+  // If we add fallbacks
+  // document.querySelector('#caption').textContent = `
+  // ${tokens.length} Total Tokens / ${tokens.filter(t => !t.fallback).length} Required Tokens`;
 }
 
 // Update state when checkboxes change

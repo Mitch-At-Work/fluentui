@@ -17,4 +17,29 @@ export const primitives = {
     states: [...states, 'selected'],
     type: 'color',
   },
+  fontsize: {
+    type: 'dimension',
+    states: ['small', 'medium', 'large'],
+    styles: [''],
+  },
+  lineheight: {
+    type: 'dimension',
+    states: ['small', 'medium', 'large'],
+    styles: [''],
+  },
+  padding: {
+    type: 'dimension',
+    states: ['small', 'medium', 'large'],
+    styles: [''],
+  },
+  gap: {
+    type: 'dimension',
+    states: ['small', 'medium', 'large'],
+    styles: [''],
+  },
+  size: {
+    type: 'dimension',
+    states: ['small', 'medium', 'large'],
+    styles: [''],
+  },
 };

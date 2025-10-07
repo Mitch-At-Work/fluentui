@@ -24,6 +24,9 @@ const propertyTypes = {
   corner: 'dimension',
   size: 'dimension',
   divider: 'color',
+  color: 'color',
+  strokewidth: 'dimension',
+  fontfamily: 'string',
 };
 
 export function generatePrimitiveTokens() {
@@ -50,7 +53,8 @@ export function generateGenericTokens() {
 
   for (const property of Object.keys(generics)) {
     for (const variant of generics[property].variants) {
-      for (const state of generics[property].states) {
+      const states = generics[property].states || [''];
+      for (const state of states) {
         let tokenParts = [property, variant, state];
 
         const propertyToken = {
