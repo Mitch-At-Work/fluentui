@@ -27,6 +27,7 @@ const propertyTypes = {
   color: 'color',
   strokewidth: 'dimension',
   fontfamily: 'string',
+  weight: 'weight',
 };
 
 export function generatePrimitiveTokens() {

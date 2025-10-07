@@ -5,7 +5,9 @@ const colorTypes = {
   dimension: 'blue',
   shadow: 'purple',
   string: 'green',
+  weight: 'orange',
 };
+
 /**
  * Main function to generate and render list
  */

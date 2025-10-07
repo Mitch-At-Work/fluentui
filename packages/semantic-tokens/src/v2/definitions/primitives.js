@@ -22,6 +22,11 @@ export const primitives = {
     states: ['small', 'medium', 'large'],
     styles: [''],
   },
+  fontweight: {
+    type: 'weight',
+    states: ['thin', 'regular', 'bold'],
+    styles: [''],
+  },
   lineheight: {
     type: 'dimension',
     states: ['small', 'medium', 'large'],

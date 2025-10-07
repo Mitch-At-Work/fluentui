@@ -1,15 +1,24 @@
-import { states } from './primitives.js';
-import { scaleProperties, variantStateProperties, coreProperties } from './generics.js';
-
+// Definitions of component groups, their properties, variants, states, scales, and parts
 export const groups = {
   button: {
-    coreProperties: [...coreProperties],
+    coreProperties: ['fontfamily'],
     variants: ['secondary', 'primary', 'outline', 'subtle', 'transparent'],
     variantProperties: ['shadow', 'stroke'],
-    variantStateProperties: [...variantStateProperties],
+    variantStateProperties: ['background', 'foreground'],
     scales: ['small', 'default', 'large'],
-    scaleProperties: [...scaleProperties, 'fontweight', 'fontweight.selected', 'strokewidth.selected'],
-    states: [...states, 'rest.selected', 'hover.selected', 'pressed.selected', 'disabled'],
+    scaleProperties: [
+      'fontsize',
+      'lineheight',
+      'padding',
+      'gap',
+      'corner',
+      'size',
+      'strokewidth',
+      'fontweight',
+      'fontweight.selected',
+      'strokewidth.selected',
+    ],
+    states: ['rest', 'hover', 'pressed', 'rest.selected', 'hover.selected', 'pressed.selected', 'disabled'],
     components: ['button'],
     parts: {
       icon: {
