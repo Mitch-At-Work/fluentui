@@ -43,8 +43,6 @@
   ],
   "scripts": {
     "generate-tokens": "yarn generate-legacy-tokens && ts-node scripts/tokenGen.ts",
-    "generate-legacy-tokens": "ts-node scripts/legacyTokens.ts",
-    "local-token-website": "node src/v2/server.js",
-    "output-token-json": "node src/v2/generateTokenJSON.js"
+    "output-token-json": "ts-node scripts/generateTokenJSON.ts"
   }
 }
