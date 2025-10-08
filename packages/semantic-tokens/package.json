@@ -42,7 +42,7 @@
     "lib-commonjs"
   ],
   "scripts": {
-    "generate-tokens": "yarn generate-legacy-tokens && ts-node scripts/tokenGen.ts",
-    "output-token-json": "ts-node scripts/generateTokenJSON.ts"
+    "output-token-json": "ts-node scripts/generateTokenJSON.ts",
+    "generate-tokens": "ts-node scripts/generateLibraryOutput.ts"
   }
 }

@@ -12,7 +12,7 @@ export const appState = {
 };
 
 export interface Token {
-  name?: string;
+  name: string;
   type?: string;
   property?: string;
   group?: string;
@@ -45,7 +45,7 @@ export function generatePrimitiveTokens() {
   for (const prim of Object.keys(primitives)) {
     for (const style of primitives[prim].styles) {
       for (const state of primitives[prim].states) {
-        let tokenParts = [`#${prim}`, style, state];
+        let tokenParts = [prim, style, state];
 
         result.push({
           name: tokenParts.filter(Boolean).join(joiner),
