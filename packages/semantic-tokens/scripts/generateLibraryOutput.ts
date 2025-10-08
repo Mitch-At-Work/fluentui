@@ -29,12 +29,15 @@ function generateLibraryOutput() {
   let groupTokens = generateGroupTokens();
 
   let primitiveTokenList = '';
+  let primitiveIndexExport = 'export {\n';
   for (const token of primitiveTokens) {
-    const tokenName = dotToCamelCase(token.name);
+    const tokenName = '_' + dotToCamelCase(token.name);
     const cssVarName = dotToCSSVarName(token.name);
-    const exportToken = `export const _${tokenName} = 'var(${cssVarName})';`;
+    const exportToken = `export const ${tokenName} = 'var(${cssVarName})';`;
     primitiveTokenList += `${exportToken}\n`;
+    primitiveIndexExport += `${tokenName},\n`;
   }
+  primitiveIndexExport += `} from './primitives/tokens';\n`;
 
   const primitiveListPath = path.resolve(__dirname, `../src/primitives/tokens.ts`);
   // Write the JSON string to a file
@@ -47,13 +50,17 @@ function generateLibraryOutput() {
   });
 
   let genericTokenList = '';
+  let genericIndexExport = 'export {\n';
   // To do: Generate primitive fallbacks for generic tokens
   for (const token of genericTokens) {
     const tokenName = dotToCamelCase(token.name);
     const cssVarName = dotToCSSVarName(token.name);
     const exportToken = `export const ${tokenName} = 'var(${cssVarName})';`;
     genericTokenList += `${exportToken}\n`;
+    genericIndexExport += `${tokenName},\n`;
   }
+  genericIndexExport += `} from './generics/tokens';\n`;
+
   const genericListPath = path.resolve(__dirname, `../src/generics/tokens.ts`);
   // Write the JSON string to a file
   fs.writeFile(genericListPath, genericTokenList, err => {
@@ -66,6 +73,7 @@ function generateLibraryOutput() {
 
   // To do: Generate generic/primitive fallbacks for group tokens
   const groupTokenList: { [key: string]: string } = {};
+  const groupExportList: { [key: string]: string } = {};
   for (const token of groupTokens) {
     const tokenGroup = token.group || 'ungrouped';
     const groupName = tokenGroup.split('.')[0];
@@ -73,16 +81,22 @@ function generateLibraryOutput() {
       groupTokenList[groupName] = '';
     }
 
+    if (!groupExportList[groupName]) {
+      groupExportList[groupName] = 'export {\n';
+    }
+
     const tokenName = dotToCamelCase(token.name);
     const cssVarName = dotToCSSVarName(token.name);
     const exportToken = `export const ${tokenName} = 'var(${cssVarName})';`;
     groupTokenList[groupName] += `${exportToken}\n`;
+    groupExportList[groupName] += `${tokenName},\n`;
   }
+  // } from './groups/${groupName}/tokens';\n`
 
   for (const groupName of Object.keys(groupTokenList)) {
     const tokens = groupTokenList[groupName];
     const groupListPath = path.resolve(__dirname, `../src/groups/${groupName}/tokens.ts`);
-
+    groupExportList[groupName] += `} from './groups/${groupName}/tokens';\n`;
     //Create directory if it doesn't exist
     const dir = path.dirname(groupListPath);
     if (!fs.existsSync(dir)) {
@@ -98,6 +112,17 @@ function generateLibraryOutput() {
       }
     });
   }
+
+  // Write the JSON string to a file
+  const indexPath = path.resolve(__dirname, `../src/index.ts`);
+  const allExports = primitiveIndexExport + genericIndexExport + Object.values(groupExportList).join('\n');
+  fs.writeFile(indexPath, allExports, err => {
+    if (err) {
+      console.error('Error writing to file:', err);
+    } else {
+      console.log('JSON data successfully written to tokens.json');
+    }
+  });
 }
 
 generateLibraryOutput();
