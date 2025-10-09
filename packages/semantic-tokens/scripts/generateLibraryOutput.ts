@@ -1,4 +1,4 @@
-import { generatePrimitiveTokens, generateGenericTokens, generateGroupTokens } from './generateTokens';
+import { generateGenericTokens, generateGroupTokens } from './generateTokens';
 import fs from 'fs';
 import path from 'node:path';
 
@@ -114,7 +114,8 @@ function generateLibraryOutput() {
 
   // Write the JSON string to a file
   const indexPath = path.resolve(__dirname, `../src/index.ts`);
-  const allExports = primitiveIndexExport + genericIndexExport + Object.values(groupExportList).join('\n');
+  // const allExports = primitiveIndexExport + genericIndexExport + Object.values(groupExportList).join('\n');
+  const allExports = genericIndexExport + Object.values(groupExportList).join('\n');
   fs.writeFile(indexPath, allExports, err => {
     if (err) {
       console.error('Error writing to file:', err);

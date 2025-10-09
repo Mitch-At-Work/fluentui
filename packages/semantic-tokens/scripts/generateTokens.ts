@@ -82,7 +82,7 @@ export function generateGenericTokens() {
   return result;
 }
 
-export function generateComponentGroupTokens(groupName: string, group: GroupPart) {
+export function generateComponentGroupTokens(groupName: string, group: GroupPart, partName?: string) {
   let result: Array<Token> = [];
   const groupCoreGroupProperties = group.coreProperties || [];
   for (const property of groupCoreGroupProperties) {
@@ -91,10 +91,10 @@ export function generateComponentGroupTokens(groupName: string, group: GroupPart
 
     if (appState.propertyFirst) {
       // Property first
-      tokenParts = [property, appState.groupCollectionName, groupName];
+      tokenParts = [property, appState.groupCollectionName, groupName, partName];
     } else {
       // Group-first
-      tokenParts = [appState.groupCollectionName, groupName, property];
+      tokenParts = [appState.groupCollectionName, groupName, partName, property];
     }
 
     const groupToken = {
@@ -121,10 +121,10 @@ export function generateComponentGroupTokens(groupName: string, group: GroupPart
 
         if (appState.propertyFirst) {
           // Property first
-          tokenParts = [property, appState.groupCollectionName, variant, groupName, state];
+          tokenParts = [property, appState.groupCollectionName, variant, groupName, partName, state];
         } else {
           // Group-first
-          tokenParts = [appState.groupCollectionName, groupName, variant, property, state];
+          tokenParts = [appState.groupCollectionName, groupName, variant, partName, property, state];
         }
 
         const groupToken = {
@@ -151,10 +151,10 @@ export function generateComponentGroupTokens(groupName: string, group: GroupPart
 
       if (appState.propertyFirst) {
         // Property first
-        tokenParts = [property, appState.groupCollectionName, variant, groupName];
+        tokenParts = [property, appState.groupCollectionName, variant, partName, groupName];
       } else {
         // Group-first
-        tokenParts = [appState.groupCollectionName, groupName, variant, property];
+        tokenParts = [appState.groupCollectionName, groupName, variant, partName, property];
       }
 
       const groupToken = {
@@ -180,10 +180,10 @@ export function generateComponentGroupTokens(groupName: string, group: GroupPart
 
       if (appState.propertyFirst) {
         // Property first
-        tokenParts = [property, appState.groupCollectionName, groupName, scale];
+        tokenParts = [property, appState.groupCollectionName, groupName, scale, partName];
       } else {
         // Group-first
-        tokenParts = [appState.groupCollectionName, groupName, scale, property];
+        tokenParts = [appState.groupCollectionName, groupName, scale, partName, property];
       }
 
       const groupScaleToken = {
@@ -214,7 +214,7 @@ export function generateGroupTokens() {
     // Handle any parts of the group (generated in a similar way to groups)
     const groupParts = groups[group].parts || {};
     for (const part of Object.keys(groupParts)) {
-      const partTokens = generateComponentGroupTokens(`${group}.${part}`, groupParts[part]);
+      const partTokens = generateComponentGroupTokens(`${group}`, groupParts[part], part);
       result = result.concat(partTokens);
     }
   }

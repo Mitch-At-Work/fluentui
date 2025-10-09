@@ -18,17 +18,18 @@ export interface Groups {
 export const groups: Groups = {
   button: {
     coreProperties: ['fontfamily'],
-    variants: ['secondary', 'primary', 'outline', 'subtle', 'transparent'],
-    variantProperties: ['shadow', 'stroke'],
-    variantStateProperties: ['background', 'foreground'],
-    scales: ['small', 'default', 'large'],
+    variants: ['default', 'primary', 'outline', 'subtle', 'transparent'],
+    variantProperties: ['shadow'],
+    variantStateProperties: ['background', 'stroke'],
+    scales: ['small', 'base', 'large'],
     scaleProperties: [
       'fontsize',
       'lineheight',
-      'padding',
+      'padding.horizontal',
+      'padding.vertical',
       'gap',
-      'corner',
-      'size',
+      'borderradius',
+      'minwidth',
       'strokewidth',
       'fontweight',
       'fontweight.selected',
@@ -38,12 +39,23 @@ export const groups: Groups = {
     components: ['button'],
     parts: {
       icon: {
-        scales: ['small', 'default', 'large'],
+        scales: ['small', 'base', 'large'],
         scaleProperties: ['size'],
       },
       divider: {
-        variants: ['secondary', 'primary', 'outline', 'subtle', 'transparent'],
+        variants: ['default', 'primary', 'outline', 'subtle', 'transparent'],
         variantProperties: ['color'],
+      },
+      text: {
+        states: ['rest', 'hover', 'pressed', 'rest.selected', 'hover.selected', 'pressed.selected', 'disabled'],
+        variants: ['default', 'primary', 'outline', 'subtle', 'transparent'],
+        variantStateProperties: ['foreground'],
+        scaleProperties: ['padding.horizontal', 'padding.vertical'],
+      },
+      'text.secondary': {
+        states: ['rest', 'hover', 'pressed', 'rest.selected', 'hover.selected', 'pressed.selected', 'disabled'],
+        variants: ['default', 'primary', 'outline', 'subtle', 'transparent'],
+        variantStateProperties: ['foreground'],
       },
     },
   },

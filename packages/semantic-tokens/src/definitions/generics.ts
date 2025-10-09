@@ -1,4 +1,3 @@
-import { states } from './primitives';
 // Each group of components will have these properties at default
 // These properties have NO states and NO variants
 export const coreProperties = ['fontfamily'];
@@ -22,17 +21,6 @@ export type GenericTypes = {
 };
 
 export const generics: GenericTypes = {
-  background: {
-    type: 'color',
-    variants: ['brand', 'neutral', 'status'],
-    states: [...states, 'disabled'],
-  },
-  corner: {
-    type: 'dimension',
-    variants: ['default', 'circular', 'rounded', 'zero'],
-    states: [''],
-    styles: [''],
-  },
   'focus.stroke': {
     type: 'color',
     variants: ['outer', 'inner'],
@@ -44,56 +32,5 @@ export const generics: GenericTypes = {
     variants: ['outer', 'inner'],
     states: [''],
     styles: [''],
-  },
-  strokewidth: {
-    type: 'dimension',
-    variants: ['thin', 'thick', 'thicker', 'regular'],
-    states: [''],
-    styles: [''],
-  },
-  stroke: {
-    type: 'color',
-    variants: ['brand', 'neutral', 'status'],
-  },
-  foreground: {
-    type: 'color',
-    variants: ['brand', 'neutral', 'status'],
-    states: [...states, 'disabled'],
-  },
-  fontsize: {
-    type: 'dimension',
-    variants: [
-      'display1',
-      'display2',
-      'title1',
-      'title2',
-      'subtitle1',
-      'subtitle2',
-      'body1',
-      'body2',
-      'body3',
-      'caption1',
-      'caption2',
-    ],
-  },
-  lineheight: {
-    type: 'dimension',
-    variants: [
-      'display1',
-      'display2',
-      'title1',
-      'title2',
-      'subtitle1',
-      'subtitle2',
-      'body1',
-      'body2',
-      'body3',
-      'caption1',
-      'caption2',
-    ],
-  },
-  fontWeight: {
-    type: 'weight',
-    variants: ['regular', 'header', 'display', 'regular.selected'],
   },
 };
