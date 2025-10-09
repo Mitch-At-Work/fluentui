@@ -24,30 +24,30 @@ function dotToCSSVarName(str: string): string {
 }
 
 function generateLibraryOutput() {
-  let primitiveTokens = generatePrimitiveTokens();
+  // let primitiveTokens = generatePrimitiveTokens();
   let genericTokens = generateGenericTokens();
   let groupTokens = generateGroupTokens();
 
-  let primitiveTokenList = '';
-  let primitiveIndexExport = 'export {\n';
-  for (const token of primitiveTokens) {
-    const tokenName = '_' + dotToCamelCase(token.name);
-    const cssVarName = dotToCSSVarName(token.name);
-    const exportToken = `export const ${tokenName} = 'var(${cssVarName})';`;
-    primitiveTokenList += `${exportToken}\n`;
-    primitiveIndexExport += `${tokenName},\n`;
-  }
-  primitiveIndexExport += `} from './primitives/tokens';\n`;
+  // let primitiveTokenList = '';
+  // let primitiveIndexExport = 'export {\n';
+  // for (const token of primitiveTokens) {
+  //   const tokenName = '_' + dotToCamelCase(token.name);
+  //   const cssVarName = dotToCSSVarName(token.name);
+  //   const exportToken = `export const ${tokenName} = 'var(${cssVarName})';`;
+  //   primitiveTokenList += `${exportToken}\n`;
+  //   primitiveIndexExport += `${tokenName},\n`;
+  // }
+  // primitiveIndexExport += `} from './primitives/tokens';\n`;
 
-  const primitiveListPath = path.resolve(__dirname, `../src/primitives/tokens.ts`);
-  // Write the JSON string to a file
-  fs.writeFile(primitiveListPath, primitiveTokenList, err => {
-    if (err) {
-      console.error('Error writing to file:', err);
-    } else {
-      console.log('JSON data successfully written to tokens.json');
-    }
-  });
+  // const primitiveListPath = path.resolve(__dirname, `../src/primitives/tokens.ts`);
+  // // Write the JSON string to a file
+  // fs.writeFile(primitiveListPath, primitiveTokenList, err => {
+  //   if (err) {
+  //     console.error('Error writing to file:', err);
+  //   } else {
+  //     console.log('JSON data successfully written to tokens.json');
+  //   }
+  // });
 
   let genericTokenList = '';
   let genericIndexExport = 'export {\n';
@@ -91,7 +91,6 @@ function generateLibraryOutput() {
     groupTokenList[groupName] += `${exportToken}\n`;
     groupExportList[groupName] += `${tokenName},\n`;
   }
-  // } from './groups/${groupName}/tokens';\n`
 
   for (const groupName of Object.keys(groupTokenList)) {
     const tokens = groupTokenList[groupName];

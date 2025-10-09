@@ -17,7 +17,7 @@ export function generateTokenJSON() {
   // Convert the JSON object to a string
   const jsonData = JSON.stringify(results, null, 2); // Pretty print with 2 spaces
 
-  const dirPath = path.resolve(__dirname, `../tokens.json`);
+  const dirPath = path.resolve(__dirname, `./tokens.json`);
   // Write the JSON string to a file
   fs.writeFile(dirPath, jsonData, err => {
     if (err) {
