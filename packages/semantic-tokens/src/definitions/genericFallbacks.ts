@@ -26,4 +26,10 @@ export const genericFallbacks: GenericFallbacks = {
   borderRadiusSquare: {
     fluent: tokens.borderRadiusNone,
   },
+  focusStrokeOnbrandHover: {
+    fluent: tokens.colorStrokeFocus2,
+  },
+  focusStrokeOnbrandRest: {
+    fluent: tokens.colorNeutralForegroundOnBrand,
+  },
 };

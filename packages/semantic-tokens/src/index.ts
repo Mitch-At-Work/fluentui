@@ -1,6 +1,8 @@
 export {
 focusStrokeOuter,
 focusStrokeInner,
+focusStrokeOnbrandHover,
+focusStrokeOnbrandRest,
 focusStrokewidthOuter,
 focusStrokewidthInner,
 borderRadiusCircular,

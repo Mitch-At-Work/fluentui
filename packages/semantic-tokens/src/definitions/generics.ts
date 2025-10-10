@@ -23,7 +23,7 @@ export type GenericTypes = {
 export const generics: GenericTypes = {
   'focus.stroke': {
     type: 'color',
-    variants: ['outer', 'inner'],
+    variants: ['outer', 'inner', 'onbrand.hover', 'onbrand.rest'],
     states: [''],
     styles: [''],
   },
