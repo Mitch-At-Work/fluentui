@@ -1,6 +1,8 @@
 import { generateGenericTokens, generateGroupTokens } from './generateTokens';
 import fs from 'fs';
 import path from 'node:path';
+import { groupFallbacks } from '../src/definitions/groupFallbacks';
+import { genericFallbacks } from '../src/definitions/genericFallbacks';
 
 function dotToCamelCase(str: string): string {
   return str
@@ -55,7 +57,8 @@ function generateLibraryOutput() {
   for (const token of genericTokens) {
     const tokenName = dotToCamelCase(token.name);
     const cssVarName = dotToCSSVarName(token.name);
-    const exportToken = `export const ${tokenName} = 'var(${cssVarName})';`;
+    const fluentFallback = genericFallbacks[tokenName]?.fluent;
+    const exportToken = `export const ${tokenName} = 'var(${cssVarName}, ${fluentFallback})';`;
     genericTokenList += `${exportToken}\n`;
     genericIndexExport += `${tokenName},\n`;
   }
@@ -87,7 +90,8 @@ function generateLibraryOutput() {
 
     const tokenName = dotToCamelCase(token.name);
     const cssVarName = dotToCSSVarName(token.name);
-    const exportToken = `export const ${tokenName} = 'var(${cssVarName})';`;
+    const fluentFallback = groupFallbacks[tokenName]?.fluent;
+    const exportToken = `export const ${tokenName} = 'var(${cssVarName}, ${fluentFallback})';`;
     groupTokenList[groupName] += `${exportToken}\n`;
     groupExportList[groupName] += `${tokenName},\n`;
   }

@@ -47,10 +47,11 @@ export const groups: Groups = {
         variantProperties: ['color'],
       },
       text: {
+        scales: ['small', 'base', 'large'],
         states: ['rest', 'hover', 'pressed', 'rest.selected', 'hover.selected', 'pressed.selected', 'disabled'],
         variants: ['default', 'primary', 'outline', 'subtle', 'transparent'],
         variantStateProperties: ['foreground'],
-        scaleProperties: ['padding.horizontal', 'padding.vertical'],
+        scaleProperties: ['padding.horizontal'],
       },
       'text.secondary': {
         states: ['rest', 'hover', 'pressed', 'rest.selected', 'hover.selected', 'pressed.selected', 'disabled'],
