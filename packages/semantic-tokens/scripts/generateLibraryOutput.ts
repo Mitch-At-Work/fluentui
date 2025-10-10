@@ -90,7 +90,7 @@ function generateLibraryOutput() {
 
     const tokenName = dotToCamelCase(token.name);
     const cssVarName = dotToCSSVarName(token.name);
-    const fluentFallback = groupFallbacks[tokenName]?.fluent;
+    const fluentFallback = groupFallbacks[tokenGroup][tokenName]?.fluent;
     const exportToken = `export const ${tokenName} = 'var(${cssVarName}, ${fluentFallback})';`;
     groupTokenList[groupName] += `${exportToken}\n`;
     groupExportList[groupName] += `${tokenName},\n`;
