@@ -33,4 +33,8 @@ export const generics: GenericTypes = {
     states: [''],
     styles: [''],
   },
+  borderRadius: {
+    type: 'dimension',
+    variants: ['circular', 'square'],
+  },
 };

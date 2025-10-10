@@ -20,4 +20,10 @@ export const genericFallbacks: GenericFallbacks = {
   focusStrokewidthOuter: {
     fluent: tokens.strokeWidthThick,
   },
+  borderRadiusCircular: {
+    fluent: tokens.borderRadiusCircular,
+  },
+  borderRadiusSquare: {
+    fluent: tokens.borderRadiusNone,
+  },
 };

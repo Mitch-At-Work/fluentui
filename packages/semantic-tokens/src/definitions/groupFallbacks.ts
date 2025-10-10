@@ -34,13 +34,13 @@ export const groupFallbacks: GroupFallbacks = {
     fluent: 'var(--smtc-group-button-default-background-disabled)',
   },
   groupButtonPrimaryBackgroundRest: {
-    fluent: 'var(--smtc-group-button-primary-background-rest)',
+    fluent: tokens.colorBrandBackground,
   },
   groupButtonPrimaryBackgroundHover: {
-    fluent: 'var(--smtc-group-button-primary-background-hover)',
+    fluent: tokens.colorBrandBackgroundHover,
   },
   groupButtonPrimaryBackgroundPressed: {
-    fluent: 'var(--smtc-group-button-primary-background-pressed)',
+    fluent: tokens.colorBrandBackgroundPressed,
   },
   groupButtonPrimaryBackgroundRestSelected: {
     fluent: 'var(--smtc-group-button-primary-background-rest-selected)',
@@ -76,13 +76,13 @@ export const groupFallbacks: GroupFallbacks = {
     fluent: 'var(--smtc-group-button-outline-background-disabled)',
   },
   groupButtonSubtleBackgroundRest: {
-    fluent: 'var(--smtc-group-button-subtle-background-rest)',
+    fluent: tokens.colorSubtleBackground,
   },
   groupButtonSubtleBackgroundHover: {
-    fluent: 'var(--smtc-group-button-subtle-background-hover)',
+    fluent: tokens.colorSubtleBackgroundHover,
   },
   groupButtonSubtleBackgroundPressed: {
-    fluent: 'var(--smtc-group-button-subtle-background-pressed)',
+    fluent: tokens.colorSubtleBackgroundPressed,
   },
   groupButtonSubtleBackgroundRestSelected: {
     fluent: 'var(--smtc-group-button-subtle-background-rest-selected)',
@@ -97,13 +97,13 @@ export const groupFallbacks: GroupFallbacks = {
     fluent: 'var(--smtc-group-button-subtle-background-disabled)',
   },
   groupButtonTransparentBackgroundRest: {
-    fluent: 'var(--smtc-group-button-transparent-background-rest)',
+    fluent: tokens.colorTransparentBackground,
   },
   groupButtonTransparentBackgroundHover: {
-    fluent: 'var(--smtc-group-button-transparent-background-hover)',
+    fluent: tokens.colorTransparentBackgroundHover,
   },
   groupButtonTransparentBackgroundPressed: {
-    fluent: 'var(--smtc-group-button-transparent-background-pressed)',
+    fluent: tokens.colorTransparentBackgroundPressed,
   },
   groupButtonTransparentBackgroundRestSelected: {
     fluent: 'var(--smtc-group-button-transparent-background-rest-selected)',
@@ -139,13 +139,13 @@ export const groupFallbacks: GroupFallbacks = {
     fluent: 'var(--smtc-group-button-default-stroke-disabled)',
   },
   groupButtonPrimaryStrokeRest: {
-    fluent: 'var(--smtc-group-button-primary-stroke-rest)',
+    fluent: tokens.colorTransparentStroke,
   },
   groupButtonPrimaryStrokeHover: {
-    fluent: 'var(--smtc-group-button-primary-stroke-hover)',
+    fluent: tokens.colorTransparentStroke,
   },
   groupButtonPrimaryStrokePressed: {
-    fluent: 'var(--smtc-group-button-primary-stroke-pressed)',
+    fluent: tokens.colorTransparentStroke,
   },
   groupButtonPrimaryStrokeRestSelected: {
     fluent: 'var(--smtc-group-button-primary-stroke-rest-selected)',
@@ -166,7 +166,7 @@ export const groupFallbacks: GroupFallbacks = {
     fluent: tokens.colorNeutralStroke1,
   },
   groupButtonOutlineStrokePressed: {
-    fluent: 'var(--smtc-group-button-outline-stroke-pressed)',
+    fluent: tokens.colorNeutralStroke1,
   },
   groupButtonOutlineStrokeRestSelected: {
     fluent: 'var(--smtc-group-button-outline-stroke-rest-selected)',
@@ -181,13 +181,13 @@ export const groupFallbacks: GroupFallbacks = {
     fluent: 'var(--smtc-group-button-outline-stroke-disabled)',
   },
   groupButtonSubtleStrokeRest: {
-    fluent: 'var(--smtc-group-button-subtle-stroke-rest)',
+    fluent: tokens.colorTransparentStroke,
   },
   groupButtonSubtleStrokeHover: {
-    fluent: 'var(--smtc-group-button-subtle-stroke-hover)',
+    fluent: tokens.colorTransparentStroke,
   },
   groupButtonSubtleStrokePressed: {
-    fluent: 'var(--smtc-group-button-subtle-stroke-pressed)',
+    fluent: tokens.colorTransparentStroke,
   },
   groupButtonSubtleStrokeRestSelected: {
     fluent: 'var(--smtc-group-button-subtle-stroke-rest-selected)',
@@ -238,16 +238,16 @@ export const groupFallbacks: GroupFallbacks = {
     fluent: 'var(--smtc-group-button-transparent-shadow)',
   },
   groupButtonSmallFontsize: {
-    fluent: 'var(--smtc-group-button-small-fontsize)',
+    fluent: tokens.fontSizeBase200,
   },
   groupButtonSmallLineheight: {
-    fluent: 'var(--smtc-group-button-small-lineheight)',
+    fluent: tokens.lineHeightBase200,
   },
   groupButtonSmallPaddingHorizontal: {
     fluent: tokens.spacingHorizontalS,
   },
   groupButtonSmallPaddingVertical: {
-    fluent: 'var(--smtc-group-button-small-padding-vertical)',
+    fluent: '3px',
   },
   groupButtonBaseTextPaddingHorizontal: { fluent: '0px' },
   groupButtonLargeTextPaddingHorizontal: { fluent: '0px' },
@@ -256,7 +256,7 @@ export const groupFallbacks: GroupFallbacks = {
     fluent: 'var(--smtc-group-button-small-gap)',
   },
   groupButtonSmallBorderradius: {
-    fluent: 'var(--smtc-group-button-small-borderradius)',
+    fluent: tokens.borderRadiusMedium,
   },
   groupButtonSmallMinwidth: {
     fluent: '64px',
@@ -265,7 +265,7 @@ export const groupFallbacks: GroupFallbacks = {
     fluent: 'var(--smtc-group-button-small-strokewidth)',
   },
   groupButtonSmallFontweight: {
-    fluent: 'var(--smtc-group-button-small-fontweight)',
+    fluent: tokens.fontWeightRegular,
   },
   groupButtonSmallFontweightSelected: {
     fluent: 'var(--smtc-group-button-small-fontweight-selected)',
@@ -385,13 +385,13 @@ export const groupFallbacks: GroupFallbacks = {
     fluent: 'var(--smtc-group-button-default-text-foreground-disabled)',
   },
   groupButtonPrimaryTextForegroundRest: {
-    fluent: 'var(--smtc-group-button-primary-text-foreground-rest)',
+    fluent: tokens.colorNeutralForegroundOnBrand,
   },
   groupButtonPrimaryTextForegroundHover: {
-    fluent: 'var(--smtc-group-button-primary-text-foreground-hover)',
+    fluent: tokens.colorNeutralForegroundOnBrand,
   },
   groupButtonPrimaryTextForegroundPressed: {
-    fluent: 'var(--smtc-group-button-primary-text-foreground-pressed)',
+    fluent: tokens.colorNeutralForegroundOnBrand,
   },
   groupButtonPrimaryTextForegroundRestSelected: {
     fluent: 'var(--smtc-group-button-primary-text-foreground-rest-selected)',
@@ -409,10 +409,10 @@ export const groupFallbacks: GroupFallbacks = {
     fluent: tokens.colorNeutralForeground1,
   },
   groupButtonOutlineTextForegroundHover: {
-    fluent: 'var(--smtc-group-button-outline-text-foreground-hover)',
+    fluent: tokens.colorNeutralForeground1Hover,
   },
   groupButtonOutlineTextForegroundPressed: {
-    fluent: 'var(--smtc-group-button-outline-text-foreground-pressed)',
+    fluent: tokens.colorNeutralForeground1Pressed,
   },
   groupButtonOutlineTextForegroundRestSelected: {
     fluent: 'var(--smtc-group-button-outline-text-foreground-rest-selected)',
@@ -427,13 +427,13 @@ export const groupFallbacks: GroupFallbacks = {
     fluent: 'var(--smtc-group-button-outline-text-foreground-disabled)',
   },
   groupButtonSubtleTextForegroundRest: {
-    fluent: 'var(--smtc-group-button-subtle-text-foreground-rest)',
+    fluent: tokens.colorNeutralForeground2,
   },
   groupButtonSubtleTextForegroundHover: {
     fluent: 'var(--smtc-group-button-subtle-text-foreground-hover)',
   },
   groupButtonSubtleTextForegroundPressed: {
-    fluent: 'var(--smtc-group-button-subtle-text-foreground-pressed)',
+    fluent: tokens.colorNeutralForeground2Pressed,
   },
   groupButtonSubtleTextForegroundRestSelected: {
     fluent: 'var(--smtc-group-button-subtle-text-foreground-rest-selected)',
@@ -451,10 +451,10 @@ export const groupFallbacks: GroupFallbacks = {
     fluent: 'var(--smtc-group-button-transparent-text-foreground-rest)',
   },
   groupButtonTransparentTextForegroundHover: {
-    fluent: 'var(--smtc-group-button-transparent-text-foreground-hover)',
+    fluent: tokens.colorNeutralForeground2BrandHover,
   },
   groupButtonTransparentTextForegroundPressed: {
-    fluent: 'var(--smtc-group-button-transparent-text-foreground-pressed)',
+    fluent: tokens.colorNeutralForeground2BrandPressed,
   },
   groupButtonTransparentTextForegroundRestSelected: {
     fluent: 'var(--smtc-group-button-transparent-text-foreground-rest-selected)',
@@ -573,4 +573,38 @@ export const groupFallbacks: GroupFallbacks = {
   groupButtonTransparentTextSecondaryForegroundDisabled: {
     fluent: 'var(--smtc-group-button-transparent-text-secondary-foreground-disabled)',
   },
+  groupButtonDefaultIconForegroundRest: {},
+  groupButtonDefaultIconForegroundHover: {},
+  groupButtonDefaultIconForegroundPressed: {
+    fluent: 'var(--smtc-group-button-default-icon-foreground-pressed, undefined)',
+  },
+  groupButtonDefaultIconForegroundDisabled: {
+    fluent: 'var(--smtc-group-button-default-icon-foreground-disabled, undefined)',
+  },
+  groupButtonPrimaryIconForegroundRest: {
+    fluent: 'var(--smtc-group-button-primary-icon-foreground-rest, undefined)',
+  },
+  groupButtonPrimaryIconForegroundHover: {
+    fluent: 'var(--smtc-group-button-primary-icon-foreground-hover, undefined)',
+  },
+  groupButtonPrimaryIconForegroundPressed: {
+    fluent: 'var(--smtc-group-button-primary-icon-foreground-pressed, undefined)',
+  },
+  groupButtonPrimaryIconForegroundDisabled: {
+    fluent: 'var(--smtc-group-button-primary-icon-foreground-disabled, undefined)',
+  },
+  groupButtonOutlineIconForegroundRest: {
+    fluent: 'var(--smtc-group-button-outline-icon-foreground-rest, undefined)',
+  },
+  groupButtonOutlineIconForegroundHover: {},
+  groupButtonOutlineIconForegroundPressed: {},
+  groupButtonOutlineIconForegroundDisabled: {},
+  groupButtonSubtleIconForegroundRest: { fluent: tokens.colorNeutralForeground2 },
+  groupButtonSubtleIconForegroundHover: { fluent: tokens.colorNeutralForeground2BrandHover },
+  groupButtonSubtleIconForegroundPressed: { fluent: tokens.colorNeutralForeground2BrandPressed },
+  groupButtonSubtleIconForegroundDisabled: {},
+  groupButtonTransparentIconForegroundRest: { fluent: tokens.colorNeutralForeground2 },
+  groupButtonTransparentIconForegroundHover: {},
+  groupButtonTransparentIconForegroundPressed: {},
+  groupButtonTransparentIconForegroundDisabled: {},
 };

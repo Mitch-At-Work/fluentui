@@ -39,8 +39,11 @@ export const groups: Groups = {
     components: ['button'],
     parts: {
       icon: {
+        states: ['rest', 'hover', 'pressed', 'disabled'],
         scales: ['small', 'base', 'large'],
         scaleProperties: ['size'],
+        variants: ['default', 'primary', 'outline', 'subtle', 'transparent'],
+        variantStateProperties: ['foreground'],
       },
       divider: {
         variants: ['default', 'primary', 'outline', 'subtle', 'transparent'],

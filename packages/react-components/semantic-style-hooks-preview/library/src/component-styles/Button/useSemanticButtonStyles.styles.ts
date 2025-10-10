@@ -143,31 +143,31 @@ const useRootStyles = makeStyles({
     ':hover': {
       backgroundColor: semanticTokens.groupButtonOutlineBackgroundHover,
       border: `${semanticTokens.groupButtonBaseStrokewidth} solid ${semanticTokens.groupButtonOutlineStrokeHover}`,
-      color: semanticTokens.foregroundCtrlOnOutlineHover,
+      color: semanticTokens.groupButtonOutlineTextForegroundHover,
     },
 
     ':hover:active': {
-      backgroundColor: semanticTokens.backgroundCtrlOutlinePressed,
-      border: `${semanticTokens.strokeWidthCtrlOutlinePressed} solid ${semanticTokens.strokeCtrlOnOutlinePressed}`,
-      color: semanticTokens.foregroundCtrlOnOutlinePressed,
+      backgroundColor: semanticTokens.groupButtonOutlineBackgroundPressed,
+      border: `${semanticTokens.groupButtonBaseStrokewidth} solid ${semanticTokens.groupButtonOutlineStrokePressed}`,
+      color: semanticTokens.groupButtonOutlineTextForegroundPressed,
     },
   },
 
   primary: {
-    backgroundColor: semanticTokens.backgroundCtrlBrandRest,
-    ...shorthands.borderColor(semanticTokens.strokeCtrlOnBrandRest),
-    color: semanticTokens.foregroundCtrlOnBrandRest,
+    backgroundColor: semanticTokens.groupButtonPrimaryBackgroundRest,
+    ...shorthands.borderColor(semanticTokens.groupButtonPrimaryStrokeRest),
+    color: semanticTokens.groupButtonPrimaryTextForegroundRest,
 
     ':hover': {
-      backgroundColor: semanticTokens.backgroundCtrlBrandHover,
-      ...shorthands.borderColor(semanticTokens.strokeCtrlOnBrandHover),
-      color: semanticTokens.foregroundCtrlOnBrandHover,
+      backgroundColor: semanticTokens.groupButtonPrimaryBackgroundHover,
+      ...shorthands.borderColor(semanticTokens.groupButtonPrimaryStrokeHover),
+      color: semanticTokens.groupButtonPrimaryTextForegroundHover,
     },
 
     ':hover:active': {
-      backgroundColor: semanticTokens.backgroundCtrlBrandPressed,
-      ...shorthands.borderColor(semanticTokens.strokeCtrlOnBrandPressed),
-      color: semanticTokens.foregroundCtrlOnBrandPressed,
+      backgroundColor: semanticTokens.groupButtonPrimaryBackgroundPressed,
+      ...shorthands.borderColor(semanticTokens.groupButtonPrimaryStrokePressed),
+      color: semanticTokens.groupButtonPrimaryTextForegroundPressed,
     },
 
     '@media (forced-colors: active)': {
@@ -193,17 +193,18 @@ const useRootStyles = makeStyles({
     /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
-    backgroundColor: semanticTokens.backgroundCtrlSubtleRest,
-    ...shorthands.borderColor(semanticTokens.strokeCtrlOnSubtleRest),
-    color: semanticTokens.foregroundCtrlOnSubtleRest,
+    backgroundColor: semanticTokens.groupButtonSubtleBackgroundRest,
+    ...shorthands.borderColor(semanticTokens.groupButtonSubtleStrokeRest),
+    color: semanticTokens.groupButtonSubtleTextForegroundRest,
+
     [`& .${buttonClassNames.icon}`]: {
-      color: semanticTokens.foregroundCtrlIconOnSubtleRest,
+      color: semanticTokens.groupButtonSubtleIconForegroundRest,
     },
 
     ':hover': {
-      backgroundColor: semanticTokens.backgroundCtrlSubtleHover,
-      ...shorthands.borderColor(semanticTokens.strokeCtrlOnSubtleHover),
-      color: semanticTokens.foregroundCtrlOnSubtleHover,
+      backgroundColor: semanticTokens.groupButtonSubtleBackgroundHover,
+      ...shorthands.borderColor(semanticTokens.groupButtonSubtleStrokeHover),
+      color: semanticTokens.groupButtonSubtleTextForegroundHover,
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
       },
@@ -211,14 +212,14 @@ const useRootStyles = makeStyles({
         display: 'none',
       },
       [`& .${buttonClassNames.icon}`]: {
-        color: semanticTokens.foregroundCtrlIconOnSubtleHover,
+        color: semanticTokens.groupButtonSubtleIconForegroundHover,
       },
     },
 
     ':hover:active': {
-      backgroundColor: semanticTokens.backgroundCtrlSubtlePressed,
-      ...shorthands.borderColor(semanticTokens.strokeCtrlOnSubtlePressed),
-      color: semanticTokens.foregroundCtrlOnSubtlePressed,
+      backgroundColor: semanticTokens.groupButtonSubtleBackgroundPressed,
+      ...shorthands.borderColor(semanticTokens.groupButtonSubtleStrokePressed),
+      color: semanticTokens.groupButtonSubtleTextForegroundPressed,
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
       },
@@ -226,7 +227,7 @@ const useRootStyles = makeStyles({
         display: 'none',
       },
       [`& .${buttonClassNames.icon}`]: {
-        color: semanticTokens.foregroundCtrlIconOnSubtlePressed,
+        color: semanticTokens.groupButtonSubtleIconForegroundPressed,
       },
     },
 
@@ -248,14 +249,14 @@ const useRootStyles = makeStyles({
     },
   },
   transparent: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: semanticTokens.groupButtonTransparentBackgroundRest,
     ...shorthands.borderColor('transparent'),
-    color: semanticTokens.foregroundCtrlOnTransparentRest,
+    color: semanticTokens.groupButtonTransparentIconForegroundRest,
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: semanticTokens.groupButtonTransparentBackgroundHover,
       ...shorthands.borderColor('transparent'),
-      color: semanticTokens.foregroundCtrlOnTransparentHover,
+      color: semanticTokens.groupButtonTransparentTextForegroundHover,
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
       },
@@ -265,9 +266,9 @@ const useRootStyles = makeStyles({
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: semanticTokens.groupButtonTransparentBackgroundPressed,
       ...shorthands.borderColor('transparent'),
-      color: semanticTokens.foregroundCtrlOnTransparentPressed,
+      color: semanticTokens.groupButtonTransparentTextForegroundPressed,
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
       },
@@ -278,32 +279,32 @@ const useRootStyles = makeStyles({
 
     '@media (forced-colors: active)': {
       ':hover': {
-        backgroundColor: tokens.colorTransparentBackground,
+        backgroundColor: semanticTokens.groupButtonTransparentBackgroundRest,
         color: 'Highlight',
       },
       ':hover:active': {
-        backgroundColor: tokens.colorTransparentBackground,
+        backgroundColor: semanticTokens.groupButtonTransparentBackgroundRest,
         color: 'Highlight',
       },
     },
   },
 
   // Shape variations
-  circular: { borderRadius: semanticTokens.cornerCircular },
+  circular: { borderRadius: semanticTokens.borderRadiusCircular },
   rounded: {
     /* The borderRadius rounded styles are handled in the size variations */
   },
-  square: { borderRadius: semanticTokens.cornerZero },
+  square: { borderRadius: semanticTokens.borderRadiusSquare },
 
   // Size variations
   small: {
-    minWidth: minButtonSmWidth,
-    padding: `${buttonSpacingSmall} ${paddingSmHorizontalNoIcon}`,
-    borderRadius: semanticTokens.cornerCtrlSmRest,
+    minWidth: semanticTokens.groupButtonSmallMinwidth,
+    padding: `${semanticTokens.groupButtonSmallPaddingVertical} ${paddingSmHorizontalNoIcon}`, //3px
+    borderRadius: semanticTokens.groupButtonSmallBorderradius,
 
-    fontSize: semanticTokens.textRampSmItemBodyFontSize,
-    fontWeight: semanticTokens.textStyleDefaultRegularWeight,
-    lineHeight: semanticTokens.textRampSmItemBodyLineHeight,
+    fontSize: semanticTokens.groupButtonSmallFontsize,
+    fontWeight: semanticTokens.groupButtonSmallFontweight,
+    lineHeight: semanticTokens.groupButtonSmallLineheight,
   },
   smallWithIcon: {
     paddingBottom: buttonSpacingSmallWithIcon,
