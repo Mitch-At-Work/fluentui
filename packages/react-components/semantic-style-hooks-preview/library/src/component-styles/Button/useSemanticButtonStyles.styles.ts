@@ -8,11 +8,9 @@ import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
 const iconSpacingVar = '--fui-Button__icon--spacing';
 
-const buttonSpacingSmall = '3px';
 const buttonSpacingSmallWithIcon = '1px';
 const buttonSpacingMedium = '5px';
-const buttonSpacingLarge = '8px';
-const buttonSpacingLargeWithIcon = '7px';
+const buttonSpacingLargeWithIcon = `max(0px, calc(${semanticTokens.groupButtonLargePaddingVertical} - 1px))`;
 
 const paddingSmHorizontalNoIcon = `calc(${semanticTokens.groupButtonSmallPaddingHorizontal} + ${semanticTokens.groupButtonBaseTextPaddingHorizontal})`;
 const paddingHorizontalNoIcon = `calc(${semanticTokens.groupButtonBasePaddingHorizontal} + ${semanticTokens.groupButtonBaseTextPaddingHorizontal})`;
@@ -23,10 +21,6 @@ const paddingLgHorizontalNoIcon = `calc(${semanticTokens.groupButtonLargePadding
  * without affecting other browser platforms
  */
 const boxShadowStrokeWidthThinMoz = `calc(${semanticTokens.focusStrokewidthInner} + 0.25px)`;
-
-const minButtonWidth = `max(${semanticTokens.groupButtonBaseMinwidth}, 96px)`;
-const minButtonSmWidth = `max(${semanticTokens.groupButtonSmallMinwidth}, 64px)`;
-const minButtonLgWidth = `max(${semanticTokens.groupButtonLargeMinwidth}, 96px)`;
 
 const useRootBaseClassName = makeResetStyles({
   alignItems: 'center',
@@ -61,7 +55,7 @@ const useRootBaseClassName = makeResetStyles({
   },
 
   padding: `${semanticTokens.groupButtonBasePaddingVertical} ${paddingHorizontalNoIcon} ${semanticTokens.groupButtonBasePaddingVertical} ${paddingHorizontalNoIcon}`,
-  minWidth: minButtonWidth,
+  minWidth: semanticTokens.groupButtonBaseMinwidth,
   borderRadius: semanticTokens.groupButtonBaseBorderradius,
 
   fontSize: semanticTokens.groupButtonBaseFontsize,
@@ -323,20 +317,20 @@ const useRootStyles = makeStyles({
   },
   mediumWithIconBefore: {
     paddingRight: paddingHorizontalNoIcon,
-    paddingLeft: semanticTokens.paddingCtrlHorizontalDefault,
+    paddingLeft: semanticTokens.groupButtonBasePaddingHorizontal,
   },
   mediumWithIconAfter: {
-    paddingRight: semanticTokens.paddingCtrlHorizontalDefault,
+    paddingRight: semanticTokens.groupButtonBasePaddingHorizontal,
     paddingLeft: paddingHorizontalNoIcon,
   },
   large: {
-    minWidth: minButtonLgWidth,
-    padding: `${buttonSpacingLarge} ${paddingLgHorizontalNoIcon}`,
-    borderRadius: semanticTokens.cornerCtrlLgRest,
+    minWidth: semanticTokens.groupButtonLargeMinwidth,
+    padding: `${semanticTokens.groupButtonLargePaddingVertical} ${paddingLgHorizontalNoIcon}`,
+    borderRadius: semanticTokens.groupButtonLargeBorderradius,
 
-    fontSize: semanticTokens.textRampLgItemBodyFontSize,
-    fontWeight: semanticTokens.textCtrlButtonWeightDefault,
-    lineHeight: semanticTokens.textRampLgItemBodyLineHeight,
+    fontSize: semanticTokens.groupButtonLargeFontsize, //fontSizeBase400
+    fontWeight: semanticTokens.groupButtonLargeFontweight, //fontWeightSemibold
+    lineHeight: semanticTokens.groupButtonLargeLineheight, //lineheightBase400
   },
   largeWithIcon: {
     paddingBottom: buttonSpacingLargeWithIcon,
@@ -344,10 +338,10 @@ const useRootStyles = makeStyles({
   },
   largeWithIconBefore: {
     paddingRight: paddingLgHorizontalNoIcon,
-    paddingLeft: semanticTokens.paddingCtrlLgHorizontalDefault,
+    paddingLeft: semanticTokens.groupButtonLargePaddingHorizontal,
   },
   largeWithIconAfter: {
-    paddingRight: semanticTokens.paddingCtrlLgHorizontalDefault,
+    paddingRight: semanticTokens.groupButtonLargePaddingHorizontal,
     paddingLeft: paddingLgHorizontalNoIcon,
   },
 });

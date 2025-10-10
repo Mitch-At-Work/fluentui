@@ -283,7 +283,7 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: tokens.lineHeightBase300,
     },
     groupButtonBasePaddingHorizontal: {
-      fluent: '12px',
+      fluent: tokens.spacingHorizontalM,
     },
     groupButtonBasePaddingVertical: {
       fluent: '5px',
@@ -310,22 +310,22 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: 'var(--smtc-group-button-base-strokewidth-selected)',
     },
     groupButtonLargeFontsize: {
-      fluent: 'var(--smtc-group-button-large-fontsize)',
+      fluent: tokens.fontSizeBase400,
     },
     groupButtonLargeLineheight: {
-      fluent: 'var(--smtc-group-button-large-lineheight)',
+      fluent: tokens.lineHeightBase400,
     },
     groupButtonLargePaddingHorizontal: {
-      fluent: 'var(--smtc-group-button-large-padding-horizontal)',
+      fluent: tokens.spacingHorizontalL,
     },
     groupButtonLargePaddingVertical: {
-      fluent: 'var(--smtc-group-button-large-padding-vertical)',
+      fluent: tokens.spacingVerticalS,
     },
     groupButtonLargeGap: {
       fluent: 'var(--smtc-group-button-large-gap)',
     },
     groupButtonLargeBorderradius: {
-      fluent: 'var(--smtc-group-button-large-borderradius)',
+      fluent: tokens.borderRadiusMedium,
     },
     groupButtonLargeMinwidth: {
       fluent: '96px',
@@ -334,7 +334,7 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: 'var(--smtc-group-button-large-strokewidth)',
     },
     groupButtonLargeFontweight: {
-      fluent: 'var(--smtc-group-button-large-fontweight)',
+      fluent: tokens.fontWeightSemibold,
     },
     groupButtonLargeFontweightSelected: {
       fluent: 'var(--smtc-group-button-large-fontweight-selected)',
