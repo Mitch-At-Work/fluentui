@@ -21,7 +21,7 @@ export const groups: Groups = {
     variants: ['default', 'primary', 'outline', 'subtle', 'transparent'],
     variantProperties: ['shadow'],
     variantStateProperties: ['background', 'stroke'],
-    scales: ['small', 'base', 'large'],
+    scales: ['small', 'medium', 'large'],
     scaleProperties: [
       'fontsize',
       'lineheight',
@@ -40,7 +40,7 @@ export const groups: Groups = {
     parts: {
       icon: {
         states: ['rest', 'hover', 'pressed', 'disabled'],
-        scales: ['small', 'base', 'large'],
+        scales: ['small', 'medium', 'large'],
         scaleProperties: ['size'],
         variants: ['default', 'primary', 'outline', 'subtle', 'transparent'],
         variantStateProperties: ['foreground'],
@@ -50,7 +50,7 @@ export const groups: Groups = {
         variantProperties: ['color'],
       },
       text: {
-        scales: ['small', 'base', 'large'],
+        scales: ['small', 'medium', 'large'],
         states: ['rest', 'hover', 'pressed', 'rest.selected', 'hover.selected', 'pressed.selected', 'disabled'],
         variants: ['default', 'primary', 'outline', 'subtle', 'transparent'],
         variantStateProperties: ['foreground'],

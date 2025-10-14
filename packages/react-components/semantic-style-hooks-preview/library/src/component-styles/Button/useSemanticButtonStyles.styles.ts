@@ -11,9 +11,9 @@ const iconSpacingVar = '--fui-Button__icon--spacing';
 const buttonSpacingSmallWithIcon = `max(1px, calc(${semanticTokens.groupButtonSmallPaddingVertical} - 2px))`;
 const buttonSpacingLargeWithIcon = `max(0px, calc(${semanticTokens.groupButtonLargePaddingVertical} - 1px))`;
 
-const paddingSmHorizontalNoIcon = `calc(${semanticTokens.groupButtonSmallPaddingHorizontal} + ${semanticTokens.groupButtonBaseTextPaddingHorizontal})`;
-const paddingHorizontalNoIcon = `calc(${semanticTokens.groupButtonBasePaddingHorizontal} + ${semanticTokens.groupButtonBaseTextPaddingHorizontal})`;
-const paddingLgHorizontalNoIcon = `calc(${semanticTokens.groupButtonLargePaddingHorizontal} + ${semanticTokens.groupButtonBaseTextPaddingHorizontal})`;
+const paddingSmHorizontalNoIcon = `calc(${semanticTokens.groupButtonSmallPaddingHorizontal} + ${semanticTokens.groupButtonMediumTextPaddingHorizontal})`;
+const paddingHorizontalNoIcon = `calc(${semanticTokens.groupButtonMediumPaddingHorizontal} + ${semanticTokens.groupButtonMediumTextPaddingHorizontal})`;
+const paddingLgHorizontalNoIcon = `calc(${semanticTokens.groupButtonLargePaddingHorizontal} + ${semanticTokens.groupButtonMediumTextPaddingHorizontal})`;
 
 /* Firefox has box shadow sizing issue at some zoom levels
  * this will ensure the inset boxShadow is always uniform
@@ -34,7 +34,7 @@ const useRootBaseClassName = makeResetStyles({
 
   backgroundColor: semanticTokens.groupButtonDefaultBackgroundRest,
   color: semanticTokens.groupButtonDefaultTextForegroundRest,
-  border: `${semanticTokens.groupButtonBaseStrokewidth} solid ${semanticTokens.groupButtonDefaultStrokeRest}`,
+  border: `${semanticTokens.groupButtonMediumStrokewidth} solid ${semanticTokens.groupButtonDefaultStrokeRest}`,
 
   fontFamily: semanticTokens.groupButtonFontfamily,
   outlineStyle: 'none',
@@ -53,13 +53,13 @@ const useRootBaseClassName = makeResetStyles({
     outlineStyle: 'none',
   },
 
-  padding: `${semanticTokens.groupButtonBasePaddingVertical} ${paddingHorizontalNoIcon} ${semanticTokens.groupButtonBasePaddingVertical} ${paddingHorizontalNoIcon}`,
-  minWidth: semanticTokens.groupButtonBaseMinwidth,
-  borderRadius: semanticTokens.groupButtonBaseBorderradius,
+  padding: `${semanticTokens.groupButtonMediumPaddingVertical} ${paddingHorizontalNoIcon} ${semanticTokens.groupButtonMediumPaddingVertical} ${paddingHorizontalNoIcon}`,
+  minWidth: semanticTokens.groupButtonMediumMinwidth,
+  borderRadius: semanticTokens.groupButtonMediumBorderradius,
 
-  fontSize: semanticTokens.groupButtonBaseFontsize,
-  fontWeight: semanticTokens.groupButtonBaseFontweight,
-  lineHeight: semanticTokens.groupButtonBaseLineheight,
+  fontSize: semanticTokens.groupButtonMediumFontsize,
+  fontWeight: semanticTokens.groupButtonMediumFontweight,
+  lineHeight: semanticTokens.groupButtonMediumLineheight,
 
   // Transition styles
   // TODO: Motion semantic tokens are still in definition phase, refactor these later
@@ -96,7 +96,7 @@ const useRootBaseClassName = makeResetStyles({
   // Focus styles
   ...createCustomFocusIndicatorStyle({
     borderColor: semanticTokens.focusStrokeInner,
-    borderRadius: semanticTokens.groupButtonBaseBorderradius,
+    borderRadius: semanticTokens.groupButtonMediumBorderradius,
     borderWidth: '1px',
     outline: `${semanticTokens.focusStrokewidthOuter} solid ${semanticTokens.focusStrokeOuter}`,
     boxShadow: `0 0 0 ${semanticTokens.focusStrokewidthInner} ${semanticTokens.focusStrokeInner}
@@ -120,28 +120,28 @@ const useIconBaseClassName = makeResetStyles({
   display: 'inline-flex',
   justifyContent: 'center',
 
-  fontSize: semanticTokens.groupButtonBaseIconSize,
-  height: semanticTokens.groupButtonBaseIconSize,
-  width: semanticTokens.groupButtonBaseIconSize,
+  fontSize: semanticTokens.groupButtonMediumIconSize,
+  height: semanticTokens.groupButtonMediumIconSize,
+  width: semanticTokens.groupButtonMediumIconSize,
 
-  [iconSpacingVar]: `calc(${semanticTokens.groupButtonBaseGap} + ${semanticTokens.groupButtonBaseTextPaddingHorizontal})`,
+  [iconSpacingVar]: `calc(${semanticTokens.groupButtonMediumGap} + ${semanticTokens.groupButtonMediumTextPaddingHorizontal})`,
 });
 
 const useRootStyles = makeStyles({
   // Appearance variations
   outline: {
     backgroundColor: semanticTokens.groupButtonOutlineBackgroundRest,
-    border: `${semanticTokens.groupButtonBaseStrokewidth} solid ${semanticTokens.groupButtonOutlineStrokeRest}`,
+    border: `${semanticTokens.groupButtonMediumStrokewidth} solid ${semanticTokens.groupButtonOutlineStrokeRest}`,
     color: semanticTokens.groupButtonOutlineTextForegroundRest,
     ':hover': {
       backgroundColor: semanticTokens.groupButtonOutlineBackgroundHover,
-      border: `${semanticTokens.groupButtonBaseStrokewidth} solid ${semanticTokens.groupButtonOutlineStrokeHover}`,
+      border: `${semanticTokens.groupButtonMediumStrokewidth} solid ${semanticTokens.groupButtonOutlineStrokeHover}`,
       color: semanticTokens.groupButtonOutlineTextForegroundHover,
     },
 
     ':hover:active': {
       backgroundColor: semanticTokens.groupButtonOutlineBackgroundPressed,
-      border: `${semanticTokens.groupButtonBaseStrokewidth} solid ${semanticTokens.groupButtonOutlineStrokePressed}`,
+      border: `${semanticTokens.groupButtonMediumStrokewidth} solid ${semanticTokens.groupButtonOutlineStrokePressed}`,
       color: semanticTokens.groupButtonOutlineTextForegroundPressed,
     },
   },
@@ -316,10 +316,10 @@ const useRootStyles = makeStyles({
   },
   mediumWithIconBefore: {
     paddingRight: paddingHorizontalNoIcon,
-    paddingLeft: semanticTokens.groupButtonBasePaddingHorizontal,
+    paddingLeft: semanticTokens.groupButtonMediumPaddingHorizontal,
   },
   mediumWithIconAfter: {
-    paddingRight: semanticTokens.groupButtonBasePaddingHorizontal,
+    paddingRight: semanticTokens.groupButtonMediumPaddingHorizontal,
     paddingLeft: paddingHorizontalNoIcon,
   },
   large: {
@@ -327,9 +327,9 @@ const useRootStyles = makeStyles({
     padding: `${semanticTokens.groupButtonLargePaddingVertical} ${paddingLgHorizontalNoIcon}`,
     borderRadius: semanticTokens.groupButtonLargeBorderradius,
 
-    fontSize: semanticTokens.groupButtonLargeFontsize, //fontSizeBase400
-    fontWeight: semanticTokens.groupButtonLargeFontweight, //fontWeightSemibold
-    lineHeight: semanticTokens.groupButtonLargeLineheight, //lineheightBase400
+    fontSize: semanticTokens.groupButtonLargeFontsize,
+    fontWeight: semanticTokens.groupButtonLargeFontweight,
+    lineHeight: semanticTokens.groupButtonLargeLineheight,
   },
   largeWithIcon: {
     paddingBottom: buttonSpacingLargeWithIcon,
@@ -545,7 +545,7 @@ const useRootIconOnlyStyles = makeStyles({
     maxWidth: '24px',
   },
   medium: {
-    padding: `${semanticTokens.groupButtonBasePaddingVertical}`,
+    padding: `${semanticTokens.groupButtonMediumPaddingVertical}`,
     minWidth: '32px',
     maxWidth: '32px',
   },

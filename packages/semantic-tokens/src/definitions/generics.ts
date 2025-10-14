@@ -7,7 +7,7 @@ export const coreProperties = ['fontfamily'];
 export const variantStateProperties = ['background', 'foreground'];
 
 // Scales affect different properties than variants
-// These properties will be appended to the scale, i.e. small, base, large
+// These properties will be appended to the scale, i.e. small, medium, large
 export const scaleProperties = ['fontsize', 'lineheight', 'padding', 'gap', 'corner', 'size', 'strokewidth'];
 
 // Properties are generic tokens
