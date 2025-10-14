@@ -32,24 +32,24 @@ const useRootBaseClassName = makeResetStyles({
   margin: 0,
   overflow: 'hidden',
 
-  backgroundColor: semanticTokens.groupButtonDefaultBackgroundRest,
-  color: semanticTokens.groupButtonDefaultTextForegroundRest,
-  border: `${semanticTokens.groupButtonMediumStrokewidth} solid ${semanticTokens.groupButtonDefaultStrokeRest}`,
+  backgroundColor: semanticTokens.groupButtonNeutralBackgroundRest,
+  color: semanticTokens.groupButtonNeutralTextForegroundRest,
+  border: `${semanticTokens.groupButtonMediumStrokewidth} solid ${semanticTokens.groupButtonNeutralStrokeRest}`,
 
   fontFamily: semanticTokens.groupButtonFontfamily,
   outlineStyle: 'none',
 
   ':hover': {
-    backgroundColor: semanticTokens.groupButtonDefaultBackgroundHover,
-    borderColor: semanticTokens.groupButtonDefaultStrokeHover,
-    color: semanticTokens.groupButtonDefaultTextForegroundHover,
+    backgroundColor: semanticTokens.groupButtonNeutralBackgroundHover,
+    borderColor: semanticTokens.groupButtonNeutralStrokeHover,
+    color: semanticTokens.groupButtonNeutralTextForegroundHover,
     cursor: 'pointer',
   },
 
   ':hover:active': {
-    backgroundColor: semanticTokens.groupButtonDefaultBackgroundPressed,
-    borderColor: semanticTokens.groupButtonDefaultStrokePressed,
-    color: semanticTokens.groupButtonDefaultTextForegroundPressed,
+    backgroundColor: semanticTokens.groupButtonNeutralBackgroundPressed,
+    borderColor: semanticTokens.groupButtonNeutralStrokePressed,
+    color: semanticTokens.groupButtonNeutralTextForegroundPressed,
     outlineStyle: 'none',
   },
 
@@ -348,18 +348,18 @@ const useRootStyles = makeStyles({
 const useRootDisabledStyles = makeStyles({
   // Base styles
   base: {
-    backgroundColor: semanticTokens.groupButtonDefaultBackgroundDisabled,
-    ...shorthands.borderColor(semanticTokens.groupButtonDefaultStrokeDisabled),
-    color: semanticTokens.groupButtonDefaultTextForegroundDisabled,
+    backgroundColor: semanticTokens.groupButtonNeutralBackgroundDisabled,
+    ...shorthands.borderColor(semanticTokens.groupButtonNeutralStrokeDisabled),
+    color: semanticTokens.groupButtonNeutralTextForegroundDisabled,
     cursor: 'not-allowed',
     [`& .${buttonClassNames.icon}`]: {
-      color: semanticTokens.groupButtonDefaultIconForegroundDisabled,
+      color: semanticTokens.groupButtonNeutralIconForegroundDisabled,
     },
 
     ':hover': {
-      backgroundColor: semanticTokens.groupButtonDefaultBackgroundDisabled,
-      ...shorthands.borderColor(semanticTokens.groupButtonDefaultStrokeDisabled),
-      color: semanticTokens.groupButtonDefaultTextForegroundDisabled,
+      backgroundColor: semanticTokens.groupButtonNeutralBackgroundDisabled,
+      ...shorthands.borderColor(semanticTokens.groupButtonNeutralStrokeDisabled),
+      color: semanticTokens.groupButtonNeutralTextForegroundDisabled,
 
       cursor: 'not-allowed',
 
@@ -370,14 +370,14 @@ const useRootDisabledStyles = makeStyles({
         display: 'inline',
       },
       [`& .${buttonClassNames.icon}`]: {
-        color: semanticTokens.groupButtonDefaultIconForegroundDisabled,
+        color: semanticTokens.groupButtonNeutralIconForegroundDisabled,
       },
     },
 
     ':hover:active': {
-      backgroundColor: semanticTokens.groupButtonDefaultBackgroundDisabled,
-      ...shorthands.borderColor(semanticTokens.groupButtonDefaultStrokeDisabled),
-      color: semanticTokens.groupButtonDefaultTextForegroundDisabled,
+      backgroundColor: semanticTokens.groupButtonNeutralBackgroundDisabled,
+      ...shorthands.borderColor(semanticTokens.groupButtonNeutralStrokeDisabled),
+      color: semanticTokens.groupButtonNeutralTextForegroundDisabled,
 
       cursor: 'not-allowed',
 
@@ -388,7 +388,7 @@ const useRootDisabledStyles = makeStyles({
         display: 'inline',
       },
       [`& .${buttonClassNames.icon}`]: {
-        color: semanticTokens.groupButtonDefaultIconForegroundDisabled,
+        color: semanticTokens.groupButtonNeutralIconForegroundDisabled,
       },
     },
   },
@@ -456,7 +456,7 @@ const useRootDisabledStyles = makeStyles({
     },
   },
   secondary: {
-    color: semanticTokens.groupButtonDefaultTextForegroundDisabled,
+    color: semanticTokens.groupButtonNeutralTextForegroundDisabled,
   },
   subtle: {
     backgroundColor: semanticTokens.groupButtonSubtleBackgroundDisabled,

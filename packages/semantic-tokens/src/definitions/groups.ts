@@ -18,7 +18,7 @@ export interface Groups {
 export const groups: Groups = {
   button: {
     coreProperties: ['fontfamily'],
-    variants: ['default', 'primary', 'outline', 'subtle', 'transparent'],
+    variants: ['neutral', 'primary', 'outline', 'subtle', 'transparent'],
     variantProperties: ['shadow'],
     variantStateProperties: ['background', 'stroke'],
     scales: ['small', 'medium', 'large'],
@@ -42,23 +42,23 @@ export const groups: Groups = {
         states: ['rest', 'hover', 'pressed', 'disabled'],
         scales: ['small', 'medium', 'large'],
         scaleProperties: ['size'],
-        variants: ['default', 'primary', 'outline', 'subtle', 'transparent'],
+        variants: ['neutral', 'primary', 'outline', 'subtle', 'transparent'],
         variantStateProperties: ['foreground'],
       },
       divider: {
-        variants: ['default', 'primary', 'outline', 'subtle', 'transparent'],
+        variants: ['neutral', 'primary', 'outline', 'subtle', 'transparent'],
         variantProperties: ['color'],
       },
       text: {
         scales: ['small', 'medium', 'large'],
         states: ['rest', 'hover', 'pressed', 'rest.selected', 'hover.selected', 'pressed.selected', 'disabled'],
-        variants: ['default', 'primary', 'outline', 'subtle', 'transparent'],
+        variants: ['neutral', 'primary', 'outline', 'subtle', 'transparent'],
         variantStateProperties: ['foreground'],
         scaleProperties: ['padding.horizontal'],
       },
       'text.secondary': {
         states: ['rest', 'hover', 'pressed', 'rest.selected', 'hover.selected', 'pressed.selected', 'disabled'],
-        variants: ['default', 'primary', 'outline', 'subtle', 'transparent'],
+        variants: ['neutral', 'primary', 'outline', 'subtle', 'transparent'],
         variantStateProperties: ['foreground'],
       },
     },
