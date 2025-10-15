@@ -171,17 +171,26 @@ const useRootStyles = makeStyles({
     backgroundColor: semanticTokens.groupButtonPrimaryBackgroundRest,
     ...shorthands.borderColor(semanticTokens.groupButtonPrimaryStrokeRest),
     color: semanticTokens.groupButtonPrimaryTextForegroundRest,
+    [`& .${buttonClassNames.icon}`]: {
+      color: semanticTokens.groupButtonPrimaryIconForegroundPressed,
+    },
 
     ':hover': {
       backgroundColor: semanticTokens.groupButtonPrimaryBackgroundHover,
       ...shorthands.borderColor(semanticTokens.groupButtonPrimaryStrokeHover),
       color: semanticTokens.groupButtonPrimaryTextForegroundHover,
+      [`& .${buttonClassNames.icon}`]: {
+        color: semanticTokens.groupButtonPrimaryIconForegroundHover,
+      },
     },
 
     ':hover:active': {
       backgroundColor: semanticTokens.groupButtonPrimaryBackgroundPressed,
       ...shorthands.borderColor(semanticTokens.groupButtonPrimaryStrokePressed),
       color: semanticTokens.groupButtonPrimaryTextForegroundPressed,
+      [`& .${buttonClassNames.icon}`]: {
+        color: semanticTokens.groupButtonPrimaryIconForegroundPressed,
+      },
     },
 
     '@media (forced-colors: active)': {
