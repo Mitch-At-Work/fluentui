@@ -40,7 +40,7 @@ const useRootBaseClassName = makeResetStyles({
   outlineStyle: 'none',
 
   [`& .${buttonClassNames.icon}`]: {
-    color: semanticTokens.groupButtonPrimaryIconForegroundRest,
+    color: semanticTokens.groupButtonNeutralIconForegroundRest,
   },
 
   ':hover': {
@@ -49,7 +49,7 @@ const useRootBaseClassName = makeResetStyles({
     color: semanticTokens.groupButtonNeutralTextForegroundHover,
     cursor: 'pointer',
     [`& .${buttonClassNames.icon}`]: {
-      color: semanticTokens.groupButtonPrimaryIconForegroundHover,
+      color: semanticTokens.groupButtonNeutralIconForegroundHover,
     },
   },
 
@@ -59,7 +59,7 @@ const useRootBaseClassName = makeResetStyles({
     color: semanticTokens.groupButtonNeutralTextForegroundPressed,
     outlineStyle: 'none',
     [`& .${buttonClassNames.icon}`]: {
-      color: semanticTokens.groupButtonPrimaryIconForegroundPressed,
+      color: semanticTokens.groupButtonNeutralIconForegroundPressed,
     },
   },
 
@@ -267,6 +267,10 @@ const useRootStyles = makeStyles({
     ...shorthands.borderColor(semanticTokens.groupButtonTransparentStrokeRest),
     color: semanticTokens.groupButtonTransparentTextForegroundRest,
 
+    [`& .${buttonClassNames.icon}`]: {
+      color: semanticTokens.groupButtonTransparentIconForegroundRest,
+    },
+
     ':hover': {
       backgroundColor: semanticTokens.groupButtonTransparentBackgroundHover,
       ...shorthands.borderColor(semanticTokens.groupButtonTransparentStrokeHover),
@@ -276,6 +280,9 @@ const useRootStyles = makeStyles({
       },
       [`& .${iconRegularClassName}`]: {
         display: 'none',
+      },
+      [`& .${buttonClassNames.icon}`]: {
+        color: semanticTokens.groupButtonTransparentIconForegroundHover,
       },
     },
 
@@ -288,6 +295,10 @@ const useRootStyles = makeStyles({
       },
       [`& .${iconRegularClassName}`]: {
         display: 'none',
+      },
+
+      [`& .${buttonClassNames.icon}`]: {
+        color: semanticTokens.groupButtonTransparentIconForegroundPressed,
       },
     },
 
