@@ -65,7 +65,7 @@ const useRootBaseClassName = makeResetStyles({
 
   padding: `${semanticTokens.groupButtonMediumPaddingVertical} ${paddingHorizontalNoIcon} ${semanticTokens.groupButtonMediumPaddingVertical} ${paddingHorizontalNoIcon}`,
   minWidth: semanticTokens.groupButtonMediumMinwidth,
-  borderRadius: semanticTokens.groupButtonMediumBorderradius,
+  borderRadius: semanticTokens.groupButtonMediumCorner,
 
   fontSize: semanticTokens.groupButtonMediumTextFontsize,
   fontWeight: semanticTokens.groupButtonMediumTextFontweight,
@@ -106,7 +106,7 @@ const useRootBaseClassName = makeResetStyles({
   // Focus styles
   ...createCustomFocusIndicatorStyle({
     borderColor: semanticTokens.focusStrokeInner,
-    borderRadius: semanticTokens.groupButtonMediumBorderradius,
+    borderRadius: semanticTokens.groupButtonMediumCorner,
     borderWidth: '1px',
     outline: `${semanticTokens.focusStrokewidthOuter} solid ${semanticTokens.focusStrokeOuter}`,
     boxShadow: `0 0 0 ${semanticTokens.focusStrokewidthInner} ${semanticTokens.focusStrokeInner}
@@ -324,17 +324,17 @@ const useRootStyles = makeStyles({
   },
 
   // Shape variations
-  circular: { borderRadius: semanticTokens.borderRadiusCircular },
+  circular: { borderRadius: semanticTokens.cornerCircular },
   rounded: {
     /* The borderRadius rounded styles are handled in the size variations */
   },
-  square: { borderRadius: semanticTokens.borderRadiusSquare },
+  square: { borderRadius: semanticTokens.cornerSquare },
 
   // Size variations
   small: {
     minWidth: semanticTokens.groupButtonSmallMinwidth,
     padding: `${semanticTokens.groupButtonSmallPaddingVertical} ${paddingSmHorizontalNoIcon}`, //3px
-    borderRadius: semanticTokens.groupButtonSmallBorderradius,
+    borderRadius: semanticTokens.groupButtonSmallCorner,
     ...shorthands.borderWidth(semanticTokens.groupButtonStrokewidth),
 
     fontSize: semanticTokens.groupButtonSmallTextFontsize,
@@ -367,7 +367,7 @@ const useRootStyles = makeStyles({
   large: {
     minWidth: semanticTokens.groupButtonLargeMinwidth,
     padding: `${semanticTokens.groupButtonLargePaddingVertical} ${paddingLgHorizontalNoIcon}`,
-    borderRadius: semanticTokens.groupButtonLargeBorderradius,
+    borderRadius: semanticTokens.groupButtonLargeCorner,
 
     fontSize: semanticTokens.groupButtonLargeTextFontsize,
     fontWeight: semanticTokens.groupButtonLargeTextFontweight,
@@ -557,11 +557,11 @@ const useRootDisabledStyles = makeStyles({
 
 const useRootFocusStyles = makeStyles({
   // Shape variations
-  circular: createCustomFocusIndicatorStyle({ borderRadius: semanticTokens.borderRadiusCircular }),
+  circular: createCustomFocusIndicatorStyle({ borderRadius: semanticTokens.cornerCircular }),
   rounded: {
     /* The rounded styles are exactly the same as the base styles. */
   },
-  square: createCustomFocusIndicatorStyle({ borderRadius: semanticTokens.borderRadiusSquare }),
+  square: createCustomFocusIndicatorStyle({ borderRadius: semanticTokens.cornerSquare }),
   // Primary styles
   primary: {
     ...createCustomFocusIndicatorStyle({
@@ -586,13 +586,13 @@ const useRootFocusStyles = makeStyles({
   },
   // Size variations
   small: createCustomFocusIndicatorStyle({
-    borderRadius: `calc(${semanticTokens.groupButtonSmallBorderradius} - ${semanticTokens.focusStrokewidthOuter})`,
+    borderRadius: `calc(${semanticTokens.groupButtonSmallCorner} - ${semanticTokens.focusStrokewidthOuter})`,
   }),
   medium: {
     /* defined in base styles */
   },
   large: createCustomFocusIndicatorStyle({
-    borderRadius: `calc(${semanticTokens.groupButtonLargeBorderradius} + ${semanticTokens.focusStrokewidthOuter})`,
+    borderRadius: `calc(${semanticTokens.groupButtonLargeCorner} + ${semanticTokens.focusStrokewidthOuter})`,
   }),
 });
 

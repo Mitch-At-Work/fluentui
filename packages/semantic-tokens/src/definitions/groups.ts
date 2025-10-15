@@ -19,10 +19,10 @@ export const groups: Groups = {
   button: {
     coreProperties: ['strokewidth'],
     variants: ['neutral', 'primary', 'outline', 'subtle', 'transparent'],
-    variantProperties: ['shadow'],
+    variantProperties: [],
     variantStateProperties: ['background', 'stroke'],
     scales: ['small', 'medium', 'large'],
-    scaleProperties: ['padding.horizontal', 'padding.vertical', 'gap', 'borderradius', 'minwidth'],
+    scaleProperties: ['padding.horizontal', 'padding.vertical', 'gap', 'corner', 'minwidth'],
     states: ['rest', 'hover', 'pressed', 'rest.selected', 'hover.selected', 'pressed.selected', 'disabled'],
     components: ['button'],
     parts: {
@@ -35,20 +35,22 @@ export const groups: Groups = {
       },
       divider: {
         variants: ['neutral', 'primary', 'outline', 'subtle', 'transparent'],
-        variantProperties: ['color'],
+        variantProperties: ['foreground'],
       },
       text: {
         coreProperties: ['fontfamily'],
         scales: ['small', 'medium', 'large'],
-        states: ['rest', 'hover', 'pressed', 'rest.selected', 'hover.selected', 'pressed.selected', 'disabled'],
+        states: ['rest', 'hover', 'pressed', 'disabled'],
         variants: ['neutral', 'primary', 'outline', 'subtle', 'transparent'],
         variantStateProperties: ['foreground'],
         scaleProperties: ['padding.horizontal', 'fontsize', 'lineheight', 'fontweight'],
       },
       'text.secondary': {
-        states: ['rest', 'hover', 'pressed', 'rest.selected', 'hover.selected', 'pressed.selected', 'disabled'],
+        scales: ['small', 'medium', 'large'],
+        states: ['rest', 'hover', 'pressed', 'disabled'],
         variants: ['neutral', 'primary', 'outline', 'subtle', 'transparent'],
         variantStateProperties: ['foreground'],
+        scaleProperties: ['fontsize', 'lineheight', 'fontweight'],
       },
     },
   },

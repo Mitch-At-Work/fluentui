@@ -259,7 +259,7 @@ export const groupFallbacks: GroupFallbacks = {
     groupButtonSmallGap: {
       fluent: tokens.spacingHorizontalXS,
     },
-    groupButtonSmallBorderradius: {
+    groupButtonSmallCorner: {
       fluent: tokens.borderRadiusMedium,
     },
     groupButtonSmallMinwidth: {
@@ -286,7 +286,7 @@ export const groupFallbacks: GroupFallbacks = {
     groupButtonMediumGap: {
       fluent: tokens.spacingHorizontalSNudge,
     },
-    groupButtonMediumBorderradius: {
+    groupButtonMediumCorner: {
       fluent: tokens.borderRadiusMedium,
     },
     groupButtonMediumMinwidth: {
@@ -310,7 +310,7 @@ export const groupFallbacks: GroupFallbacks = {
     groupButtonLargeGap: {
       fluent: tokens.spacingHorizontalSNudge,
     },
-    groupButtonLargeBorderradius: {
+    groupButtonLargeCorner: {
       fluent: tokens.borderRadiusMedium,
     },
     groupButtonLargeMinwidth: {

@@ -4,5 +4,5 @@ export const focusStrokeOnbrandHover = 'var(--smtc-focus-stroke-onbrand-hover, v
 export const focusStrokeOnbrandRest = 'var(--smtc-focus-stroke-onbrand-rest, var(--colorNeutralForegroundOnBrand))';
 export const focusStrokewidthOuter = 'var(--smtc-focus-strokewidth-outer, var(--strokeWidthThick))';
 export const focusStrokewidthInner = 'var(--smtc-focus-strokewidth-inner, var(--strokeWidthThin))';
-export const borderRadiusCircular = 'var(--smtc-borderRadius-circular, var(--borderRadiusCircular))';
-export const borderRadiusSquare = 'var(--smtc-borderRadius-square, var(--borderRadiusNone))';
+export const cornerCircular = 'var(--smtc-corner-circular, undefined)';
+export const cornerSquare = 'var(--smtc-corner-square, undefined)';
