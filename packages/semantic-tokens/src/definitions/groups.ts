@@ -22,17 +22,7 @@ export const groups: Groups = {
     variantProperties: ['shadow'],
     variantStateProperties: ['background', 'stroke'],
     scales: ['small', 'medium', 'large'],
-    scaleProperties: [
-      'fontsize',
-      'lineheight',
-      'padding.horizontal',
-      'padding.vertical',
-      'gap',
-      'borderradius',
-      'minwidth',
-      'fontweight',
-      'fontweight.selected',
-    ],
+    scaleProperties: ['padding.horizontal', 'padding.vertical', 'gap', 'borderradius', 'minwidth'],
     states: ['rest', 'hover', 'pressed', 'rest.selected', 'hover.selected', 'pressed.selected', 'disabled'],
     components: ['button'],
     parts: {
@@ -53,7 +43,7 @@ export const groups: Groups = {
         states: ['rest', 'hover', 'pressed', 'rest.selected', 'hover.selected', 'pressed.selected', 'disabled'],
         variants: ['neutral', 'primary', 'outline', 'subtle', 'transparent'],
         variantStateProperties: ['foreground'],
-        scaleProperties: ['padding.horizontal'],
+        scaleProperties: ['padding.horizontal', 'fontsize', 'lineheight', 'fontweight'],
       },
       'text.secondary': {
         states: ['rest', 'hover', 'pressed', 'rest.selected', 'hover.selected', 'pressed.selected', 'disabled'],

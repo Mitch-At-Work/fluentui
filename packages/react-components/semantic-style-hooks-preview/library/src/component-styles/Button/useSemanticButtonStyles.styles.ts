@@ -67,9 +67,9 @@ const useRootBaseClassName = makeResetStyles({
   minWidth: semanticTokens.groupButtonMediumMinwidth,
   borderRadius: semanticTokens.groupButtonMediumBorderradius,
 
-  fontSize: semanticTokens.groupButtonMediumFontsize,
-  fontWeight: semanticTokens.groupButtonMediumFontweight,
-  lineHeight: semanticTokens.groupButtonMediumLineheight,
+  fontSize: semanticTokens.groupButtonMediumTextFontsize,
+  fontWeight: semanticTokens.groupButtonMediumTextFontweight,
+  lineHeight: semanticTokens.groupButtonMediumTextLineheight,
 
   // Transition styles
   // TODO: Motion semantic tokens are still in definition phase, refactor these later
@@ -337,9 +337,9 @@ const useRootStyles = makeStyles({
     borderRadius: semanticTokens.groupButtonSmallBorderradius,
     ...shorthands.borderWidth(semanticTokens.groupButtonStrokewidth),
 
-    fontSize: semanticTokens.groupButtonSmallFontsize,
-    fontWeight: semanticTokens.groupButtonSmallFontweight,
-    lineHeight: semanticTokens.groupButtonSmallLineheight,
+    fontSize: semanticTokens.groupButtonSmallTextFontsize,
+    fontWeight: semanticTokens.groupButtonSmallTextFontweight,
+    lineHeight: semanticTokens.groupButtonSmallTextLineheight,
   },
   smallWithIcon: {
     paddingBottom: buttonSpacingSmallWithIcon,
@@ -369,9 +369,9 @@ const useRootStyles = makeStyles({
     padding: `${semanticTokens.groupButtonLargePaddingVertical} ${paddingLgHorizontalNoIcon}`,
     borderRadius: semanticTokens.groupButtonLargeBorderradius,
 
-    fontSize: semanticTokens.groupButtonLargeFontsize,
-    fontWeight: semanticTokens.groupButtonLargeFontweight,
-    lineHeight: semanticTokens.groupButtonLargeLineheight,
+    fontSize: semanticTokens.groupButtonLargeTextFontsize,
+    fontWeight: semanticTokens.groupButtonLargeTextFontweight,
+    lineHeight: semanticTokens.groupButtonLargeTextLineheight,
   },
   largeWithIcon: {
     paddingBottom: buttonSpacingLargeWithIcon,

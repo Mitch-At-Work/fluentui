@@ -241,10 +241,10 @@ export const groupFallbacks: GroupFallbacks = {
     groupButtonTransparentShadow: {
       fluent: 'var(--smtc-group-button-transparent-shadow)',
     },
-    groupButtonSmallFontsize: {
+    groupButtonSmallTextFontsize: {
       fluent: tokens.fontSizeBase200,
     },
-    groupButtonSmallLineheight: {
+    groupButtonSmallTextLineheight: {
       fluent: tokens.lineHeightBase200,
     },
     groupButtonSmallPaddingHorizontal: {
@@ -268,16 +268,13 @@ export const groupFallbacks: GroupFallbacks = {
     groupButtonStrokewidth: {
       fluent: tokens.strokeWidthThin,
     },
-    groupButtonSmallFontweight: {
+    groupButtonSmallTextFontweight: {
       fluent: tokens.fontWeightRegular,
     },
-    groupButtonSmallFontweightSelected: {
-      fluent: 'var(--smtc-group-button-small-fontweight-selected)',
-    },
-    groupButtonMediumFontsize: {
+    groupButtonMediumTextFontsize: {
       fluent: tokens.fontSizeBase300,
     },
-    groupButtonMediumLineheight: {
+    groupButtonMediumTextLineheight: {
       fluent: tokens.lineHeightBase300,
     },
     groupButtonMediumPaddingHorizontal: {
@@ -295,16 +292,13 @@ export const groupFallbacks: GroupFallbacks = {
     groupButtonMediumMinwidth: {
       fluent: '96px',
     },
-    groupButtonMediumFontweight: {
+    groupButtonMediumTextFontweight: {
       fluent: tokens.fontWeightSemibold,
     },
-    groupButtonMediumFontweightSelected: {
-      fluent: 'var(--smtc-group-button-medium-fontweight-selected)',
-    },
-    groupButtonLargeFontsize: {
+    groupButtonLargeTextFontsize: {
       fluent: tokens.fontSizeBase400,
     },
-    groupButtonLargeLineheight: {
+    groupButtonLargeTextLineheight: {
       fluent: tokens.lineHeightBase400,
     },
     groupButtonLargePaddingHorizontal: {
@@ -322,11 +316,8 @@ export const groupFallbacks: GroupFallbacks = {
     groupButtonLargeMinwidth: {
       fluent: '96px',
     },
-    groupButtonLargeFontweight: {
+    groupButtonLargeTextFontweight: {
       fluent: tokens.fontWeightSemibold,
-    },
-    groupButtonLargeFontweightSelected: {
-      fluent: 'var(--smtc-group-button-large-fontweight-selected)',
     },
     groupButtonSmallIconSize: {
       fluent: '20px',
