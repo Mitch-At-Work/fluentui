@@ -12,7 +12,7 @@ export type GroupFallbacks = {
 
 export const groupFallbacks: GroupFallbacks = {
   button: {
-    groupButtonFontfamily: {
+    groupButtonTextFontfamily: {
       fluent: tokens.fontFamilyBase,
     },
     groupButtonNeutralBackgroundRest: {
@@ -265,7 +265,7 @@ export const groupFallbacks: GroupFallbacks = {
     groupButtonSmallMinwidth: {
       fluent: '64px',
     },
-    groupButtonSmallStrokewidth: {
+    groupButtonStrokewidth: {
       fluent: tokens.strokeWidthThin,
     },
     groupButtonSmallFontweight: {
@@ -273,9 +273,6 @@ export const groupFallbacks: GroupFallbacks = {
     },
     groupButtonSmallFontweightSelected: {
       fluent: 'var(--smtc-group-button-small-fontweight-selected)',
-    },
-    groupButtonSmallStrokewidthSelected: {
-      fluent: 'var(--smtc-group-button-small-strokewidth-selected)',
     },
     groupButtonMediumFontsize: {
       fluent: tokens.fontSizeBase300,
@@ -298,17 +295,11 @@ export const groupFallbacks: GroupFallbacks = {
     groupButtonMediumMinwidth: {
       fluent: '96px',
     },
-    groupButtonMediumStrokewidth: {
-      fluent: tokens.strokeWidthThin,
-    },
     groupButtonMediumFontweight: {
       fluent: tokens.fontWeightSemibold,
     },
     groupButtonMediumFontweightSelected: {
       fluent: 'var(--smtc-group-button-medium-fontweight-selected)',
-    },
-    groupButtonMediumStrokewidthSelected: {
-      fluent: 'var(--smtc-group-button-medium-strokewidth-selected)',
     },
     groupButtonLargeFontsize: {
       fluent: tokens.fontSizeBase400,
@@ -331,17 +322,11 @@ export const groupFallbacks: GroupFallbacks = {
     groupButtonLargeMinwidth: {
       fluent: '96px',
     },
-    groupButtonLargeStrokewidth: {
-      fluent: tokens.strokeWidthThin,
-    },
     groupButtonLargeFontweight: {
       fluent: tokens.fontWeightSemibold,
     },
     groupButtonLargeFontweightSelected: {
       fluent: 'var(--smtc-group-button-large-fontweight-selected)',
-    },
-    groupButtonLargeStrokewidthSelected: {
-      fluent: 'var(--smtc-group-button-large-strokewidth-selected)',
     },
     groupButtonSmallIconSize: {
       fluent: '20px',

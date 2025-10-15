@@ -17,7 +17,7 @@ export interface Groups {
 
 export const groups: Groups = {
   button: {
-    coreProperties: ['fontfamily'],
+    coreProperties: ['strokewidth'],
     variants: ['neutral', 'primary', 'outline', 'subtle', 'transparent'],
     variantProperties: ['shadow'],
     variantStateProperties: ['background', 'stroke'],
@@ -30,10 +30,8 @@ export const groups: Groups = {
       'gap',
       'borderradius',
       'minwidth',
-      'strokewidth',
       'fontweight',
       'fontweight.selected',
-      'strokewidth.selected',
     ],
     states: ['rest', 'hover', 'pressed', 'rest.selected', 'hover.selected', 'pressed.selected', 'disabled'],
     components: ['button'],
@@ -50,6 +48,7 @@ export const groups: Groups = {
         variantProperties: ['color'],
       },
       text: {
+        coreProperties: ['fontfamily'],
         scales: ['small', 'medium', 'large'],
         states: ['rest', 'hover', 'pressed', 'rest.selected', 'hover.selected', 'pressed.selected', 'disabled'],
         variants: ['neutral', 'primary', 'outline', 'subtle', 'transparent'],
