@@ -234,7 +234,10 @@ export const groupFallbacks: GroupFallbacks = {
     groupButtonSmallPaddingHorizontal: {
       fluent: tokens.spacingHorizontalS,
     },
-    groupButtonSmallPaddingVertical: {
+    groupButtonSmallPaddingTop: {
+      fluent: '3px',
+    },
+    groupButtonSmallPaddingBottom: {
       fluent: '3px',
     },
     groupButtonMediumTextPaddingHorizontal: { fluent: '0px' },
@@ -264,7 +267,10 @@ export const groupFallbacks: GroupFallbacks = {
     groupButtonMediumPaddingHorizontal: {
       fluent: tokens.spacingHorizontalM,
     },
-    groupButtonMediumPaddingVertical: {
+    groupButtonMediumPaddingTop: {
+      fluent: '5px',
+    },
+    groupButtonMediumPaddingBottom: {
       fluent: '5px',
     },
     groupButtonMediumGap: {
@@ -288,7 +294,10 @@ export const groupFallbacks: GroupFallbacks = {
     groupButtonLargePaddingHorizontal: {
       fluent: tokens.spacingHorizontalL,
     },
-    groupButtonLargePaddingVertical: {
+    groupButtonLargePaddingTop: {
+      fluent: tokens.spacingVerticalS,
+    },
+    groupButtonLargePaddingBottom: {
       fluent: tokens.spacingVerticalS,
     },
     groupButtonLargeGap: {
@@ -520,22 +529,22 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: null,
     },
     groupButtonTransparentTextSecondaryForegroundHover: {
-      fluent: 'var(--smtc-group-button-transparent-text-secondary-foreground-hover)',
+      fluent: null,
     },
     groupButtonTransparentTextSecondaryForegroundPressed: {
-      fluent: 'var(--smtc-group-button-transparent-text-secondary-foreground-pressed)',
+      fluent: null,
     },
     groupButtonTransparentTextSecondaryForegroundRestSelected: {
-      fluent: 'var(--smtc-group-button-transparent-text-secondary-foreground-rest-selected)',
+      fluent: null,
     },
     groupButtonTransparentTextSecondaryForegroundHoverSelected: {
-      fluent: 'var(--smtc-group-button-transparent-text-secondary-foreground-hover-selected)',
+      fluent: null,
     },
     groupButtonTransparentTextSecondaryForegroundPressedSelected: {
-      fluent: 'var(--smtc-group-button-transparent-text-secondary-foreground-pressed-selected)',
+      fluent: null,
     },
     groupButtonTransparentTextSecondaryForegroundDisabled: {
-      fluent: 'var(--smtc-group-button-transparent-text-secondary-foreground-disabled)',
+      fluent: null,
     },
     groupButtonNeutralIconForegroundRest: {
       fluent: tokens.colorNeutralForeground1,

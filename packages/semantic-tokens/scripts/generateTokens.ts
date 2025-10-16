@@ -6,7 +6,6 @@ const joiner = '.';
 
 // hardcoded for now
 export const appState = {
-  propertyFirst: false,
   groupCollectionName: 'group',
   showPrimitives: true,
 };
@@ -89,13 +88,8 @@ export function generateComponentGroupTokens(groupName: string, group: GroupPart
     let tokenParts = [];
     let type = propertyTypes[property as keyof typeof propertyTypes] || 'dimension';
 
-    if (appState.propertyFirst) {
-      // Property first
-      tokenParts = [property, appState.groupCollectionName, groupName, partName];
-    } else {
-      // Group-first
-      tokenParts = [appState.groupCollectionName, groupName, partName, property];
-    }
+    // Group-first
+    tokenParts = [appState.groupCollectionName, groupName, partName, property];
 
     const groupToken = {
       name: tokenParts.filter(Boolean).join(joiner),
@@ -119,13 +113,8 @@ export function generateComponentGroupTokens(groupName: string, group: GroupPart
         let tokenParts = [];
         let type = propertyTypes[property as keyof typeof propertyTypes] || 'dimension';
 
-        if (appState.propertyFirst) {
-          // Property first
-          tokenParts = [property, appState.groupCollectionName, variant, groupName, partName, state];
-        } else {
-          // Group-first
-          tokenParts = [appState.groupCollectionName, groupName, variant, partName, property, state];
-        }
+        // Group-first
+        tokenParts = [appState.groupCollectionName, groupName, variant, partName, property, state];
 
         const groupToken = {
           name: tokenParts.filter(Boolean).join(joiner),
@@ -149,13 +138,8 @@ export function generateComponentGroupTokens(groupName: string, group: GroupPart
       let tokenParts = [];
       let type = propertyTypes[property as keyof typeof propertyTypes] || 'dimension';
 
-      if (appState.propertyFirst) {
-        // Property first
-        tokenParts = [property, appState.groupCollectionName, variant, partName, groupName];
-      } else {
-        // Group-first
-        tokenParts = [appState.groupCollectionName, groupName, variant, partName, property];
-      }
+      // Group-first
+      tokenParts = [appState.groupCollectionName, groupName, variant, partName, property];
 
       const groupToken = {
         name: tokenParts.filter(Boolean).join(joiner),
@@ -178,13 +162,8 @@ export function generateComponentGroupTokens(groupName: string, group: GroupPart
       let tokenParts = [];
       let type = propertyTypes[property as keyof typeof propertyTypes] || 'dimension';
 
-      if (appState.propertyFirst) {
-        // Property first
-        tokenParts = [property, appState.groupCollectionName, groupName, scale, partName];
-      } else {
-        // Group-first
-        tokenParts = [appState.groupCollectionName, groupName, scale, partName, property];
-      }
+      // Group-first
+      tokenParts = [appState.groupCollectionName, groupName, scale, partName, property];
 
       const groupScaleToken = {
         name: tokenParts.filter(Boolean).join(joiner),
@@ -196,6 +175,32 @@ export function generateComponentGroupTokens(groupName: string, group: GroupPart
 
       if (!result.find(r => r.name === groupScaleToken.name)) {
         result.push(groupScaleToken);
+      }
+    }
+  }
+
+  // For each group, generate property tokens for each state and scale
+  const groupScaleStateProperties = group.scaleStateProperties || [];
+  for (const property of groupScaleStateProperties) {
+    const groupScales = group.scales || [];
+    for (let scale of groupScales) {
+      const groupStates = group.states || ['rest'];
+      for (let state of groupStates) {
+        let tokenParts = [];
+        let type = propertyTypes[property as keyof typeof propertyTypes] || 'dimension';
+
+        tokenParts = [appState.groupCollectionName, groupName, scale, partName, property, state];
+
+        const groupToken = {
+          name: tokenParts.filter(Boolean).join(joiner),
+          type,
+          property: property,
+          group: groupName,
+        };
+
+        if (!result.find(r => r.name === groupToken.name)) {
+          result.push(groupToken);
+        }
       }
     }
   }
