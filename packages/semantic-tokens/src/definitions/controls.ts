@@ -7,7 +7,11 @@
 
 import { GroupPart, Groups } from './groups';
 
-const compoundButtonGroup: GroupPart = {};
+const compoundButtonGroup: GroupPart = {
+  coreProperties: ['icon.size'],
+  scales: ['small', 'medium', 'large'],
+  scaleProperties: ['padding.horizontal', 'padding.top', 'padding.bottom', 'gap', 'minwidth', 'minheight'],
+};
 
 export const controls: Groups = {
   compoundButton: compoundButtonGroup,

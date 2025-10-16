@@ -26,18 +26,18 @@ const buttonGroup: GroupPart = {
   scaleProperties: ['padding.horizontal', 'padding.top', 'padding.bottom', 'gap', 'minwidth', 'minheight'],
   // To do: add scale state
   scaleStateProperties: ['corner'],
-  states: ['rest', 'hover', 'pressed', 'rest.selected', 'hover.selected', 'pressed.selected', 'disabled'],
+  states: ['', 'hover', 'pressed', 'selected', 'hover.selected', 'pressed.selected', 'disabled'],
   components: ['button'],
   exceptions: [
     {
       // Outline buttons may modify strokeWidth based on state, as it is their main visual element
       variants: ['outline'],
-      states: ['rest', 'hover', 'pressed', 'selected'],
+      states: ['', 'hover', 'pressed', 'selected'],
       variantStateProperties: ['strokewidth'],
     },
     {
       // Shadow is only available on brand/neutral variant buttons
-      states: ['rest', 'disabled', 'rest.selected', 'disabled.selected'],
+      states: ['', 'disabled', 'selected', 'disabled.selected'],
       variants: ['neutral', 'brand'],
       variantStateProperties: ['shadow'],
     },
@@ -48,7 +48,7 @@ const buttonGroup: GroupPart = {
       scales: ['small', 'medium', 'large'],
     },
     icon: {
-      states: ['rest', 'hover', 'pressed', 'disabled'],
+      states: ['', 'hover', 'pressed', 'disabled'],
       scales: ['small', 'medium', 'large'],
       scaleProperties: ['size'],
       variants: ['neutral', 'primary', 'outline', 'subtle', 'transparent'],
@@ -61,7 +61,7 @@ const buttonGroup: GroupPart = {
     },
     chevron: {
       variants: ['neutral', 'primary', 'outline', 'subtle', 'transparent'],
-      states: ['rest', 'hover', 'pressed', 'selected', 'disabled'],
+      states: ['', 'hover', 'pressed', 'selected', 'disabled'],
       variantStateProperties: ['foreground'],
       scales: ['small', 'medium', 'large'],
       scaleProperties: ['size'],
@@ -69,7 +69,7 @@ const buttonGroup: GroupPart = {
     text: {
       coreProperties: ['fontfamily'],
       scales: ['small', 'medium', 'large'],
-      states: ['rest', 'hover', 'pressed', 'disabled'],
+      states: ['', 'hover', 'pressed', 'disabled'],
       variants: ['neutral', 'primary', 'outline', 'subtle', 'transparent'],
       variantStateProperties: ['foreground'],
       scaleProperties: ['padding.horizontal', 'fontsize', 'lineheight', 'fontweight'],
@@ -83,7 +83,7 @@ const buttonGroup: GroupPart = {
     },
     'text.secondary': {
       scales: ['small', 'medium', 'large'],
-      states: ['rest', 'hover', 'pressed', 'disabled'],
+      states: ['', 'hover', 'pressed', 'disabled'],
       variants: ['neutral', 'primary', 'outline', 'subtle', 'transparent'],
       variantStateProperties: ['foreground'],
       scaleProperties: ['fontsize', 'lineheight', 'fontweight'],
