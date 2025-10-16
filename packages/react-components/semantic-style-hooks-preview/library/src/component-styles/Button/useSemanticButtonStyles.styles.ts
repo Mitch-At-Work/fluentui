@@ -335,7 +335,6 @@ const useRootStyles = makeStyles({
     minWidth: semanticTokens.groupButtonSmallMinwidth,
     padding: `${semanticTokens.groupButtonSmallPaddingVertical} ${paddingSmHorizontalNoIcon}`, //3px
     borderRadius: semanticTokens.groupButtonSmallCorner,
-    ...shorthands.borderWidth(semanticTokens.groupButtonStrokewidth),
 
     fontSize: semanticTokens.groupButtonSmallTextFontsize,
     fontWeight: semanticTokens.groupButtonSmallTextFontweight,
@@ -483,6 +482,7 @@ const useRootDisabledStyles = makeStyles({
     },
     ':hover': {
       backgroundColor: semanticTokens.groupButtonOutlineBackgroundDisabled,
+      ...shorthands.borderWidth(semanticTokens.groupButtonOutlineStrokewidthHover),
       [`& .${buttonClassNames.icon}`]: {
         color: semanticTokens.groupButtonOutlineIconForegroundDisabled,
       },
@@ -490,6 +490,7 @@ const useRootDisabledStyles = makeStyles({
 
     ':hover:active': {
       backgroundColor: semanticTokens.groupButtonOutlineBackgroundDisabled,
+      ...shorthands.borderWidth(semanticTokens.groupButtonOutlineStrokewidthPressed),
       [`& .${buttonClassNames.icon}`]: {
         color: semanticTokens.groupButtonOutlineIconForegroundDisabled,
       },

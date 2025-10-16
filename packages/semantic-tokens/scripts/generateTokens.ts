@@ -211,11 +211,25 @@ export function generateGroupTokens() {
     const groupTokens = generateComponentGroupTokens(group, groups[group]);
     result = result.concat(groupTokens);
 
+    if (groups[group].exceptions) {
+      groups[group].exceptions.forEach(exception => {
+        const exceptionTokens = generateComponentGroupTokens(group, exception);
+        result = result.concat(exceptionTokens);
+      });
+    }
+
     // Handle any parts of the group (generated in a similar way to groups)
     const groupParts = groups[group].parts || {};
     for (const part of Object.keys(groupParts)) {
       const partTokens = generateComponentGroupTokens(`${group}`, groupParts[part], part);
       result = result.concat(partTokens);
+
+      if (groupParts[part].exceptions) {
+        groupParts[part].exceptions.forEach(exception => {
+          const exceptionTokens = generateComponentGroupTokens(group, exception, part);
+          result = result.concat(exceptionTokens);
+        });
+      }
     }
   }
 
