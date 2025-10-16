@@ -1,4 +1,9 @@
-import { generatePrimitiveTokens, generateGenericTokens, generateGroupTokens } from './generateTokens';
+import {
+  generatePrimitiveTokens,
+  generateGenericTokens,
+  generateGroupTokens,
+  generateControlTokens,
+} from './generateTokens';
 import fs from 'fs';
 import path from 'node:path';
 
@@ -7,11 +12,13 @@ export function generateTokenJSON() {
   let primitiveTokens = generatePrimitiveTokens();
   let genericTokens = generateGenericTokens();
   let groupTokens = generateGroupTokens();
+  let controlTokens = generateControlTokens();
 
   const results = {
     primitives: primitiveTokens,
     generics: genericTokens,
     components: groupTokens,
+    controls: controlTokens,
   };
 
   // Convert the JSON object to a string

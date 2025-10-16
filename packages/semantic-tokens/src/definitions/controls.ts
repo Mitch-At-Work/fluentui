@@ -14,5 +14,5 @@ const compoundButtonGroup: GroupPart = {
 };
 
 export const controls: Groups = {
-  compoundButton: compoundButtonGroup,
+  compoundbutton: compoundButtonGroup,
 };

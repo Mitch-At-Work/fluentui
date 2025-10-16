@@ -1,14 +1,9 @@
 import { generics } from '../src/definitions/generics';
 import { primitives } from '../src/definitions/primitives';
 import { GroupPart, groups } from '../src/definitions/groups';
+import { controls } from '../src/definitions/controls';
 
 const joiner = '.';
-
-// hardcoded for now
-export const appState = {
-  groupCollectionName: 'group',
-  showPrimitives: true,
-};
 
 export interface Token {
   name: string;
@@ -81,7 +76,12 @@ export function generateGenericTokens() {
   return result;
 }
 
-export function generateComponentGroupTokens(groupName: string, group: GroupPart, partName?: string) {
+export function generateComponentGroupTokens(
+  collectionName: string,
+  groupName: string,
+  group: GroupPart,
+  partName?: string,
+) {
   let result: Array<Token> = [];
   const groupCoreGroupProperties = group.coreProperties || [];
   for (const property of groupCoreGroupProperties) {
@@ -89,7 +89,7 @@ export function generateComponentGroupTokens(groupName: string, group: GroupPart
     let type = propertyTypes[property as keyof typeof propertyTypes] || 'dimension';
 
     // Group-first
-    tokenParts = [appState.groupCollectionName, groupName, partName, property];
+    tokenParts = [collectionName, groupName, partName, property];
 
     const groupToken = {
       name: tokenParts.filter(Boolean).join(joiner),
@@ -114,7 +114,7 @@ export function generateComponentGroupTokens(groupName: string, group: GroupPart
         let type = propertyTypes[property as keyof typeof propertyTypes] || 'dimension';
 
         // Group-first
-        tokenParts = [appState.groupCollectionName, groupName, variant, partName, property, state];
+        tokenParts = [collectionName, groupName, variant, partName, property, state];
 
         const groupToken = {
           name: tokenParts.filter(Boolean).join(joiner),
@@ -139,7 +139,7 @@ export function generateComponentGroupTokens(groupName: string, group: GroupPart
       let type = propertyTypes[property as keyof typeof propertyTypes] || 'dimension';
 
       // Group-first
-      tokenParts = [appState.groupCollectionName, groupName, variant, partName, property];
+      tokenParts = [collectionName, groupName, variant, partName, property];
 
       const groupToken = {
         name: tokenParts.filter(Boolean).join(joiner),
@@ -163,7 +163,7 @@ export function generateComponentGroupTokens(groupName: string, group: GroupPart
       let type = propertyTypes[property as keyof typeof propertyTypes] || 'dimension';
 
       // Group-first
-      tokenParts = [appState.groupCollectionName, groupName, scale, partName, property];
+      tokenParts = [collectionName, groupName, scale, partName, property];
 
       const groupScaleToken = {
         name: tokenParts.filter(Boolean).join(joiner),
@@ -189,7 +189,7 @@ export function generateComponentGroupTokens(groupName: string, group: GroupPart
         let tokenParts = [];
         let type = propertyTypes[property as keyof typeof propertyTypes] || 'dimension';
 
-        tokenParts = [appState.groupCollectionName, groupName, scale, partName, property, state];
+        tokenParts = [collectionName, groupName, scale, partName, property, state];
 
         const groupToken = {
           name: tokenParts.filter(Boolean).join(joiner),
@@ -213,12 +213,12 @@ export function generateGroupTokens() {
 
   // For each group, generate core property tokens
   for (const group of Object.keys(groups)) {
-    const groupTokens = generateComponentGroupTokens(group, groups[group]);
+    const groupTokens = generateComponentGroupTokens('group', group, groups[group]);
     result = result.concat(groupTokens);
 
     if (groups[group].exceptions) {
       groups[group].exceptions.forEach(exception => {
-        const exceptionTokens = generateComponentGroupTokens(group, exception);
+        const exceptionTokens = generateComponentGroupTokens('group', group, exception);
         result = result.concat(exceptionTokens);
       });
     }
@@ -226,12 +226,45 @@ export function generateGroupTokens() {
     // Handle any parts of the group (generated in a similar way to groups)
     const groupParts = groups[group].parts || {};
     for (const part of Object.keys(groupParts)) {
-      const partTokens = generateComponentGroupTokens(`${group}`, groupParts[part], part);
+      const partTokens = generateComponentGroupTokens('group', `${group}`, groupParts[part], part);
       result = result.concat(partTokens);
 
       if (groupParts[part].exceptions) {
         groupParts[part].exceptions.forEach(exception => {
-          const exceptionTokens = generateComponentGroupTokens(group, exception, part);
+          const exceptionTokens = generateComponentGroupTokens('group', group, exception, part);
+          result = result.concat(exceptionTokens);
+        });
+      }
+    }
+  }
+
+  return result;
+}
+
+export function generateControlTokens() {
+  let result: Token[] = [];
+
+  // For each control group, generate core property tokens
+  for (const group of Object.keys(controls)) {
+    const groupTokens = generateComponentGroupTokens('ctrl', group, controls[group]);
+    result = result.concat(groupTokens);
+
+    if (controls[group].exceptions) {
+      controls[group].exceptions.forEach(exception => {
+        const exceptionTokens = generateComponentGroupTokens('ctrl', group, exception);
+        result = result.concat(exceptionTokens);
+      });
+    }
+
+    // Handle any parts of the group (generated in a similar way to groups)
+    const groupParts = controls[group].parts || {};
+    for (const part of Object.keys(groupParts)) {
+      const partTokens = generateComponentGroupTokens('ctrl', `${group}`, groupParts[part], part);
+      result = result.concat(partTokens);
+
+      if (groupParts[part].exceptions) {
+        groupParts[part].exceptions.forEach(exception => {
+          const exceptionTokens = generateComponentGroupTokens('ctrl', group, exception, part);
           result = result.concat(exceptionTokens);
         });
       }
