@@ -678,7 +678,7 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: tokens.strokeWidthThin,
     },
     groupButtonOutlineStrokewidthSelected: {
-      fluent: tokens.strokeWidthThick,
+      fluent: tokens.strokeWidthThicker,
     },
     groupButtonSmallIcononlyPadding: {
       fluent: '1px',
@@ -700,6 +700,9 @@ export const groupFallbacks: GroupFallbacks = {
     },
     groupButtonNeutralIconForegroundSelected: {
       fluent: tokens.colorNeutralForeground1Selected,
+    },
+    groupButtonTransparentIconForegroundSelected: {
+      fluent: tokens.colorNeutralForeground2BrandSelected,
     },
   },
 };

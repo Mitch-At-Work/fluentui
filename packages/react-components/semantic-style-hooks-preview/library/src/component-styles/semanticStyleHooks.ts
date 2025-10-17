@@ -127,7 +127,7 @@ import {
 export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // Button styles
   useButtonStyles_unstable: useSemanticButtonStyles,
-  // useToggleButtonStyles_unstable: useSemanticToggleButtonStyles,
+  useToggleButtonStyles_unstable: useSemanticToggleButtonStyles,
   // useSplitButtonStyles_unstable: useSemanticSplitButtonStyles,
   // useMenuButtonStyles_unstable: useSemanticMenuButtonStyles,
   useCompoundButtonStyles_unstable: useSemanticCompoundButtonStyles,

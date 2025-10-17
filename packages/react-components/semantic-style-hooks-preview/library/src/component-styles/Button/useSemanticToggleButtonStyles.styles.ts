@@ -138,6 +138,9 @@ const useRootCheckedStyles = makeStyles({
     backgroundColor: semanticTokens.groupButtonTransparentBackgroundSelected,
     ...shorthands.borderColor(semanticTokens.groupButtonTransparentStrokeSelected),
     color: semanticTokens.groupButtonTransparentTextForegroundSelected,
+    [`& .${buttonClassNames.icon}`]: {
+      color: semanticTokens.groupButtonTransparentIconForegroundSelected,
+    },
 
     ':hover': {
       backgroundColor: semanticTokens.groupButtonTransparentBackgroundHoverSelected,
@@ -248,10 +251,6 @@ const useRootDisabledStyles = makeStyles({
 });
 
 const useIconCheckedStyles = makeStyles({
-  // Appearance variations
-  subtleOrTransparent: {
-    color: tokens.colorNeutralForeground2BrandSelected,
-  },
   // High contrast styles
   highContrast: {
     '@media (forced-colors: active)': {
@@ -323,7 +322,6 @@ export const useSemanticToggleButtonStyles = (_state: unknown): ToggleButtonStat
     state.icon.className = mergeClasses(
       state.icon.className,
       toggleButtonClassNames.icon,
-      checked && (appearance === 'subtle' || appearance === 'transparent') && iconCheckedStyles.subtleOrTransparent,
       iconCheckedStyles.highContrast,
       getSlotClassNameProp_unstable(state.icon),
     );
