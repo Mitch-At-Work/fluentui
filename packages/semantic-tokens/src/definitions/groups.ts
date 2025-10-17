@@ -47,7 +47,7 @@ const buttonGroup: GroupPart = {
       scales: ['small', 'medium', 'large'],
     },
     icon: {
-      states: ['', 'hover', 'pressed', 'disabled'],
+      states: ['', 'hover', 'pressed', 'disabled', 'selected'],
       scales: ['small', 'medium', 'large'],
       scaleProperties: ['size'],
       variants: ['neutral', 'primary', 'outline', 'subtle', 'transparent'],
@@ -68,7 +68,7 @@ const buttonGroup: GroupPart = {
     text: {
       coreProperties: ['fontfamily'],
       scales: ['small', 'medium', 'large'],
-      states: ['', 'hover', 'pressed', 'disabled'],
+      states: ['', 'hover', 'pressed', 'disabled', 'selected'],
       variants: ['neutral', 'primary', 'outline', 'subtle', 'transparent'],
       variantStateProperties: ['foreground'],
       scaleProperties: ['padding.horizontal', 'fontsize', 'lineheight', 'fontweight'],

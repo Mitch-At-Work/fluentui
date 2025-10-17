@@ -25,13 +25,13 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: tokens.colorNeutralBackground1Pressed,
     },
     groupButtonNeutralBackgroundSelected: {
-      fluent: null,
+      fluent: tokens.colorNeutralBackground1Selected,
     },
     groupButtonNeutralBackgroundHoverSelected: {
-      fluent: null,
+      fluent: tokens.colorNeutralBackground1Hover,
     },
     groupButtonNeutralBackgroundPressedSelected: {
-      fluent: null,
+      fluent: tokens.colorNeutralBackground1Pressed,
     },
     groupButtonNeutralBackgroundDisabled: {
       fluent: tokens.colorNeutralBackgroundDisabled,
@@ -46,13 +46,13 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: tokens.colorBrandBackgroundPressed,
     },
     groupButtonPrimaryBackgroundSelected: {
-      fluent: null,
+      fluent: tokens.colorBrandBackgroundSelected,
     },
     groupButtonPrimaryBackgroundHoverSelected: {
-      fluent: null,
+      fluent: tokens.colorBrandBackgroundHover,
     },
     groupButtonPrimaryBackgroundPressedSelected: {
-      fluent: null,
+      fluent: tokens.colorBrandBackgroundPressed,
     },
     groupButtonPrimaryBackgroundDisabled: {
       fluent: tokens.colorNeutralBackgroundDisabled,
@@ -67,7 +67,7 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: tokens.colorTransparentBackgroundPressed,
     },
     groupButtonOutlineBackgroundSelected: {
-      fluent: null,
+      fluent: tokens.colorTransparentBackgroundSelected,
     },
     groupButtonOutlineBackgroundHoverSelected: {
       fluent: null,
@@ -88,13 +88,13 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: tokens.colorSubtleBackgroundPressed,
     },
     groupButtonSubtleBackgroundSelected: {
-      fluent: null,
+      fluent: tokens.colorSubtleBackgroundSelected,
     },
     groupButtonSubtleBackgroundHoverSelected: {
-      fluent: null,
+      fluent: tokens.colorSubtleBackgroundHover,
     },
     groupButtonSubtleBackgroundPressedSelected: {
-      fluent: null,
+      fluent: tokens.colorSubtleBackgroundPressed,
     },
     groupButtonSubtleBackgroundDisabled: {
       fluent: tokens.colorTransparentBackground,
@@ -109,13 +109,13 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: tokens.colorTransparentBackgroundPressed,
     },
     groupButtonTransparentBackgroundSelected: {
-      fluent: null,
+      fluent: tokens.colorTransparentBackgroundSelected,
     },
     groupButtonTransparentBackgroundHoverSelected: {
-      fluent: null,
+      fluent: tokens.colorTransparentBackgroundHover,
     },
     groupButtonTransparentBackgroundPressedSelected: {
-      fluent: null,
+      fluent: tokens.colorTransparentBackgroundPressed,
     },
     groupButtonTransparentBackgroundDisabled: {
       fluent: tokens.colorTransparentBackground,
@@ -130,13 +130,13 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: tokens.colorNeutralStroke1Pressed,
     },
     groupButtonNeutralStrokeSelected: {
-      fluent: null,
+      fluent: tokens.colorNeutralStroke1,
     },
     groupButtonNeutralStrokeHoverSelected: {
-      fluent: null,
+      fluent: tokens.colorNeutralStroke1Hover,
     },
     groupButtonNeutralStrokePressedSelected: {
-      fluent: null,
+      fluent: tokens.colorNeutralStroke1Pressed,
     },
     groupButtonNeutralStrokeDisabled: {
       fluent: tokens.colorNeutralStrokeDisabled,
@@ -151,16 +151,16 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: tokens.colorTransparentStroke,
     },
     groupButtonPrimaryStrokeSelected: {
-      fluent: null,
+      fluent: tokens.colorTransparentStroke,
     },
     groupButtonPrimaryStrokeHoverSelected: {
-      fluent: null,
+      fluent: tokens.colorTransparentStroke,
     },
     groupButtonPrimaryStrokePressedSelected: {
-      fluent: null,
+      fluent: tokens.colorTransparentStroke,
     },
     groupButtonPrimaryStrokeDisabled: {
-      fluent: tokens.colorNeutralStrokeDisabled,
+      fluent: tokens.colorTransparentStroke,
     },
     groupButtonOutlineStroke: {
       fluent: tokens.colorNeutralStroke1,
@@ -172,13 +172,13 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: tokens.colorNeutralStroke1Pressed,
     },
     groupButtonOutlineStrokeSelected: {
-      fluent: null,
+      fluent: tokens.colorNeutralStroke1,
     },
     groupButtonOutlineStrokeHoverSelected: {
-      fluent: null,
+      fluent: tokens.colorNeutralStroke1Selected,
     },
     groupButtonOutlineStrokePressedSelected: {
-      fluent: null,
+      fluent: tokens.colorNeutralStroke1Selected,
     },
     groupButtonOutlineStrokeDisabled: {
       fluent: tokens.colorNeutralStrokeDisabled,
@@ -193,13 +193,13 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: tokens.colorTransparentStroke,
     },
     groupButtonSubtleStrokeSelected: {
-      fluent: null,
+      fluent: tokens.colorTransparentStroke,
     },
     groupButtonSubtleStrokeHoverSelected: {
-      fluent: null,
+      fluent: tokens.colorTransparentStroke,
     },
     groupButtonSubtleStrokePressedSelected: {
-      fluent: null,
+      fluent: tokens.colorTransparentStroke,
     },
     groupButtonSubtleStrokeDisabled: {
       fluent: tokens.colorTransparentStrokeDisabled,
@@ -214,13 +214,13 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: tokens.colorTransparentStroke,
     },
     groupButtonTransparentStrokeSelected: {
-      fluent: null,
+      fluent: tokens.colorTransparentStroke,
     },
     groupButtonTransparentStrokeHoverSelected: {
-      fluent: null,
+      fluent: tokens.colorTransparentStroke,
     },
     groupButtonTransparentStrokePressedSelected: {
-      fluent: null,
+      fluent: tokens.colorTransparentStroke,
     },
     groupButtonTransparentStrokeDisabled: {
       fluent: tokens.colorTransparentStrokeDisabled,
@@ -421,7 +421,7 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: tokens.colorNeutralForegroundOnBrand,
     },
     groupButtonPrimaryTextForegroundSelected: {
-      fluent: null,
+      fluent: tokens.colorNeutralForegroundOnBrand,
     },
     groupButtonPrimaryTextForegroundHoverSelected: {
       fluent: null,
@@ -442,7 +442,7 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: tokens.colorNeutralForeground1Pressed,
     },
     groupButtonOutlineTextForegroundSelected: {
-      fluent: null,
+      fluent: tokens.colorNeutralForeground1Selected,
     },
     groupButtonOutlineTextForegroundHoverSelected: {
       fluent: null,
@@ -463,7 +463,7 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: tokens.colorNeutralForeground2Pressed,
     },
     groupButtonSubtleTextForegroundSelected: {
-      fluent: null,
+      fluent: tokens.colorNeutralForeground2Selected,
     },
     groupButtonSubtleTextForegroundHoverSelected: {
       fluent: null,
@@ -484,7 +484,7 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: tokens.colorNeutralForeground2BrandPressed,
     },
     groupButtonTransparentTextForegroundSelected: {
-      fluent: null,
+      fluent: tokens.colorNeutralForeground2BrandSelected,
     },
     groupButtonTransparentTextForegroundHoverSelected: {
       fluent: null,
@@ -688,6 +688,18 @@ export const groupFallbacks: GroupFallbacks = {
     },
     groupButtonLargeIcononlyPadding: {
       fluent: '7px',
+    },
+    groupButtonSubtleIconForegroundSelected: {
+      fluent: tokens.colorNeutralForeground2BrandSelected,
+    },
+    groupButtonPrimaryIconForegroundSelected: {
+      fluent: tokens.colorNeutralForegroundOnBrand,
+    },
+    groupButtonOutlineIconForegroundSelected: {
+      fluent: tokens.colorNeutralForeground1Selected,
+    },
+    groupButtonNeutralIconForegroundSelected: {
+      fluent: tokens.colorNeutralForeground1Selected,
     },
   },
 };
