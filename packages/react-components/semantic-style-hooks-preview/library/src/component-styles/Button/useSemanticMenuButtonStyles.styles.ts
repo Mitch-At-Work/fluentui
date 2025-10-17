@@ -1,5 +1,4 @@
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
-import { tokens } from '@fluentui/react-theme';
 import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
 import * as semanticTokens from '@fluentui/semantic-tokens';
 import { menuButtonClassNames, type MenuButtonState } from '@fluentui/react-button';
@@ -18,58 +17,58 @@ const useRootExpandedStyles = makeStyles({
 
   // Appearance variations
   outline: {
-    ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
-    ...shorthands.borderWidth(semanticTokens.strokeWidthCtrlOutlineSelected),
-    color: tokens.colorNeutralForeground1Selected,
+    ...shorthands.borderColor(semanticTokens.groupButtonOutlineStrokeSelected),
+    ...shorthands.borderWidth(semanticTokens.groupButtonOutlineStrokewidthSelected),
+    color: semanticTokens.groupButtonOutlineTextForegroundSelected,
 
     // Ensure state is retained over base hover
     ':hover': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
-      ...shorthands.borderWidth(semanticTokens.strokeWidthCtrlOutlineSelected),
-      color: tokens.colorNeutralForeground1Selected,
+      ...shorthands.borderColor(semanticTokens.groupButtonOutlineStrokeSelected),
+      ...shorthands.borderWidth(semanticTokens.groupButtonOutlineStrokewidthSelected),
+      color: semanticTokens.groupButtonOutlineTextForegroundSelected,
     },
 
     // Ensure state is retained over base hover active
     ':hover:active': {
-      ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
-      ...shorthands.borderWidth(semanticTokens.strokeWidthCtrlOutlineSelected),
-      color: tokens.colorNeutralForeground1Selected,
+      ...shorthands.borderColor(semanticTokens.groupButtonOutlineStrokeSelected),
+      ...shorthands.borderWidth(semanticTokens.groupButtonOutlineStrokewidthSelected),
+      color: semanticTokens.groupButtonOutlineTextForegroundSelected,
     },
   },
   primary: {
-    backgroundColor: tokens.colorBrandBackgroundSelected,
+    backgroundColor: semanticTokens.groupButtonPrimaryBackgroundSelected,
   },
   secondary: {
-    backgroundColor: tokens.colorNeutralBackground1Selected,
-    ...shorthands.borderColor(tokens.colorNeutralStroke1Selected),
-    color: tokens.colorNeutralForeground1Selected,
+    backgroundColor: semanticTokens.groupButtonNeutralBackgroundSelected,
+    ...shorthands.borderColor(semanticTokens.groupButtonNeutralStrokeSelected),
+    color: semanticTokens.groupButtonNeutralTextForegroundSelected,
   },
   subtle: {
-    backgroundColor: tokens.colorSubtleBackgroundSelected,
-    color: tokens.colorNeutralForeground2Selected,
+    backgroundColor: semanticTokens.groupButtonSubtleBackgroundSelected,
+    color: semanticTokens.groupButtonSubtleTextForegroundSelected,
   },
   transparent: {
-    backgroundColor: tokens.colorTransparentBackgroundSelected,
-    color: tokens.colorNeutralForeground2BrandSelected,
+    backgroundColor: semanticTokens.groupButtonTransparentBackgroundSelected,
+    color: semanticTokens.groupButtonTransparentTextForegroundSelected,
   },
 });
 
 const useIconExpandedStyles = makeStyles({
   // Appearance variations
   outline: {
-    color: tokens.colorNeutralForeground1Selected,
+    color: semanticTokens.groupButtonNeutralIconForegroundSelected,
   },
   primary: {
     /* The primary styles are exactly the same as the base styles. */
   },
   secondary: {
-    color: tokens.colorNeutralForeground1Selected,
+    color: semanticTokens.groupButtonNeutralIconForegroundSelected,
   },
   subtle: {
-    color: tokens.colorNeutralForeground2BrandSelected,
+    color: semanticTokens.groupButtonSubtleIconForegroundSelected,
   },
   transparent: {
-    color: tokens.colorNeutralForeground2BrandSelected,
+    color: semanticTokens.groupButtonTransparentIconForegroundSelected,
   },
   highContrast: {
     // High contrast styles
@@ -88,27 +87,28 @@ const useMenuIconStyles = makeStyles({
 
   // Size appearance
   small: {
-    fontSize: '12px',
-    height: '12px',
-    lineHeight: semanticTokens.textRampSmItemBodyLineHeight,
-    width: '12px',
+    fontSize: semanticTokens.groupButtonSmallTextFontsize,
+    height: semanticTokens.groupButtonSmallTextFontsize,
+    lineHeight: semanticTokens.groupButtonSmallTextLineheight,
+    width: semanticTokens.groupButtonSmallTextFontsize,
   },
   medium: {
-    fontSize: '12px',
-    height: '12px',
-    lineHeight: semanticTokens.textRampSmItemBodyLineHeight,
-    width: '12px',
+    // Medium uses small font size for icon
+    fontSize: semanticTokens.groupButtonSmallTextFontsize,
+    height: semanticTokens.groupButtonSmallTextFontsize,
+    lineHeight: semanticTokens.groupButtonSmallTextLineheight,
+    width: semanticTokens.groupButtonSmallTextFontsize,
   },
   large: {
-    fontSize: '16px',
-    height: '16px',
-    lineHeight: semanticTokens.textRampSmItemBodyLineHeight,
-    width: '16px',
+    fontSize: semanticTokens.groupButtonLargeTextFontsize,
+    height: semanticTokens.groupButtonLargeTextFontsize,
+    lineHeight: semanticTokens.groupButtonLargeTextLineheight,
+    width: semanticTokens.groupButtonLargeTextFontsize,
   },
 
   // Not-icon only
   notIconOnly: {
-    marginLeft: semanticTokens.gapInsideCtrlSmDefault,
+    marginLeft: semanticTokens.groupButtonSmallGap,
   },
 });
 
@@ -120,6 +120,8 @@ export const useSemanticMenuButtonStyles = (_state: unknown): MenuButtonState =>
   const rootExpandedStyles = useRootExpandedStyles();
   const iconExpandedStyles = useIconExpandedStyles();
   const menuIconStyles = useMenuIconStyles();
+
+  useSemanticButtonStyles({ ...state, iconPosition: 'before' });
 
   state.root.className = mergeClasses(
     state.root.className,
@@ -148,8 +150,6 @@ export const useSemanticMenuButtonStyles = (_state: unknown): MenuButtonState =>
       getSlotClassNameProp_unstable(state.menuIcon),
     );
   }
-
-  useSemanticButtonStyles({ ...state, iconPosition: 'before' });
 
   return state;
 };
