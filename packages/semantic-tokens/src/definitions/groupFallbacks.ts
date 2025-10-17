@@ -142,25 +142,25 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: tokens.colorNeutralStrokeDisabled,
     },
     groupButtonPrimaryStroke: {
-      fluent: tokens.colorTransparentStroke,
+      fluent: 'transparent',
     },
     groupButtonPrimaryStrokeHover: {
-      fluent: tokens.colorTransparentStroke,
+      fluent: 'transparent',
     },
     groupButtonPrimaryStrokePressed: {
-      fluent: tokens.colorTransparentStroke,
+      fluent: 'transparent',
     },
     groupButtonPrimaryStrokeSelected: {
-      fluent: tokens.colorTransparentStroke,
+      fluent: 'transparent',
     },
     groupButtonPrimaryStrokeHoverSelected: {
-      fluent: tokens.colorTransparentStroke,
+      fluent: 'transparent',
     },
     groupButtonPrimaryStrokePressedSelected: {
-      fluent: tokens.colorTransparentStroke,
+      fluent: 'transparent',
     },
     groupButtonPrimaryStrokeDisabled: {
-      fluent: tokens.colorTransparentStroke,
+      fluent: 'transparent',
     },
     groupButtonOutlineStroke: {
       fluent: tokens.colorNeutralStroke1,
@@ -184,46 +184,46 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: tokens.colorNeutralStrokeDisabled,
     },
     groupButtonSubtleStroke: {
-      fluent: tokens.colorTransparentStroke,
+      fluent: 'transparent',
     },
     groupButtonSubtleStrokeHover: {
-      fluent: tokens.colorTransparentStroke,
+      fluent: 'transparent',
     },
     groupButtonSubtleStrokePressed: {
-      fluent: tokens.colorTransparentStroke,
+      fluent: 'transparent',
     },
     groupButtonSubtleStrokeSelected: {
-      fluent: tokens.colorTransparentStroke,
+      fluent: 'transparent',
     },
     groupButtonSubtleStrokeHoverSelected: {
-      fluent: tokens.colorTransparentStroke,
+      fluent: 'transparent',
     },
     groupButtonSubtleStrokePressedSelected: {
-      fluent: tokens.colorTransparentStroke,
+      fluent: 'transparent',
     },
     groupButtonSubtleStrokeDisabled: {
-      fluent: tokens.colorTransparentStrokeDisabled,
+      fluent: 'transparent',
     },
     groupButtonTransparentStroke: {
-      fluent: tokens.colorTransparentStroke,
+      fluent: 'transparent',
     },
     groupButtonTransparentStrokeHover: {
-      fluent: tokens.colorTransparentStroke,
+      fluent: 'transparent',
     },
     groupButtonTransparentStrokePressed: {
-      fluent: tokens.colorTransparentStroke,
+      fluent: 'transparent',
     },
     groupButtonTransparentStrokeSelected: {
-      fluent: tokens.colorTransparentStroke,
+      fluent: 'transparent',
     },
     groupButtonTransparentStrokeHoverSelected: {
-      fluent: tokens.colorTransparentStroke,
+      fluent: 'transparent',
     },
     groupButtonTransparentStrokePressedSelected: {
-      fluent: tokens.colorTransparentStroke,
+      fluent: 'transparent',
     },
     groupButtonTransparentStrokeDisabled: {
-      fluent: tokens.colorTransparentStrokeDisabled,
+      fluent: 'transparent',
     },
     groupButtonSmallTextFontsize: {
       fluent: tokens.fontSizeBase200,
@@ -703,6 +703,24 @@ export const groupFallbacks: GroupFallbacks = {
     },
     groupButtonTransparentIconForegroundSelected: {
       fluent: tokens.colorNeutralForeground2BrandSelected,
+    },
+    groupButtonDividerStrokewidth: {
+      fluent: tokens.strokeWidthThin,
+    },
+    groupButtonOutlineDividerForeground: {
+      fluent: tokens.colorNeutralStroke1,
+    },
+    groupButtonPrimaryDividerForeground: {
+      fluent: tokens.colorNeutralStrokeOnBrand,
+    },
+    groupButtonSubtleDividerForeground: {
+      fluent: 'transparent',
+    },
+    groupButtonTransparentDividerForeground: {
+      fluent: 'transparent',
+    },
+    groupButtonDividerMarginVertical: {
+      fluent: '0px',
     },
   },
 };
