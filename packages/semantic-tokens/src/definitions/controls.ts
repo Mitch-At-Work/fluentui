@@ -8,9 +8,15 @@
 import { GroupPart, Groups } from './groups';
 
 const compoundButtonGroup: GroupPart = {
-  coreProperties: ['icon.size'],
+  coreProperties: ['icon.size', 'gap'],
   scales: ['small', 'medium', 'large'],
-  scaleProperties: ['padding.horizontal', 'padding.top', 'padding.bottom', 'gap', 'minwidth', 'minheight'],
+  scaleProperties: ['padding.horizontal', 'padding.top', 'padding.bottom', 'minwidth', 'minheight'],
+  parts: {
+    icononly: {
+      scaleProperties: ['padding'],
+      scales: ['small', 'medium', 'large'],
+    },
+  },
 };
 
 export const controls: Groups = {

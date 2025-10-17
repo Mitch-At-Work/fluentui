@@ -24,7 +24,6 @@ const buttonGroup: GroupPart = {
   variantStateProperties: ['background', 'stroke'],
   scales: ['small', 'medium', 'large'],
   scaleProperties: ['padding.horizontal', 'padding.top', 'padding.bottom', 'gap', 'minwidth', 'minheight'],
-  // To do: add scale state
   scaleStateProperties: ['corner'],
   states: ['', 'hover', 'pressed', 'selected', 'hover.selected', 'pressed.selected', 'disabled'],
   components: ['button'],

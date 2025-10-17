@@ -496,13 +496,40 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: tokens.colorNeutralForegroundDisabled,
     },
     groupButtonNeutralTextSecondaryForeground: {
-      fluent: null,
+      fluent: tokens.colorNeutralForeground2,
     },
     groupButtonNeutralTextSecondaryForegroundHover: {
-      fluent: null,
+      fluent: tokens.colorNeutralForeground2Hover,
     },
     groupButtonNeutralTextSecondaryForegroundPressed: {
-      fluent: null,
+      fluent: tokens.colorNeutralForeground2Pressed,
+    },
+    groupButtonSmallTextSecondaryFontsize: {
+      fluent: tokens.fontSizeBase200,
+    },
+    groupButtonSmallTextSecondaryLineheight: {
+      fluent: '100%',
+    },
+    groupButtonSmallTextSecondaryFontweight: {
+      fluent: tokens.fontWeightRegular,
+    },
+    groupButtonMediumTextSecondaryFontsize: {
+      fluent: tokens.fontSizeBase200,
+    },
+    groupButtonMediumTextSecondaryLineheight: {
+      fluent: '100%',
+    },
+    groupButtonMediumTextSecondaryFontweight: {
+      fluent: tokens.fontWeightRegular,
+    },
+    groupButtonLargeTextSecondaryFontsize: {
+      fluent: tokens.fontSizeBase300,
+    },
+    groupButtonLargeTextSecondaryLineheight: {
+      fluent: '100%',
+    },
+    groupButtonLargeTextSecondaryFontweight: {
+      fluent: tokens.fontWeightRegular,
     },
     groupButtonNeutralTextSecondaryForegroundSelected: {
       fluent: null,
@@ -514,16 +541,16 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: null,
     },
     groupButtonNeutralTextSecondaryForegroundDisabled: {
-      fluent: null,
+      fluent: tokens.colorNeutralForegroundDisabled,
     },
     groupButtonPrimaryTextSecondaryForeground: {
-      fluent: null,
+      fluent: tokens.colorNeutralForegroundOnBrand,
     },
     groupButtonPrimaryTextSecondaryForegroundHover: {
-      fluent: null,
+      fluent: tokens.colorNeutralForegroundOnBrand,
     },
     groupButtonPrimaryTextSecondaryForegroundPressed: {
-      fluent: null,
+      fluent: tokens.colorNeutralForegroundOnBrand,
     },
     groupButtonPrimaryTextSecondaryForegroundSelected: {
       fluent: null,
@@ -535,7 +562,7 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: null,
     },
     groupButtonPrimaryTextSecondaryForegroundDisabled: {
-      fluent: null,
+      fluent: tokens.colorNeutralForegroundDisabled,
     },
     groupButtonOutlineTextSecondaryForeground: {
       fluent: null,
@@ -556,16 +583,16 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: null,
     },
     groupButtonOutlineTextSecondaryForegroundDisabled: {
-      fluent: null,
+      fluent: tokens.colorNeutralForegroundDisabled,
     },
     groupButtonSubtleTextSecondaryForeground: {
-      fluent: null,
+      fluent: tokens.colorNeutralForeground2,
     },
     groupButtonSubtleTextSecondaryForegroundHover: {
-      fluent: null,
+      fluent: tokens.colorNeutralForeground2Hover,
     },
     groupButtonSubtleTextSecondaryForegroundPressed: {
-      fluent: null,
+      fluent: tokens.colorNeutralForeground2Pressed,
     },
     groupButtonSubtleTextSecondaryForegroundSelected: {
       fluent: null,
@@ -577,16 +604,16 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: null,
     },
     groupButtonSubtleTextSecondaryForegroundDisabled: {
-      fluent: null,
+      fluent: tokens.colorNeutralForegroundDisabled,
     },
     groupButtonTransparentTextSecondaryForeground: {
-      fluent: null,
+      fluent: tokens.colorNeutralForeground2,
     },
     groupButtonTransparentTextSecondaryForegroundHover: {
-      fluent: null,
+      fluent: tokens.colorNeutralForeground2BrandHover,
     },
     groupButtonTransparentTextSecondaryForegroundPressed: {
-      fluent: null,
+      fluent: tokens.colorNeutralForeground2BrandPressed,
     },
     groupButtonTransparentTextSecondaryForegroundSelected: {
       fluent: null,
@@ -598,7 +625,7 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: null,
     },
     groupButtonTransparentTextSecondaryForegroundDisabled: {
-      fluent: null,
+      fluent: tokens.colorNeutralForegroundDisabled,
     },
     groupButtonNeutralIconForeground: {
       fluent: tokens.colorNeutralForeground1,

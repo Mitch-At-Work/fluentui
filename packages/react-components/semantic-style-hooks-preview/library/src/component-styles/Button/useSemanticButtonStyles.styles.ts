@@ -8,8 +8,10 @@ import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 
 const iconSpacingVar = '--fui-Button__icon--spacing';
 
-const buttonSpacingSmallWithIcon = `max(1px, calc(${semanticTokens.groupButtonSmallPaddingVertical} - 2px))`;
-const buttonSpacingLargeWithIcon = `max(0px, calc(${semanticTokens.groupButtonLargePaddingVertical} - 1px))`;
+const buttonSpacingTopSmallWithIcon = `max(1px, calc(${semanticTokens.groupButtonSmallPaddingTop} - 2px))`;
+const buttonSpacingBottomSmallWithIcon = `max(1px, calc(${semanticTokens.groupButtonSmallPaddingBottom} - 2px))`;
+const buttonSpacingLargeBottomWithIcon = `max(0px, calc(${semanticTokens.groupButtonLargePaddingBottom} - 1px))`;
+const buttonSpacingLargeTopWithIcon = `max(0px, calc(${semanticTokens.groupButtonLargePaddingTop} - 1px))`;
 
 const paddingSmHorizontalNoIcon = `calc(${semanticTokens.groupButtonSmallPaddingHorizontal} + ${semanticTokens.groupButtonMediumTextPaddingHorizontal})`;
 const paddingHorizontalNoIcon = `calc(${semanticTokens.groupButtonMediumPaddingHorizontal} + ${semanticTokens.groupButtonMediumTextPaddingHorizontal})`;
@@ -35,6 +37,7 @@ const useRootBaseClassName = makeResetStyles({
   backgroundColor: semanticTokens.groupButtonNeutralBackground,
   color: semanticTokens.groupButtonNeutralTextForeground,
   border: `${semanticTokens.groupButtonStrokewidth} solid ${semanticTokens.groupButtonNeutralStroke}`,
+  borderRadius: semanticTokens.groupButtonMediumCorner,
 
   fontFamily: semanticTokens.groupButtonTextFontfamily,
   outlineStyle: 'none',
@@ -48,6 +51,7 @@ const useRootBaseClassName = makeResetStyles({
     borderColor: semanticTokens.groupButtonNeutralStrokeHover,
     color: semanticTokens.groupButtonNeutralTextForegroundHover,
     cursor: 'pointer',
+    borderRadius: semanticTokens.groupButtonMediumCornerHover,
     [`& .${buttonClassNames.icon}`]: {
       color: semanticTokens.groupButtonNeutralIconForegroundHover,
     },
@@ -57,15 +61,15 @@ const useRootBaseClassName = makeResetStyles({
     backgroundColor: semanticTokens.groupButtonNeutralBackgroundPressed,
     borderColor: semanticTokens.groupButtonNeutralStrokePressed,
     color: semanticTokens.groupButtonNeutralTextForegroundPressed,
+    borderRadius: semanticTokens.groupButtonMediumCornerPressed,
     outlineStyle: 'none',
     [`& .${buttonClassNames.icon}`]: {
       color: semanticTokens.groupButtonNeutralIconForegroundPressed,
     },
   },
 
-  padding: `${semanticTokens.groupButtonMediumPaddingVertical} ${paddingHorizontalNoIcon} ${semanticTokens.groupButtonMediumPaddingVertical} ${paddingHorizontalNoIcon}`,
+  padding: `${semanticTokens.groupButtonMediumPaddingTop} ${paddingHorizontalNoIcon} ${semanticTokens.groupButtonMediumPaddingBottom} ${paddingHorizontalNoIcon}`,
   minWidth: semanticTokens.groupButtonMediumMinwidth,
-  borderRadius: semanticTokens.groupButtonMediumCorner,
 
   fontSize: semanticTokens.groupButtonMediumTextFontsize,
   fontWeight: semanticTokens.groupButtonMediumTextFontweight,
@@ -333,16 +337,22 @@ const useRootStyles = makeStyles({
   // Size variations
   small: {
     minWidth: semanticTokens.groupButtonSmallMinwidth,
-    padding: `${semanticTokens.groupButtonSmallPaddingVertical} ${paddingSmHorizontalNoIcon}`, //3px
+    padding: `${semanticTokens.groupButtonSmallPaddingTop} ${paddingSmHorizontalNoIcon} ${semanticTokens.groupButtonSmallPaddingBottom} ${paddingSmHorizontalNoIcon}`, //3px
     borderRadius: semanticTokens.groupButtonSmallCorner,
+    ':hover': {
+      borderRadius: semanticTokens.groupButtonSmallCornerHover,
+    },
+    ':hover:active': {
+      borderRadius: semanticTokens.groupButtonSmallCornerPressed,
+    },
 
     fontSize: semanticTokens.groupButtonSmallTextFontsize,
     fontWeight: semanticTokens.groupButtonSmallTextFontweight,
     lineHeight: semanticTokens.groupButtonSmallTextLineheight,
   },
   smallWithIcon: {
-    paddingBottom: buttonSpacingSmallWithIcon,
-    paddingTop: buttonSpacingSmallWithIcon,
+    paddingBottom: buttonSpacingBottomSmallWithIcon,
+    paddingTop: buttonSpacingTopSmallWithIcon,
   },
   smallWithIconBefore: {
     paddingRight: paddingSmHorizontalNoIcon,
@@ -365,16 +375,22 @@ const useRootStyles = makeStyles({
   },
   large: {
     minWidth: semanticTokens.groupButtonLargeMinwidth,
-    padding: `${semanticTokens.groupButtonLargePaddingVertical} ${paddingLgHorizontalNoIcon}`,
+    padding: `${semanticTokens.groupButtonLargePaddingTop} ${paddingLgHorizontalNoIcon} ${semanticTokens.groupButtonLargePaddingBottom} ${paddingLgHorizontalNoIcon}`,
     borderRadius: semanticTokens.groupButtonLargeCorner,
+    ':hover': {
+      borderRadius: semanticTokens.groupButtonLargeCornerHover,
+    },
+    ':hover:active': {
+      borderRadius: semanticTokens.groupButtonLargeCornerPressed,
+    },
 
     fontSize: semanticTokens.groupButtonLargeTextFontsize,
     fontWeight: semanticTokens.groupButtonLargeTextFontweight,
     lineHeight: semanticTokens.groupButtonLargeTextLineheight,
   },
   largeWithIcon: {
-    paddingBottom: buttonSpacingLargeWithIcon,
-    paddingTop: buttonSpacingLargeWithIcon,
+    paddingBottom: buttonSpacingLargeBottomWithIcon,
+    paddingTop: buttonSpacingLargeTopWithIcon,
   },
   largeWithIconBefore: {
     paddingRight: paddingLgHorizontalNoIcon,
@@ -392,6 +408,7 @@ const useRootDisabledStyles = makeStyles({
     backgroundColor: semanticTokens.groupButtonNeutralBackgroundDisabled,
     ...shorthands.borderColor(semanticTokens.groupButtonNeutralStrokeDisabled),
     color: semanticTokens.groupButtonNeutralTextForegroundDisabled,
+    borderRadius: semanticTokens.groupButtonMediumCornerDisabled,
     cursor: 'not-allowed',
     [`& .${buttonClassNames.icon}`]: {
       color: semanticTokens.groupButtonNeutralIconForegroundDisabled,
@@ -401,6 +418,7 @@ const useRootDisabledStyles = makeStyles({
       backgroundColor: semanticTokens.groupButtonNeutralBackgroundDisabled,
       ...shorthands.borderColor(semanticTokens.groupButtonNeutralStrokeDisabled),
       color: semanticTokens.groupButtonNeutralTextForegroundDisabled,
+      borderRadius: semanticTokens.groupButtonMediumCornerDisabled,
 
       cursor: 'not-allowed',
 
@@ -419,6 +437,7 @@ const useRootDisabledStyles = makeStyles({
       backgroundColor: semanticTokens.groupButtonNeutralBackgroundDisabled,
       ...shorthands.borderColor(semanticTokens.groupButtonNeutralStrokeDisabled),
       color: semanticTokens.groupButtonNeutralTextForegroundDisabled,
+      borderRadius: semanticTokens.groupButtonMediumCornerDisabled,
 
       cursor: 'not-allowed',
 
@@ -554,6 +573,27 @@ const useRootDisabledStyles = makeStyles({
       ...shorthands.borderColor(semanticTokens.groupButtonTransparentStrokeDisabled),
     },
   },
+  small: {
+    borderRadius: semanticTokens.groupButtonSmallCornerDisabled,
+    ':hover': {
+      borderRadius: semanticTokens.groupButtonSmallCornerDisabled,
+    },
+    ':hover:active': {
+      borderRadius: semanticTokens.groupButtonSmallCornerDisabled,
+    },
+  },
+  medium: {
+    // Defined in base styles
+  },
+  large: {
+    borderRadius: semanticTokens.groupButtonLargeCornerDisabled,
+    ':hover': {
+      borderRadius: semanticTokens.groupButtonLargeCornerDisabled,
+    },
+    ':hover:active': {
+      borderRadius: semanticTokens.groupButtonLargeCornerDisabled,
+    },
+  },
 });
 
 const useRootFocusStyles = makeStyles({
@@ -600,19 +640,19 @@ const useRootFocusStyles = makeStyles({
 const useRootIconOnlyStyles = makeStyles({
   // Size variations
   small: {
-    padding: `${buttonSpacingSmallWithIcon}`,
+    padding: `${semanticTokens.groupButtonSmallIcononlyPadding}`,
     minWidth: '24px',
-    maxWidth: '24px',
+    maxWidth: 'unset',
   },
   medium: {
-    padding: `${semanticTokens.groupButtonMediumPaddingVertical}`,
+    padding: `${semanticTokens.groupButtonMediumIcononlyPadding}`,
     minWidth: '32px',
-    maxWidth: '32px',
+    maxWidth: 'unset',
   },
   large: {
-    padding: `${buttonSpacingLargeWithIcon}`,
+    padding: `${semanticTokens.groupButtonLargeIcononlyPadding}`,
     minWidth: '40px',
-    maxWidth: '40px',
+    maxWidth: 'unset',
   },
 });
 
@@ -681,6 +721,7 @@ export const useSemanticButtonStyles = (_state: unknown): ButtonState => {
 
     // Disabled styles
     (disabled || disabledFocusable) && rootDisabledStyles.base,
+    (disabled || disabledFocusable) && rootDisabledStyles[size],
     (disabled || disabledFocusable) && rootDisabledStyles.highContrast,
     appearance && (disabled || disabledFocusable) && rootDisabledStyles[appearance],
 

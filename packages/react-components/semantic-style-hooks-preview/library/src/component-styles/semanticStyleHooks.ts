@@ -130,7 +130,7 @@ export const SEMANTIC_STYLE_HOOKS: FluentProviderCustomStyleHooks = {
   // useToggleButtonStyles_unstable: useSemanticToggleButtonStyles,
   // useSplitButtonStyles_unstable: useSemanticSplitButtonStyles,
   // useMenuButtonStyles_unstable: useSemanticMenuButtonStyles,
-  // useCompoundButtonStyles_unstable: useSemanticCompoundButtonStyles,
+  useCompoundButtonStyles_unstable: useSemanticCompoundButtonStyles,
   /* TODO: Implement these for V2!
     // Accordion styles
     useAccordionHeaderStyles_unstable: useSemanticAccordionHeaderStyles,
