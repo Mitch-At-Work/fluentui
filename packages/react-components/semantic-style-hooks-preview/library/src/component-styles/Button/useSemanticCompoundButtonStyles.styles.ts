@@ -1,4 +1,3 @@
-import { tokens } from '@fluentui/react-theme';
 import * as semanticTokens from '@fluentui/semantic-tokens';
 import { mergeClasses, makeStyles } from '@griffel/react';
 import { useSemanticButtonStyles } from './useSemanticButtonStyles.styles';

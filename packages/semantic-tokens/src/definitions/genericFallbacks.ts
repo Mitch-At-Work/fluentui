@@ -20,16 +20,16 @@ export const genericFallbacks: GenericFallbacks = {
   focusStrokewidthOuter: {
     fluent: tokens.strokeWidthThick,
   },
-  borderRadiusCircular: {
+  cornerCircular: {
     fluent: tokens.borderRadiusCircular,
   },
-  borderRadiusSquare: {
+  cornerSquare: {
     fluent: tokens.borderRadiusNone,
   },
   focusStrokeOnbrandHover: {
     fluent: tokens.colorStrokeFocus2,
   },
-  focusStrokeOnbrandRest: {
+  focusStrokeOnbrand: {
     fluent: tokens.colorNeutralForegroundOnBrand,
   },
 };

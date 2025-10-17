@@ -328,11 +328,19 @@ const useRootStyles = makeStyles({
   },
 
   // Shape variations
-  circular: { borderRadius: semanticTokens.cornerCircular },
+  circular: {
+    borderRadius: semanticTokens.cornerCircular,
+    ':hover': { borderRadius: semanticTokens.cornerCircular },
+    ':hover:active': { borderRadius: semanticTokens.cornerCircular },
+  },
   rounded: {
     /* The borderRadius rounded styles are handled in the size variations */
   },
-  square: { borderRadius: semanticTokens.cornerSquare },
+  square: {
+    borderRadius: semanticTokens.cornerSquare,
+    ':hover': { borderRadius: semanticTokens.cornerSquare },
+    ':hover:active': { borderRadius: semanticTokens.cornerSquare },
+  },
 
   // Size variations
   small: {
