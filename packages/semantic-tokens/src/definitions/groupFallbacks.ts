@@ -249,6 +249,24 @@ export const groupFallbacks: GroupFallbacks = {
     groupButtonSmallCorner: {
       fluent: tokens.borderRadiusMedium,
     },
+    groupButtonSmallCornerHover: {
+      fluent: tokens.borderRadiusMedium,
+    },
+    groupButtonSmallCornerPressed: {
+      fluent: tokens.borderRadiusMedium,
+    },
+    groupButtonSmallCornerDisabled: {
+      fluent: tokens.borderRadiusMedium,
+    },
+    groupButtonSmallCornerHoverSelected: {
+      fluent: tokens.borderRadiusMedium,
+    },
+    groupButtonSmallCornerPressedSelected: {
+      fluent: tokens.borderRadiusMedium,
+    },
+    groupButtonSmallCornerSelected: {
+      fluent: tokens.borderRadiusMedium,
+    },
     groupButtonSmallMinwidth: {
       fluent: '64px',
     },
@@ -279,6 +297,24 @@ export const groupFallbacks: GroupFallbacks = {
     groupButtonMediumCorner: {
       fluent: tokens.borderRadiusMedium,
     },
+    groupButtonMediumCornerPressed: {
+      fluent: tokens.borderRadiusMedium,
+    },
+    groupButtonMediumCornerPressedSelected: {
+      fluent: tokens.borderRadiusMedium,
+    },
+    groupButtonMediumCornerHover: {
+      fluent: tokens.borderRadiusMedium,
+    },
+    groupButtonMediumCornerHoverSelected: {
+      fluent: tokens.borderRadiusMedium,
+    },
+    groupButtonMediumCornerDisabled: {
+      fluent: tokens.borderRadiusMedium,
+    },
+    groupButtonMediumCornerSelected: {
+      fluent: tokens.borderRadiusMedium,
+    },
     groupButtonMediumMinwidth: {
       fluent: '96px',
     },
@@ -304,6 +340,24 @@ export const groupFallbacks: GroupFallbacks = {
       fluent: tokens.spacingHorizontalSNudge,
     },
     groupButtonLargeCorner: {
+      fluent: tokens.borderRadiusMedium,
+    },
+    groupButtonLargeCornerHover: {
+      fluent: tokens.borderRadiusMedium,
+    },
+    groupButtonLargeCornerHoverSelected: {
+      fluent: tokens.borderRadiusMedium,
+    },
+    groupButtonLargeCornerPressed: {
+      fluent: tokens.borderRadiusMedium,
+    },
+    groupButtonLargeCornerPressedSelected: {
+      fluent: tokens.borderRadiusMedium,
+    },
+    groupButtonLargeCornerSelected: {
+      fluent: tokens.borderRadiusMedium,
+    },
+    groupButtonLargeCornerDisabled: {
       fluent: tokens.borderRadiusMedium,
     },
     groupButtonLargeMinwidth: {
@@ -598,6 +652,15 @@ export const groupFallbacks: GroupFallbacks = {
     },
     groupButtonOutlineStrokewidthSelected: {
       fluent: tokens.strokeWidthThick,
+    },
+    groupButtonSmallIcononlyPadding: {
+      fluent: '1px',
+    },
+    groupButtonMediumIcononlyPadding: {
+      fluent: '5px',
+    },
+    groupButtonLargeIcononlyPadding: {
+      fluent: '7px',
     },
   },
 };
